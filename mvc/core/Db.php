@@ -1,34 +1,23 @@
 <?php
 class Database
 {
-    const serverName = 'DESKTOP-5HQDO2R\SQLEXPRESS';
-    const database = 'TESTDATA';
-    const uid = '';
-    const pass = '';
-    public function connect()
-    {
-        $connection = [
-            'Database' => self::database,
-            'Uid' => self::uid,
-            'PWD' => self::pass
-        ];
-        $connect = sqlsrv_connect(self::serverName, $connection);
-        if ($connect === false) {
-            throw new Exception("Connection failed: " . print_r(sqlsrv_errors(), true));
-        }
-        return $connect;
-    }
+    private static $conn;
 
-    // public function conn()
-    // {
-    //     try {
-    //         $conn = new PDO("sqlsrv:server=DESKTOP-5HQDO2R\\SQLEXPRESS;database=TESTDATA", "", "");
-    //         echo 'successful';
-    //         return $conn;
-    //     } catch (PDOException $e) {
-    //         echo "Connection failed: " . $e->getMessage();
-    //     }
-    // }
-    
+    public static function getConnection()
+    {
+        if (!isset(self::$conn)) {
+            $serverName = 'DESKTOP-5HQDO2R\SQLEXPRESS';
+            $database = 'TESTDATA';
+            $uid = '';
+            $pass = '';
+            try {
+                self::$conn = new PDO("sqlsrv:Server=$serverName;Database=$database", $uid, $pass);
+                echo 'successful';
+            } catch (PDOException $e) {
+                echo "Connection failed: " . $e->getMessage();
+            }
+        }
+        return self::$conn;
+    }
 }
 ?>
