@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/style/log_style.css">
-
-    <script>
-        //Xóa dữ liệu khi refresh trang
-        window.onload = function() {
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-    };
-    </script>
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/clients/css/log_styles.css">
 </head>
+
 <body>
     <div class="container">
         <div class="login form">
             <header>Sign up</header>
             <form action="" method="post">
 
-<?php
-if(isset($data['success']))
+                <?php
+if(isset($_SESSION['reg']))
 {
-    if($data['success'] == 'true')
+    if($_SESSION['reg'] == 'true')
     {
         $kq = '<p style="color:red; font-size: 17px">Đăng ký thành công.</p>';
         echo $kq;
     }
-    else if($data['success'] == 'false')
+    else if($_SESSION['reg'] == 'false')
     {
         $kq = '<p style="color:red; font-size: 17px">Tài khoản đã tồn tại.</p>';
         echo $kq;
     }
+    unset($_SESSION['reg']);
 }
 ?>
 
@@ -42,12 +36,13 @@ if(isset($data['success']))
                 <input required="true" type="text" name="password" id="pass_reg" placeholder="Create a password">
                 <input type="submit" name="btn_reg" class="button" value="Sign up">
             </form>
-        <div class="signup">
-            <span class="signup">Already have an account?
-            <a style="text-decoration: none; font-size: 17px" href="login">Đăng nhập</a>
-            </span>
-        </div>
+            <div class="signup">
+                <span class="signup">Already have an account?
+                    <a style="text-decoration: none; font-size: 17px" href="login">Đăng nhập</a>
+                </span>
+            </div>
         </div>
     </div>
 </body>
+
 </html>

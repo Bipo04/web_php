@@ -12,7 +12,6 @@ class Database
             $pass = '';
             try {
                 self::$conn = new PDO("sqlsrv:Server=$serverName;Database=$database", $uid, $pass);
-                echo 'successful';
             } catch (PDOException $e) {
                 echo "Connection failed: " . $e->getMessage();
             }

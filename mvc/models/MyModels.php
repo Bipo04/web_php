@@ -24,7 +24,7 @@ class MyModels extends Database {
         if ($query->execute()) {
             return json_encode(
                 array(
-                    'type'      => 'sucessFully',
+                    'type'      => 'success',
                     'Message'   => 'Insert data success',
                     'id'        => $this->conn->lastInsertId()
                 )
@@ -32,7 +32,7 @@ class MyModels extends Database {
         } else {
             return json_encode(
                 array(
-                    'type'      => 'fails',
+                    'type'      => 'fail',
                     'Message'   => 'Insert data fails',
                 )
             );
@@ -47,7 +47,7 @@ class MyModels extends Database {
         if ($query->execute()) {
             return json_encode(
                 array(
-                    'type'      => 'sucessFully',
+                    'type'      => 'success',
                     'Message'   => 'Update data success',
                 )
             );
@@ -69,7 +69,7 @@ class MyModels extends Database {
             if ($query->rowCount() > 0) {
                 return json_encode(
                     array(
-                        'type'      => 'successfully',
+                        'type'      => 'success',
                         'Message'   => 'Delete data success',
                     )
                 );
@@ -94,7 +94,7 @@ class MyModels extends Database {
     public function deleteById($id) {
         $sql = "DELETE FROM $this->table WHERE ID = :id";
         $query = $this->conn->prepare($sql);
-        $query->bindParam(':id', $id, PDO::PARAM_INT);
+        $query->bindParam(':id', $id);
         if ($query->execute()) {
             return json_encode(
                 array(
@@ -102,39 +102,6 @@ class MyModels extends Database {
                     'Message'   => 'Delete data success',
                 )
             );
-        } else {
-            return json_encode(
-                array(
-                    'type'      => 'fail',
-                    'Message'   => 'Failed to execute query',
-                )
-            );
-        }
-    }
-
-    public function findSingle($id) {
-        $sql = "SELECT * FROM $this->table WHERE ID = :id";
-        $query = $this->conn->prepare($sql);
-        $query->bindParam(':id', $id, PDO::PARAM_INT);
-        
-        if ($query->execute()) {
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);
-            $count = count($result);
-            if ($count == 1) {
-                return json_encode(
-                    array(
-                        'type'      => 'success',
-                        'data'      => $result[0],
-                    )
-                );
-            } else {
-                return json_encode(
-                    array(
-                        'type'      => 'fail',
-                        'Message'   => ($count == 0) ? 'No data found' : 'Multiple records found',
-                    )
-                );
-            }
         } else {
             return json_encode(
                 array(
