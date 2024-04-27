@@ -1,10 +1,8 @@
 <?php
-class Auth extends Controller
-{
+class Auth extends Controller {
     public $AccountModel;
     
-    public function __construct()
-    {
+    public function __construct() {
         $this->AccountModel = $this->model("AccountModels");
     }
 

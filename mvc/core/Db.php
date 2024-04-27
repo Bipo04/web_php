@@ -1,10 +1,8 @@
 <?php
-class Database
-{
+class Database {
     private static $conn;
 
-    public static function getConnection()
-    {
+    public static function getConnection() {
         if (!isset(self::$conn)) {
             $serverName = 'DESKTOP-5HQDO2R\SQLEXPRESS';
             $database = 'TESTDATA';

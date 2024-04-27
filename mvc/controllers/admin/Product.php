@@ -1,13 +1,10 @@
 <?php
-class Product extends Controller
-{
+class Product extends Controller {
     public $ProductModel;
-    public function __construct()
-    {
+    public function __construct() {
         $this->ProductModel = $this->model("ProductModels");
     }
-    public function index()
-    {
+    public function index() {
         $products = $this->ProductModel->getdata();
         $this->view("layouts/admin_layout", [
             "page" => "product/index",
@@ -15,6 +12,8 @@ class Product extends Controller
             "product" => $products,
         ]);
     }
+
+    public function add()
 }
 
 ?>

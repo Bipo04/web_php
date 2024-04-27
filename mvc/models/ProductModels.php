@@ -1,7 +1,6 @@
 <?php
 require_once "./mvc/models/MyModels.php";
-class ProductModels extends MyModels
-{
+class ProductModels extends MyModels {
     protected $table = "Product";
 
     public function findByCategoryName($select = NULL, $cateName, $orderBy = NULL, $order = "DESC") {

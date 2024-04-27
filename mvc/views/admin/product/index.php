@@ -4,7 +4,7 @@
             <h2 class="text-center"><?php echo $data['title'] ?></h2>
         </div>
         <div class="panel-body">
-            <a href="view.php?act=cate_add"><button class="btn btn-success" style="margin-bottom: 15px">Thêm Sản
+            <a href="product/add"><button class="btn btn-success" style="margin-bottom: 15px">Thêm Sản
                     Phẩm</button></a>
             <table class="table table-bordered table-hover">
                 <thead>
