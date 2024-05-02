@@ -17,11 +17,11 @@ class Auth extends Controller {
             $data = $request->postFields();
             $result = $this->AccountModel->login($data);
             if($result) {
-                if($_SESSION['role'] = 'admin') {
+                if($_SESSION['role'] == 'admin') {
                     header("Location: http://localhost:8088/web/admin/category");
                 }
-                if($_SESSION['role'] = 'user') {
-                    header("Location: http://localhost:8088/web/");
+                if($_SESSION['role'] == 'user') {
+                    header("Location: http://localhost:8088/web/home");
                 }
         
             } else {
@@ -46,6 +46,11 @@ class Auth extends Controller {
             }
         }
         $this->view("auth/register");
+    }
+
+    public function logout() {
+        session_unset();
+        header('location: http://localhost:8088/web/auth/login');
     }
 }
 

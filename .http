@@ -1,4 +1,9 @@
 
 POST http://localhost:8088/web/auth/login
+Content-Type: application/json
 
+{
+  "name": "Product 1",
+  "price": 100.00
+}
 ###

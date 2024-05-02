@@ -10,12 +10,13 @@ class AccountModels extends MyModels {
     public function login($data) {
         $kq = $this->findUsername($data['username']);
         if($kq) {
-            if (password_verify($data['password'], $kq['Password'])) {
-                if($kq['Role_id'] == "1") {
+            if (password_verify($data['password'], $kq['password'])) {
+                if($kq['role_id'] == "1") {
                     $_SESSION['role'] = 'admin';
-                }
-                if($kq['Role_id'] == "2") {
+                    $_SESSION['user_id'] = $kq['id'];
+                } else if($kq['role_id'] == 2) {
                     $_SESSION['role'] = 'user';
+                    $_SESSION['user_id'] = $kq['id'];
                 }
                 return true;
             }
@@ -61,7 +62,7 @@ class AccountModels extends MyModels {
     }
     
     private function findUsername($username) {
-        $sql = "SELECT * FROM $this->table WHERE Username = :username";
+        $sql = "SELECT * FROM $this->table WHERE username = :username";
         $query = $this->conn->prepare($sql);
         $query->bindParam(':username', $username);
         $query->execute();

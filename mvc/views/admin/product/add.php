@@ -8,6 +8,18 @@
             <input type="text" name="name" class="form-control">
         </div>
         <div class="form-group mb-3">
+            <label for="">Giá</label>
+            <input type="text" name="price" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="">Số lượng</label>
+            <input type="text" name="quantity" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="">Product Category</label>
+            <input type="text" name="product_category_id" class="form-control">
+        </div>
+        <div class="form-group mb-3">
             <label for="">Ảnh</label>
             <input type="file" name="img[]" class="form-control" multiple>
         </div>

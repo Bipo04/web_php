@@ -92,7 +92,7 @@ class MyModels extends Database {
     }
 
     public function deleteById($id) {
-        $sql = "DELETE FROM $this->table WHERE ID = :id";
+        $sql = "DELETE FROM $this->table WHERE id = :id";
         $query = $this->conn->prepare($sql);
         $query->bindParam(':id', $id);
         if ($query->execute()) {
