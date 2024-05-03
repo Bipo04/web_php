@@ -40,3 +40,6 @@ input[type="date"]{
     font-size: 12px;
     padding: 5px;
 }
+a{
+    text-decoration: none;
+}
