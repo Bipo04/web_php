@@ -10,14 +10,22 @@
     height: 75px;
 }
 .name_shop {
+    text-decoration: none;
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
     font-weight: 60px;
     font-style: normal;
-    padding-top: 20px;
+    font-size: 30px;
+    padding-top: 10px;
     padding-bottom: 20px;
-    height: 75px;
+    display: flex;
+    justify-content: center;
     margin: 0;
+    color: black;
+}
+.name_shop:hover{
+    text-decoration: none;
+    color: black;
 }
 .container-fluid {
     display: flex;
