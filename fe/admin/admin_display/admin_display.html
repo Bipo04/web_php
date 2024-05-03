@@ -18,6 +18,21 @@
         label {
             display: block;
         }
+
+        .category-list {
+            display: flex;
+            justify-content: space-between;
+            /* Các mục sẽ được căn cách đều nhau trên dòng */
+            padding: 0;
+            /* Xóa padding mặc định của danh sách */
+        }
+
+        .category-item {
+            flex: 1;
+            /* Các mục chiếm hết không gian trên dòng ngang */
+            margin-right: 10px;
+            /* Khoảng cách giữa các mục */
+        }
     </style>
 </head>
 
@@ -27,7 +42,32 @@
             <div class="grid">
                 <nav class="header__navbar navbar-expand-sm">
                     <h1 class="name_shop">Angel&BB</h1>
-                    <ul class="header__navbar-list">
+                    <ul class="header__navbar-list" style="display: flex;">
+                        <ul class="category-list d-flex justify-content-between"
+                            style="list-style: none; border: none;">
+                            <li class="category-item">
+                                <a href="#" class="category-item__link">Quản lý Sản phẩm</a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-item__link">Quản lý Đơn hàng</a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-item__link">Quản lý Người dùng</a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-item__link">Thống kê và Báo cáo </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-item__link">Cài đặt</a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-item__link">Tương tác với Khách hàng</a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-item__link">Bảo mật</a>
+                            </li>
+                            <!-- Thêm các mục khác nếu cần -->
+                        </ul>
                         <li class="header__navbar-item" id="nav_ac">
                             <i class="fa-solid fa-user"></i>
                             Admin
@@ -46,62 +86,27 @@
                 </nav>
             </div>
         </header>
-        <div class="Container">
+        <div class="Container" style="min-height:500px;">
             <div class="grid">
-                <div class="grid__row">
-                    <div class="grid__colum-2">
-                        <nav class="category">
-                            <ul class="category-list">
-                                <li class="category-item">
-                                    <h3 class="category-heading" style="padding: 12px 0px; padding-left: 16px;">
-                                        <i class="fa-solid fa-bars"></i>
-                                        Danh mục
-                                    </h3>
-                                </li>
-                                <ul class="list-group" style="list-style: none;border: none;">
-                                    <li class="category-item">
-                                        <a href="#" class="category-item__link">Quản lý Sản phẩm</a>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="category-item__link">Quản lý Đơn hàng</a>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="category-item__link">Quản lý Người dùng</a>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="category-item__link">Thống kê và Báo cáo </a>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="category-item__link">Cài đặt</a>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="category-item__link">Tương tác với Khách hàng</a>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="category-item__link">Bảo mật</a>
-                                    </li>
-                                    <!-- Thêm các mục khác nếu cần -->
-                                </ul>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="grid__colum-10 ">
-                        <h2 class="mt-4" style="padding: 15px 0px;">Danh sách Sản phẩm</h2>
+                <div class="grid__row" style="padding:auto;">
+                    <div>
+                        <h2 class="mt-4" style="padding: 15px 0px 0px 0px;">Danh sách Sản phẩm</h2>
                         <button class="btn btn-success" onclick="window.location.href='add_product.html'"
-                            style="font-size: 15px;">Thêm sản phẩm
+                            style="font-size: 15px;margin: 15px 0px;">Thêm sản phẩm
                             mới</button>
                         <table id="productTable" class="table table-bordered">
-                            <thead style="font-size: 17px;">
+                            <thead style="font-size: 20px;">
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Category_ID</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Discount</th>
-                                    <th>Suppy_id</th>
-                                    <th>Description</th>
+                                    <th>id</th>
+                                    <th>category_ID</th>
+                                    <th>title</th>
+                                    <th>inbound_price</th>
+                                    <th>outbound_price</th>
+                                    <th>discount</th>
+                                    <th>supply</th>
                                     <th>Images</th>
+                                    <th>quantity</th>
+                                    <th>sold</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -112,11 +117,10 @@
                                     <td>Loại sản phẩm</td>
                                     <td>10</td>
                                     <td>10</td>
+                                    <td>10</td>
+                                    <td>10</td>
                                     <td>10000</td>
                                     <td>Cửa hàng A</td>
-                                    <td style="max-width: 200px;">Lorem, ipsum dolor sit amet consectetur
-                                        adipisicing elit. Quisquam, aliquid.
-                                    </td>
                                     <td>
                                         <img id="img1_preview" src="#" alt="image" style="max-width: 200px;">
                                         <input type="file" id="img1" onchange="previewImage(this, 'img1_preview')"
@@ -124,7 +128,8 @@
                                     </td>
                                     <td>
                                         <button class="btn btn-primary" style="font-size: 15px;"
-                                            onclick="editProduct(this)">Chỉnh sửa</button>
+                                            onclick="window.location.href='add_product.html'">Chỉnh
+                                            sửa</button>
                                         <button class="btn btn-danger" style="font-size: 15px;"
                                             onclick="deleteProduct(this)">Xóa</button>
                                     </td>
@@ -135,11 +140,10 @@
                                     <td>Loại sản phẩm</td>
                                     <td>10</td>
                                     <td>10</td>
+                                    <td>10</td>
+                                    <td>10</td>
                                     <td>10000</td>
                                     <td>Cửa hàng A</td>
-                                    <td style="max-width: 200px;">Lorem, ipsum dolor sit amet consectetur
-                                        adipisicing elit. Quisquam, aliquid.
-                                    </td>
                                     <td>
                                         <img id="img2_preview" src="#" alt="image" style="max-width: 200px;">
                                         <input type="file" id="img2" onchange="previewImage(this, 'img2_preview')"
@@ -147,7 +151,7 @@
                                     </td>
                                     <td>
                                         <button class="btn btn-primary" style="font-size: 15px;"
-                                            onclick="editProduct(this)">Chỉnh sửa</button>
+                                            onclick="window.location.href='add_product.html'">Chỉnh sửa</button>
                                         <button class="btn btn-danger" style="font-size: 15px;"
                                             onclick="deleteProduct(this)">Xóa</button>
                                     </td>
@@ -187,67 +191,6 @@
         }
     </script>
     <script>
-        function editProduct(btn) {
-            var row = btn.parentNode.parentNode;
-            var cells = row.cells;
-
-            // Lưu trạng thái gốc của sản phẩm
-            var originalData = [];
-            for (var i = 1; i < cells.length - 1; i++) {
-                originalData.push(cells[i].innerText);
-            }
-
-            // Hiển thị form chỉnh sửa
-            cells[1].innerHTML = '<input type="text" class="form-control" style="font-size: 15px;" value="' + originalData[0] + '">';
-            cells[2].innerHTML = '<input type="text" class="form-control" style="font-size: 15px;" value="' + originalData[1] + '">';
-            cells[3].innerHTML = '<input type="number" class="form-control" style="font-size: 15px;" value="' + originalData[2] + '">';
-            cells[4].innerHTML = '<input type="number" class="form-control" style="font-size: 15px;" value="' + originalData[3] + '">';
-            cells[5].innerHTML = '<input type="number" class="form-control" style="font-size: 15px;" value="' + originalData[4] + '">';
-            cells[6].innerHTML = '<input type="text" class="form-control" style="font-size: 15px;" value="' + originalData[5] + '">';
-            cells[7].innerHTML = '<input type="text" class="form-control" style="font-size: 15px;" value="' + originalData[6] + '">';
-
-            // Thay đổi nút chỉnh sửa thành nút lưu
-            btn.innerHTML = 'Lưu';
-            btn.classList.remove('btn-primary');
-            btn.classList.add('btn-success');
-            btn.setAttribute('onclick', 'saveProduct(this, ' + JSON.stringify(originalData) + ')');
-
-            // Ẩn nút xóa
-            row.querySelector('.btn-danger').style.display = 'none';
-        }
-
-        function saveProduct(btn, originalData) {
-            var row = btn.parentNode.parentNode;
-            var cells = row.cells;
-
-            // Lấy dữ liệu đã chỉnh sửa
-            var productName = cells[1].querySelector('input').value;
-            var Category_ID = cells[2].querySelector('input').value;
-            var quantity = cells[3].querySelector('input').value;
-            var price = cells[4].querySelector('input').value;
-            var discount = cells[5].querySelector('input').value;
-            var Suppy_id = cells[6].querySelector('input').value;
-            var Description = cells[7].querySelector('input').value;
-
-            // Hiển thị lại dữ liệu đã chỉnh sửa
-            cells[1].innerHTML = productName;
-            cells[2].innerHTML = Category_ID;
-            cells[3].innerHTML = quantity;
-            cells[4].innerHTML = price;
-            cells[5].innerHTML = discount;
-            cells[6].innerHTML = Suppy_id;
-            cells[7].innerHTML = Description;
-
-            // Thay đổi nút lưu thành nút chỉnh sửa
-            btn.innerHTML = 'Chỉnh sửa';
-            btn.classList.remove('btn-success');
-            btn.classList.add('btn-primary');
-            btn.setAttribute('onclick', 'editProduct(this)');
-
-            // Hiển thị lại nút xóa
-            row.querySelector('.btn-danger').style.display = 'inline-block';
-        }
-
         function deleteProduct(btn) {
             var row = btn.parentNode.parentNode;
             var table = row.parentNode;
@@ -283,30 +226,6 @@
             }
         }
     </script>
-    <script>
-        document.getElementById('fileInput').addEventListener('change', function (event) {
-            var container = document.getElementById('imageContainer');
-            container.innerHTML = ''; // Xóa các ảnh trước đó (nếu có)
-
-            var files = event.target.files;
-            for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-                if (!file.type.match('image.*')) {
-                    continue;
-                }
-
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    var img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.classList.add('imagePreview');
-                    container.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
-
 </body>
 
 </html>

@@ -59,33 +59,56 @@
             </div>
 
             <div class="mb-3">
-                <label for="imageUpload" class="form-label">Upload Image:</label>
-                <input type="file" class="form-control" id="imageUpload" name="imageUpload">
+                <label for="imageUpload" class="form-label">Upload Image(s):</label>
+                <input type="file" class="form-control" id="imageUpload" name="imageUpload" multiple
+                    onchange="previewImages(event)">
             </div>
+
+            <!-- Hiển thị hình ảnh đã chọn -->
+            <div class="mb-3" id="previewImages"></div>
 
             <button type="button" class="btn btn-primary" onclick="handleSubmit()">Add Product</button>
         </form>
     </div>
 
     <script>
-        async function handleSubmit() {
+        // Hàm để hiển thị các hình ảnh đã chọn
+        function previewImages(event) {
+            const imageFiles = event.target.files;
+            const previewImagesContainer = document.getElementById('previewImages');
+            previewImagesContainer.innerHTML = ''; // Xóa các hình ảnh hiện tại
+
+            for (const file of imageFiles) {
+                const imageElement = document.createElement('img');
+                imageElement.src = URL.createObjectURL(file);
+                imageElement.style.maxWidth = '200px';
+                imageElement.style.maxHeight = '200px';
+                imageElement.style.marginRight = '10px';
+                imageElement.style.marginBottom = '10px';
+                previewImagesContainer.appendChild(imageElement);
+            }
+        }
+
+        // Hàm xử lý khi nhấn nút "Add Product"
+        function handleSubmit() {
             const formData = new FormData(document.getElementById('productForm'));
 
-            try {
-                const response = await fetch('http://your-backend-url', {
-                    method: 'POST',
-                    body: formData,
+            fetch('http://your-backend-url', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                 });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const data = await response.json();
-                console.log('Success:', data);
-            } catch (error) {
-                console.error('Error:', error);
-            }
         }
     </script>
 

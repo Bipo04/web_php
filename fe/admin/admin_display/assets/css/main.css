@@ -41,7 +41,6 @@
 .header__navbar-list {
     list-style: none;
     padding-left: 0;
-    width: 120.77px;
     height: 75px;
 
     margin-bottom: 0%;
@@ -210,9 +209,13 @@ input[type="date"] {
     text-decoration: none;
     font-size: 1.5rem;
     color: var(--text-colors);
-    padding: 6px 16px;
     display: block;
+    border: none;
+    margin: 10px;
+    text-align: center;
 }
+
+
 
 .category-item__link:hover {
     color: rgb(198, 101, 102);
