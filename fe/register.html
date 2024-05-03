@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .Modal_register{
+            width: 450px;
+            height: 600px;
+            background-color: #e1d9d9bd;
+            margin: auto;
+            position: relative;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        .Modal-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+            font-size: 20px;
+        }
+        .Modal-form input {
+            border-color: none;
+            box-sizing: border-box;
+            padding-left: 15px;
+            width: 375px;
+            height: 50px;
+            margin-bottom: 15px ;
+            font-size: 17px;
+            outline: 1px black;
+        }
+        .Register_title {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 20px;
+            padding-top: 30px;
+            font-size: 30px;
+        }
+        input[type="radio"]{
+            margin-bottom: unset;
+            width: 15px;
+            height: 15px;
+        }
+        input[type="date"]{
+            font-size: 12px;
+            padding: 5px;
+        }
+        .register_under{
+            height: 50px;
+            width: 355px;
+            padding-left: 10px;
+            padding-right: 10px;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+        .div_gender{
+            height: 50px;
+            align-items: center;
+            display: flex;
+        }
+        .b{
+            height: 50px;
+            align-items: center;
+            display: flex;
+        }
+        #date{
+            width: 100px;
+            height: 40px;
+            margin-bottom: unset;
+        }
+        .Gender{
+            width: 10px;
+            height: 10px;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="Modal_register" id="Modal-register">
+        <h2 class="Register_title">Register</h2>
+        <form action="#" class="Modal-form">
+            <input type="text" name="name" id="name" placeholder="Your name" required>
+            <input type="text" name="user_name" id="user_name" placeholder="Username" required>
+            <input type="password" name="password" id="password1" placeholder="Password" required>
+            <input type="password" name="password" id="password2" placeholder="Confirm password" required>
+            <div class="register_under">
+                <div class="a">
+                    <label for="date">Birth:</label>
+                    <input type="date" name="" id="date">
+                </div>
+                <div class="div_gender">
+                    <label for="Gender" style="padding-right: 5px;">Gender:</label>
+                    <label for="male" class="b">
+                        <input type="radio" id="male" name="Gender" class="Gender">
+                        Nam
+                    </label>
+                    <label for="female" class="b">
+                        <input type="radio" id="female" name="Gender" class="Gender">
+                        Nữ
+                    </label>
+                </div>
+            </div>
+            <input type="submit" id="button" value="Register" style="margin-top: 15px;">
+            <p>Already have an account?
+                <a href="login.html" id="showLogin">Login</a>
+            </p>
+        </form>
+    </div>
+</body>
+</html>
