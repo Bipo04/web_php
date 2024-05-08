@@ -6,6 +6,9 @@
     margin: 0;
     font-family: 'Open Sans', sans-serif;
 }
+.container{
+  margin-top: 50px;
+}
 img{
     width: 100%;
     display: block;
@@ -89,14 +92,14 @@ img{
 }
 .product-price{
     margin: 1rem 0;
-    font-size: 0.6rem;
+    font-size: 15px;
     font-weight: 500;
 }
 .product-price h2{
   font-size: 20px;
 }
-.product-price span{
-    font-weight: 600;
+.new-price{
+  font-size: 20px;
 }
 .new-price span{
     color: #256eff;
@@ -224,6 +227,7 @@ img{
       margin-top: 20px;
       border: solid 2px #212529; 
       transition: all 0.5s ease-in-out 0s;
+      font-size: 15px;
   }
   .round-black-btn:hover,
   .round-black-btn:focus {
