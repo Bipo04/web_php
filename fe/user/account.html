@@ -28,7 +28,7 @@
                                     <a href="account.html" class="account-link">Thông tin</a>
                                 </li>
                                 <li class="account-item">
-                                    <a href="#" class="account-link logout">Đăng xuất</a>
+                                    <a href="login.html" class="account-link logout">Đăng xuất</a>
                                 </li>
                             </ul>
                         </div>
@@ -100,30 +100,5 @@
     </footer>
 </body>
 <script src="js/jquery-1.11.1.min.js"></script>
-<script>
-    document.querySelector('.Update').onclick = () =>{
-        document.querySelector('#fullname').removeAttribute('readonly');
-        document.querySelector('#email').removeAttribute('readonly');
-        document.querySelector('#phone').removeAttribute('readonly');
-        document.querySelector('#address').removeAttribute('readonly');
-        document.querySelector('.Update').classList.add('hidden');
-        document.querySelector('.Save').classList.remove('hidden');
-    }
-    document.querySelector('.Save').onclick = () =>{
-        document.querySelector('#fullname').setAttribute('readonly',true);
-        document.querySelector('#email').setAttribute('readonly',true);
-        document.querySelector('#phone').setAttribute('readonly',true);
-        document.querySelector('#address').setAttribute('readonly',true);
-        document.querySelector('.Save').classList.add('hidden');
-        document.querySelector('.Save').classList.add('hidden');
-        document.querySelector('.Update').classList.remove('hidden');
-    }
-    
-    // fetch({
-    //     method: "GET",
-    //     url
-    // })
-    // .then(response)json
-
-</script>
+<script src="./assets/js/account.js"></script>
 </html>
