@@ -1,13 +1,14 @@
 ﻿USE AngelAndBabyShop
 GO
 
-INSERT INTO [Category] (name) VALUES 
-(N'Đồ bộ bé gái'),
-(N'Váy bé gái'),
-(N'Áo thun bé gái'),
-(N'Áo khoác bé gái'),
-(N'Quần bé gái'),
-(N'Đồ bộ bé trai'),
-(N'Áo thun bé trai'),
-(N'Quần bé trai'),
-(N'Áo khoác bé trai');
+INSERT INTO [Category] (name, gender) 
+VALUES 
+(N'Đồ bộ', 'girl'),
+(N'Váy', 'girl'),
+(N'Áo thun', 'girl'),
+(N'Áo khoác', 'girl'),
+(N'Quần', 'girl'),
+(N'Đồ bộ','boy'),
+(N'Áo thun', 'boy'),
+(N'Quần', 'boy'),
+(N'Áo khoác', 'boy');

@@ -30,8 +30,9 @@ GO
 
 --Bảng danh mục
 CREATE TABLE [Category] (
-  [id] int PRIMARY KEY IDENTITY(1, 1),
-  [name] nvarchar(100)
+  [id] int PRIMARY KEY ,
+  [name] nvarchar(100),
+  [gender] varchar(50)
 )
 GO
 
@@ -91,5 +92,16 @@ CREATE TABLE [Order_Details] (
   CONSTRAINT PK_Order_Details PRIMARY KEY ([order_id], [product_id]),
   FOREIGN KEY ([product_id]) REFERENCES [Product] ([id]) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY ([order_id]) REFERENCES [Orders] ([id]) ON DELETE CASCADE ON UPDATE CASCADE
+)
+GO
+
+--Bảng giỏ hàng
+CREATE TABLE [Cart] (
+  [user_id] int,
+  [product_id] int,
+  [num] int,
+  CONSTRAINT PK_Cart PRIMARY KEY ([user_id], [product_id]),
+  FOREIGN KEY ([product_id]) REFERENCES [Product] ([id]) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY ([user_id]) REFERENCES [User] ([id]) ON DELETE CASCADE ON UPDATE CASCADE
 )
 GO
