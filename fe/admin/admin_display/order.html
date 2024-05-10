@@ -154,7 +154,7 @@
                                             onclick="toggleInfo(this.parentNode.parentNode.parentNode)"></i>
                                     </div>
                                     <div class="row align-items-center info-table" style="display: none;">
-                                        <div class="row align-items-center">
+                                        <div class="row">
                                             <div class="col-md-1 d-flex justify-content-center">
                                                 <div>
                                                     <p class="small text-muted mb-4 pb-2">ID</p>
@@ -190,9 +190,10 @@
                                                     <p class="small text-muted mb-4 pb-2">Giảm Giá</p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2 d-flex justify-content-center">
+                                            <div class="col-md-1 d-flex justify-content-center">
                                                 <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Nhà Cung Cấp</p>
+                                                    <p class="small text-muted mb-4 pb-2 content">Nhà Cung Cấp
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="col-md-1 d-flex justify-content-center">
@@ -225,7 +226,8 @@
                                             </div>
                                             <div class="col-md-2 d-flex justify-content-center">
                                                 <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Quần trẻ emmmm</p>
+                                                    <p class="small text-muted mb-4 pb-2 content">Quần trẻ emmmm
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="col-md-1 d-flex justify-content-center">
@@ -244,9 +246,10 @@
                                                     <p class="small text-muted mb-4 pb-2 content">10%</p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2 d-flex justify-content-center">
+                                            <div class="col-md-1 d-flex justify-content-center">
                                                 <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Nhà Cung Cấp A</p>
+                                                    <p class="small text-muted mb-4 pb-2 content">Nhà Cung Cấp A
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="col-md-1 d-flex justify-content-center">
@@ -256,14 +259,23 @@
                                             </div>
                                             <div class="col-md-1 d-flex justify-content-center">
                                                 <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Đã bán</p>
+                                                    <p class="small text-muted mb-4 pb-2 content">Đang giao hàng
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 d-flex justify-content-center">
+                                                <div>
+                                                    <p class="small text-muted mb-4 pb-2 content">
+                                                        <button class="btn" style="font-size: 15px;"
+                                                            onclick="deleteProduct(event, this)">Xóa</button>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row align-items-center">
                                             <div class="col-md-1 d-flex justify-content-center">
                                                 <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">1</p>
+                                                    <p class="small text-muted mb-4 pb-2 content">2</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-1 d-flex justify-content-center">
@@ -278,7 +290,8 @@
                                             </div>
                                             <div class="col-md-2 d-flex justify-content-center">
                                                 <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Quần trẻ emmmm</p>
+                                                    <p class="small text-muted mb-4 pb-2 content">Quần trẻ emmmm
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="col-md-1 d-flex justify-content-center">
@@ -297,9 +310,10 @@
                                                     <p class="small text-muted mb-4 pb-2 content">10%</p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2 d-flex justify-content-center">
+                                            <div class="col-md-1 d-flex justify-content-center">
                                                 <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Nhà Cung Cấp A</p>
+                                                    <p class="small text-muted mb-4 pb-2 content">Nhà Cung Cấp A
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="col-md-1 d-flex justify-content-center">
@@ -309,7 +323,16 @@
                                             </div>
                                             <div class="col-md-1 d-flex justify-content-center">
                                                 <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Đã bán</p>
+                                                    <p class="small text-muted mb-4 pb-2 content">Đang giao hàng
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 d-flex justify-content-center">
+                                                <div>
+                                                    <p class="small text-muted mb-4 pb-2 content">
+                                                        <button class="btn" style="font-size: 15px;"
+                                                            onclick="deleteProduct(event, this)">Xóa</button>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -318,203 +341,6 @@
                             </div>
                         </div>
                         <!-- Hết 1 đơn hàng  -->
-                        <div class="card mb-4" style="background-color: #ebd6d6bd;">
-                            <div class="card-body p-4" style="font-size: 16px;">
-                                <div class="row align-items-center">
-                                    <div class="col-md-2 d-flex justify-content-center">
-                                        <div>
-                                            <p class="lead fw-normal mb-0">1</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 d-flex justify-content-center">
-                                        <div>
-                                            <p class="lead fw-normal mb-0">A</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 d-flex justify-content-center">
-                                        <div>
-                                            <p class="lead fw-normal mb-0">13/2/2023</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 d-flex justify-content-center">
-                                        <div>
-                                            <p class="lead fw-normal mb-0">Đã bán</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 d-flex justify-content-center">
-                                        <div>
-                                            <p class="lead fw-normal mb-0">$799</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 d-flex justify-content-center"
-                                        style="height: 59.75px;padding:17.375px;font-size: 25px;">
-                                        <i class="fa-solid fa-caret-down"
-                                            onclick="toggleInfo(this.parentNode.parentNode.parentNode)"></i>
-                                    </div>
-                                    <div class="row align-items-center info-table" style="display: none;">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2">ID</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2">Giới tính</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2">Danh Mục</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2">Tiêu Đề</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2">Giá Nhập</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2">Giá Bán</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2">Giảm Giá</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Nhà Cung Cấp</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Số Lượng</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Trạng thái</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Các sản phẩm trong đơn hàng -->
-                                        <div class="row align-items-center">
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">1</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Nam</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Quần</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Quần trẻ emmmm</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">10000
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">20000</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">10%</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Nhà Cung Cấp A</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">10000</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Đã bán</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center">
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">1</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Nam</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Quần</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Quần trẻ emmmm</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">10000
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">20000</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">10%</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Nhà Cung Cấp A</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">10000</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 d-flex justify-content-center">
-                                                <div>
-                                                    <p class="small text-muted mb-4 pb-2 content">Đã bán</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -534,17 +360,55 @@
             </ul>
             <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
         </footer>
-        <script>
-            function toggleInfo(card) {
-                var infoTable = card.querySelector(".info-table");
-                if (infoTable.style.display === "block") {
-                    infoTable.style.display = "none"; // Ẩn bảng nếu đã hiển thị
-                } else {
-                    infoTable.style.display = "block"; // Hiển thị bảng nếu chưa hiển thị
-                    infoTable.style.height = infoTable.scrollHeight + "px"; // Thiết lập chiều cao cho hiệu ứng trượt xuống
-                }
-            }
-        </script>
 </body>
 
 </html>
+<script>
+    function toggleInfo(card) {
+        var infoTable = card.querySelector(".info-table");
+        if (infoTable.style.display === "block") {
+            infoTable.style.display = "none"; // Ẩn bảng nếu đã hiển thị
+        } else {
+            infoTable.style.display = "block"; // Hiển thị bảng nếu chưa hiển thị
+            infoTable.style.height = infoTable.scrollHeight + "px"; // Thiết lập chiều cao cho hiệu ứng trượt xuống
+        }
+    }
+    function deleteProduct(event, btn) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của button (tránh reload trang)
+
+        var productRow = btn.closest('.row.align-items-center'); // Tìm hàng chứa nút "Xóa" bằng cách đi lên DOM tree
+        var tableBody = productRow.parentNode; // Lấy phần body của bảng chứa sản phẩm
+
+        // Lấy ID của sản phẩm sẽ bị xóa (ở đây lấy từ thẻ <p> trong cột đầu tiên của hàng sản phẩm)
+        var deletedProductId = parseInt(productRow.querySelector('.content').innerText);
+
+        // Xóa hàng sản phẩm khỏi danh sách
+        tableBody.removeChild(productRow);
+
+        // Cập nhật lại ID của các sản phẩm còn lại trong danh sách
+        var productRows = tableBody.querySelectorAll('.row.align-items-center'); // Lấy tất cả các hàng sản phẩm trong danh sách
+        productRows.forEach((row, index) => {
+            // Cập nhật lại số thứ tự (ID) của sản phẩm bằng cách sử dụng (index + 1)
+            row.querySelector('.content').innerText = index + 1;
+        });
+    }
+    function deleteProduct(event, btn) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của button (tránh reload trang)
+
+        var productRow = btn.closest('.row.align-items-center'); // Tìm hàng chứa nút "Xóa" bằng cách đi lên DOM tree
+        var tableBody = productRow.parentNode; // Lấy phần body của bảng chứa sản phẩm
+
+        // Lấy ID của sản phẩm sẽ bị xóa (ở đây lấy từ thẻ <p> trong cột đầu tiên của hàng sản phẩm)
+        var deletedProductId = parseInt(productRow.querySelector('.content').innerText);
+
+        // Xóa hàng sản phẩm khỏi danh sách
+        tableBody.removeChild(productRow);
+
+        // Cập nhật lại ID của các sản phẩm còn lại trong danh sách
+        var productRows = tableBody.querySelectorAll('.row.align-items-center'); // Lấy tất cả các hàng sản phẩm trong danh sách
+        productRows.forEach((row, index) => {
+            // Cập nhật lại số thứ tự (ID) của sản phẩm bằng cách sử dụng (index + 1)
+            row.querySelector('.content').innerText = index + 1;
+        });
+    }
+</script>
