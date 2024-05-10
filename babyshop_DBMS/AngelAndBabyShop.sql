@@ -31,7 +31,7 @@ GO
 --Bảng danh mục
 CREATE TABLE [Category] (
   [id] int PRIMARY KEY ,
-  [name] nvarchar(100),
+  [name] nvarchar(100) NOT NULL,
   [gender] varchar(50)
 )
 GO
@@ -70,15 +70,19 @@ GO
 
 --Bảng đơn hàng
 CREATE TABLE [Orders] (
-  [id] int PRIMARY KEY ,
+  [id] int PRIMARY KEY NOT NULL,
   [user_id] int,
   [order_date] datetime,
   [status] nvarchar(50),
+  [consignee_name] nvarchar(50),
+  [address] nvarchar(200),
   [total_money] int,
+  
 
   FOREIGN KEY ([user_id]) REFERENCES [User] ([id]) ON DELETE CASCADE ON UPDATE CASCADE
 )
 GO
+
 
 
 
