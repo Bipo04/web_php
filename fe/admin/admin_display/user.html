@@ -33,6 +33,12 @@
             margin-right: 10px;
             /* Khoảng cách giữa các mục */
         }
+
+        /* CSS để xác định kích thước chữ của dropdown */
+        .form-select {
+            font-size: 15px;
+            /* Đặt kích thước chữ cho dropdown */
+        }
     </style>
 </head>
 
@@ -49,7 +55,7 @@
                                 <a href="admin_display.html" class="category-item__link">Quản lý Sản phẩm</a>
                             </li>
                             <li class="category-item">
-                                <a href="#" class="category-item__link">Quản lý Đơn hàng</a>
+                                <a href="order.html" class="category-item__link">Quản lý Đơn hàng</a>
                             </li>
                             <li class="category-item">
                                 <a href="user.html" class="category-item__link">Quản lý Người dùng</a>
@@ -87,9 +93,7 @@
             <div class="grid">
                 <div class="grid__row" style="padding:auto;">
                     <div>
-                        <h2 class="mt-4" style="padding: 15px 0px 0px 0px;">Danh sách người dùng</h2>
-                        <button class="btn btn-success" onclick="window.location.href='add_user.html'"
-                            style="font-size: 15px;margin: 15px 0px;">Thêm người dùng</button>
+                        <h2 class="mt-4" style="padding: 15px 0px 20px 0px;">Danh sách người dùng</h2>
                         <table id="productTable" class="table table-bordered">
                             <thead style="font-size: 20px;">
                                 <tr>
@@ -100,7 +104,7 @@
                                     <th>Số điện thoại</th>
                                     <th>Địa chỉ</th>
                                     <th>Mật khẩu</th>
-                                    <th>Vai trò</th>
+                                    <th style="width: 100px;">Vai trò</th>
                                     <th>Thời gian tạo</th>
                                     <th>Hành động</th>
                                 </tr>
@@ -114,10 +118,10 @@
                                     <td>0123456789</td>
                                     <td>Doan xem</td>
                                     <td>admin123</td>
-                                    <td>admin</td>
+                                    <td>Admin</td>
                                     <td></td>
                                     <td>
-                                        <button class="btn btn-primary" style="font-size: 15px;"
+                                        <button class="btn btn-primary" style="font-size: 15px;width: 90px;"
                                             onclick="editUser(this)">Chỉnh sửa</button>
                                         <button class="btn btn-danger" style="font-size: 15px;"
                                             onclick="deleteUser(this)">Xóa</button>
@@ -131,11 +135,11 @@
                                     <td>0123456789</td>
                                     <td>Doan xem</td>
                                     <td>user123</td>
-                                    <td>user</td>
+                                    <td>User</td>
                                     <td></td>
                                     <td>
-                                        <button class="btn btn-primary" style="font-size: 15px;"
-                                            onclick="edituser(this)">Chỉnh sửa</button>
+                                        <button class="btn btn-primary" style="font-size: 15px;width: 90px;"
+                                            onclick="editUser(this)">Chỉnh sửa</button>
                                         <button class="btn btn-danger" style="font-size: 15px;"
                                             onclick="deleteUser(this)">Xóa</button>
                                     </td>
@@ -176,9 +180,63 @@
     </script>
     <script>
         function editUser(btn) {
-            // Chuyển hướng đến trang chỉnh sửa
-            window.location.href = 'editUser.html';
+            var row = btn.parentNode.parentNode;
+            var roleCell = row.cells[7]; // Cột vai trò của người dùng
+            var currentRole = roleCell.innerText.trim(); // Lấy vai trò hiện tại của người dùng
+
+            // Tạo một dropdown để chọn vai trò mới
+            var selectRole = document.createElement('select');
+            selectRole.classList.add('form-select'); // Thêm lớp để xác định kích thước chữ
+            selectRole.style.fontSize = '15px'; // Đặt kích thước chữ cho dropdown
+
+            // Tạo các tùy chọn cho dropdown (user và admin)
+            var optionUser = document.createElement('option');
+            optionUser.value = 'User';
+            optionUser.text = 'User';
+            var optionAdmin = document.createElement('option');
+            optionAdmin.value = 'Admin';
+            optionAdmin.text = 'Admin';
+
+            // Chọn tùy chọn hiện tại dựa trên vai trò của người dùng
+            if (currentRole === 'User') {
+                optionUser.selected = true;
+            } else if (currentRole === 'Admin') {
+                optionAdmin.selected = true;
+            }
+
+            // Thêm các tùy chọn vào dropdown
+            selectRole.add(optionUser);
+            selectRole.add(optionAdmin);
+
+            // Xóa nội dung hiện tại của ô vai trò
+            roleCell.innerHTML = '';
+
+            // Thêm dropdown vào ô vai trò
+            roleCell.appendChild(selectRole);
+
+            // Thay đổi nút chỉnh sửa thành "Xác nhận"
+            var editButton = row.querySelector('.btn-primary');
+            editButton.innerText = 'Xác nhận';
+            editButton.setAttribute('onclick', 'confirmEdit(this)');
         }
+
+        function confirmEdit(btn) {
+            var row = btn.parentNode.parentNode;
+            var roleCell = row.cells[7]; // Cột vai trò của người dùng
+            var selectRole = roleCell.querySelector('select');
+
+            // Lấy vai trò mới từ dropdown
+            var newRole = selectRole.value;
+
+            // Cập nhật vai trò của người dùng
+            roleCell.innerText = newRole;
+
+            // Thay đổi nút "Xác nhận" thành "Chỉnh sửa" và gán lại hàm chỉnh sửa
+            btn.innerText = 'Chỉnh sửa';
+            btn.setAttribute('onclick', 'editUser(this)');
+        }
+
+
         function deleteUser(btn) {
             var row = btn.parentNode.parentNode;
             var table = row.parentNode;
