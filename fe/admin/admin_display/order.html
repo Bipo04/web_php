@@ -618,17 +618,16 @@
         var productRow = btn.closest('.row.align-items-center'); // Tìm hàng chứa nút "Xóa" bằng cách đi lên DOM tree
         var tableBody = productRow.parentNode; // Lấy phần body của bảng chứa sản phẩm
 
-        // Lấy ID của sản phẩm sẽ bị xóa (ở đây lấy từ thẻ <p> trong cột đầu tiên của hàng sản phẩm)
-        var deletedProductId = parseInt(productRow.querySelector('.content').innerText);
+        var productHeight = productRow.clientHeight; // Lấy chiều cao của hàng sản phẩm sẽ bị xóa
 
         // Xóa hàng sản phẩm khỏi danh sách
         tableBody.removeChild(productRow);
 
-        // Cập nhật lại ID của các sản phẩm còn lại trong danh sách
-        var productRows = tableBody.querySelectorAll('.row.align-items-center'); // Lấy tất cả các hàng sản phẩm trong danh sách
-        productRows.forEach((row, index) => {
-            // Cập nhật lại số thứ tự (ID) của sản phẩm bằng cách sử dụng (index + 1)
-            row.querySelector('.content').innerText = index + 1;
-        });
+        // Lấy chiều cao hiện tại của khung sau khi xóa sản phẩm
+        var currentHeight = tableBody.clientHeight;
+
+        // Cập nhật lại chiều cao của khung sau khi xóa sản phẩm
+        tableBody.style.height = (currentHeight - productHeight) + 'px';
     }
+
 </script>
