@@ -150,6 +150,10 @@
 .product_price {
     font-size: 15px;
 }
+.grid__colum-2 a{
+    text-decoration: none;
+    color: black;
+}
 .grid__colum-2-1 a{
     text-decoration: none;
     color: black;
