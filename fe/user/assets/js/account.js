@@ -12,7 +12,6 @@ document.querySelector('.Save').onclick = () =>{
     document.querySelector('#phone').setAttribute('readonly',true);
     document.querySelector('#address').setAttribute('readonly',true);
     document.querySelector('.Save').classList.add('hidden');
-    document.querySelector('.Save').classList.add('hidden');
     document.querySelector('.Update').classList.remove('hidden');
 }
 document.getElementById("nav_ac").onclick = function() {myFunction()};
