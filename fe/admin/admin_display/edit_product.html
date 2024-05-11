@@ -96,7 +96,7 @@
     </header>
     <div class="container mt-5">
         <div class="grid">
-            <h2 style="text-align: center;">Thêm Sản Phẩm Mới</h2>
+            <h2 style="text-align: center;">Chỉnh sửa sản phẩm</h2>
             <div class="grid__row mt-5">
                 <form id="productForm" enctype="multipart/form-data" class="mx-auto w-50 p-5">
                     <div class="mb-3">
@@ -142,18 +142,23 @@
                         <label for="quantity" class="form-label">Số Lượng:</label>
                         <input type="number" class="form-control" id="quantity" name="quantity" required>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="categoryId" class="form-label">Trạng thái</label>
+                        <select class="form-select" id="exampleSelect" style="font-size: 16px;">
+                            <option value="1">Hết hàng </option>
+                            <option value="2">Còn hàng </option>
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <label for="imageUpload" class="form-label">Ảnh:</label>
                         <input type="file" class="form-control" id="imageUpload" name="imageUpload" multiple
                             onchange="previewImages(event)">
                     </div>
-
                     <!-- Hiển thị các hình ảnh đã chọn -->
                     <div class="mb-3" id="previewImages"></div>
 
                     <button type="button" class="btn btn-primary" style="font-size: 16px;"
-                        onclick="window.location.href='admin_display.html'">Thêm
+                        onclick="window.location.href='admin_display.html'">Lưu
                         Sản Phẩm</button>
                 </form>
             </div>
