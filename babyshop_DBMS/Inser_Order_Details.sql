@@ -2,13 +2,13 @@
 go
 
 
---insert giá trị price--
+--insert giá trị price sau khi đã nhập bảng product--
 update Order_Details 
 SET Order_Details. price = P.outbound_price
 FROM Product AS P
 WHERE P.id = Order_Details.product_id
 
-
+-- insert các cột khác
 INSERT INTO Order_Details (order_id, product_id, num)
 VALUES 
 (1, 8, 10),

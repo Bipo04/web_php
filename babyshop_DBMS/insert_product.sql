@@ -1,12 +1,23 @@
 ﻿Use AngelAndBabyShop
 go
 
+--cập nhật cột discount
 UPDATE Product 
 SET discount = 0
 WHERE id > 0;
 
+--cập nhật cột số lượng sản phẩm
+UPDATE Product SET quantity = 10000;
 
+--cập nhập cột sold sau khi đã nhập hết bảng order_details
+UPDATE Product
+SET sold = (
+    SELECT SUM(num) 
+    FROM Order_Details 
+    WHERE Order_Details.product_id = Product.id
+)
 
+--cập nhật các cột còn lại
 INSERT INTO dbo.Product (category_id, title, inbound_price, outbound_price, supply_id, description, thumbnail)
 VALUES
 (1, N'Bộ thô ngắn tay bé gái Rabity', 129000, 229000, 1, N'Chất liệu: 100% cotton spandex co giãn, thấm hút và thoáng mồ hôi','bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_1,bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_2,bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_3,bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_4'),
@@ -41,4 +52,4 @@ VALUES
 
 
 
-UPDATE Product SET quantity = 10000;
+
