@@ -1,12 +1,6 @@
 ﻿Use AngelAndBabyShop
 go
 
-UPDATE Product 
-SET discount = 0
-WHERE id > 0;
-
-
-
 INSERT INTO dbo.Product (category_id, title, inbound_price, outbound_price, supply_id, description, thumbnail)
 VALUES
 (1, N'Bộ thô ngắn tay bé gái Rabity', 129000, 229000, 1, N'Chất liệu: 100% cotton spandex co giãn, thấm hút và thoáng mồ hôi','bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_1,bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_2,bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_3,bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_4'),
@@ -38,7 +32,17 @@ VALUES
 (9, N'Áo khoác nỉ bông bé trai', 129000, 169000, 10, N'Áo khoác bé trai là bạn đồng hành không thể thiếu cho bé khi ra ngoài, với phong cách năng động, kiểu dáng đơn giản, vừa chống nắng, tia UV, tránh gió và chống nước, vừa đồng thời bảo vệ sức khỏe cho bé. Sản phẩm đạt chứng nhận Oeko-Tex 100 an toàn cho da trẻ em.','ao_khoac_ni_bong_be_trai/ao_ni_bong_1,ao_khoac_ni_bong_be_trai/ao_ni_bong_2,ao_khoac_ni_bong_be_trai/ao_ni_bong_3'),
 (9, N'Áo khoác gió Marvel Avengers bé trai', 99000, 129000, 9, N'Áo khoác gió trẻ em với thiết kế có mũ mang phong cách thời trang năng động, kiểu dáng đơn giản, dễ dàng cho bé diện đi học, xuống phố cuối tuần.','ao_khoac_gio_marvel_be_trai/ao_khoac_marvel_1,ao_khoac_gio_marvel_be_trai/ao_khoac_marvel_2,ao_khoac_gio_marvel_be_trai/ao_khoac_marvel_3'),
 (9, N'Áo bomber bé trai', 399000, 539000, 7, N'Áo khoác bé trai là bạn đồng hành không thể thiếu cho bé khi ra ngoài, với phong cách năng động, kiểu dáng đơn giản, vừa chống nắng, tia UV, tránh gió và chống nước, vừa đồng thời bảo vệ sức khỏe cho bé. Sản phẩm đạt chứng nhận Oeko-Tex 100 an toàn cho da trẻ em.','ao_bomber/ao_bomber_1,ao_bomber/ao_bomber_2,ao_bomber/ao_bomber_3');
+--cập nhật discount
+UPDATE Product 
+SET discount = 0
+WHERE id > 0;
 
-
-
+--cập nhật số lượng
 UPDATE Product SET quantity = 10000;
+--cập nhập cột sold sau khi đã nhập hết bảng order và order_details
+UPDATE Product
+SET sold = (
+    SELECT SUM(num) 
+    FROM Order_Details 
+    WHERE Order_Details.product_id = Product.id
+
