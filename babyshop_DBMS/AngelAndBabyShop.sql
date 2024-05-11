@@ -70,7 +70,7 @@ GO
 
 --Bảng đơn hàng
 CREATE TABLE [Orders] (
-  [id] int PRIMARY KEY NOT NULL,
+  [id] int PRIMARY KEY,
   [user_id] int,
   [order_date] datetime,
   [status] nvarchar(50),
