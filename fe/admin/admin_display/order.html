@@ -148,10 +148,15 @@
                                             <p class="lead fw-normal mb-0">$799</p>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 d-flex justify-content-center"
+                                    <div class="col-md-1 d-flex justify-content-center"
                                         style="height: 59.75px;padding:17.375px;font-size: 25px;">
                                         <i class="fa-solid fa-caret-down"
                                             onclick="toggleInfo(this.parentNode.parentNode.parentNode)"></i>
+                                    </div>
+                                    <div class="col-md-1 d-flex justify-content-center"
+                                        style="height: 59.75px;padding:17.375px;font-size: 25px;">
+                                        <button class="btn" style="font-size: 15px;"
+                                            onclick="deleteProduct2(event, this)">Xóa</button>
                                     </div>
                                     <div class="row align-items-center info-table" style="display: none;">
                                         <div class="row">
@@ -346,7 +351,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-2 d-flex justify-content-center">
                                         <div>
-                                            <p class="lead fw-normal mb-0">1</p>
+                                            <p class="lead fw-normal mb-0">2</p>
                                         </div>
                                     </div>
                                     <div class="col-md-2 d-flex justify-content-center">
@@ -369,10 +374,15 @@
                                             <p class="lead fw-normal mb-0">$799</p>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 d-flex justify-content-center"
+                                    <div class="col-md-1 d-flex justify-content-center"
                                         style="height: 59.75px;padding:17.375px;font-size: 25px;">
                                         <i class="fa-solid fa-caret-down"
                                             onclick="toggleInfo(this.parentNode.parentNode.parentNode)"></i>
+                                    </div>
+                                    <div class="col-md-1 d-flex justify-content-center"
+                                        style="height: 59.75px;padding:17.375px;font-size: 25px;">
+                                        <button class="btn" style="font-size: 15px;"
+                                            onclick="deleteProduct2(event, this)">Xóa</button>
                                     </div>
                                     <div class="row align-items-center info-table" style="display: none;">
                                         <div class="row">
@@ -629,4 +639,30 @@
         // Cập nhật lại chiều cao của khung sau khi xóa sản phẩm
         tableBody.style.height = (currentHeight - productHeight) + 'px';
     }
+    function deleteProduct2(event, btn) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của button (tránh reload trang)
+
+        var productRow = btn.closest('.card'); // Tìm hàng chứa nút "Xóa" bằng cách đi lên DOM tree
+        if (!productRow) {
+            console.error('Không tìm thấy card để xóa.');
+            return;
+        }
+
+        try {
+            // Lấy phần tử cha của card (trong trường hợp này là danh sách các card)
+            var cardList = productRow.parentNode;
+            // Xóa card khỏi danh sách
+            cardList.removeChild(productRow);
+            // Cập nhật lại ID của các card còn lại trong danh sách
+            var remainingCards = cardList.querySelectorAll('.card');
+            remainingCards.forEach((card, index) => {
+                card.querySelector('.lead').textContent = (index + 1).toString(); // Cập nhật ID
+            });
+        } catch (error) {
+        }
+    }
+
+
+
+
 </script>
