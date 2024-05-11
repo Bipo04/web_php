@@ -76,6 +76,7 @@ CREATE TABLE [Orders] (
   [status] nvarchar(50),
   [consignee_name] nvarchar(50),
   [address] nvarchar(200),
+  [phone_number] varchar(20),
   [total_money] int,
   
 
