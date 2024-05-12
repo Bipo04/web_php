@@ -15,6 +15,7 @@ class Auth extends Controller {
             unset($_POST['btn_log']);
             $request = new Request;
             $data = $request->postFields();
+            print_r($data);            
             $result = $this->AccountModel->login($data);
             if($result) {
                 if($_SESSION['role'] == 'admin') {

@@ -6,7 +6,6 @@ class Home extends Controller {
     public function __construct() {
         $this->CategoryModel = $this->model("CategoryModels");
         $this->ProductModel = $this->model("ProductModels");
-        $this->AccountModel = $this->model("AccountModels");
     }
     
     public function index() {
