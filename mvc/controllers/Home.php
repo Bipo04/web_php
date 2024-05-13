@@ -10,8 +10,9 @@ class Home extends Controller {
     
     public function index() {
         $data = $this->ProductModel->getdata();
+        print_r($data[0]);
         $this->view("layouts/client_layout", [
-            "page" => "home/index",
+            "page" => "home/temp",
             "title" => "Trang chủ",
             "product" => $data
         ]);

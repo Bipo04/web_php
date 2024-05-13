@@ -129,9 +129,19 @@
     color: rgb(198, 101, 102);
 }
 /* home__product */
-.home__product_nologin{
-    margin:20px 30px;
+/* home__product */
+.home__product_nologin {
+    margin: 20px 30px;
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các phần tử con xuống dòng khi không đủ không gian */
+    justify-content: space-between; /* Canh chỉnh các cột để nằm sát lề trái và phải */
 }
+
+.grid__colum-2 {
+    width: calc(20% - 20px); /* 20% của chiều rộng cửa container, trừ đi khoảng cách giữa các cột */
+    margin-bottom: 20px; /* Khoảng cách giữa các hàng sản phẩm */
+}
+
 .img__cover {
     height: 500px;
     width: 100%;
