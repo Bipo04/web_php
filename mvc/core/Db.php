@@ -5,7 +5,7 @@ class Database {
     public static function getConnection() {
         if (!isset(self::$conn)) {
             $serverName = 'DESKTOP-5HQDO2R\SQLEXPRESS';
-            $database = 'TEST';
+            $database = 'AngelAndBabyShop';
             $uid = '';
             $pass = '';
             try {
@@ -15,6 +15,14 @@ class Database {
             }
         }
         return self::$conn;
+    }
+
+    function join_table($table ,$table_join = NULL , $query_join = NULL,$type_join = NULL){
+        $qr = '';
+        if ($table != NULL && $query_join != NULL && $type_join != NULL) {
+            $qr .= ' '.$type_join.' JOIN ' .$table_join .' '.'ON '.$table.'.'.$query_join[0].' = '.$table_join.'.'.$query_join[1] ;
+        }
+        return $qr;
     }
 }
 ?>
