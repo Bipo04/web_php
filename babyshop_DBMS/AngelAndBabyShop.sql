@@ -2,50 +2,46 @@
 
 USE AngelAndBabyShop
 
---ALTER TABLE [User] DROP COLUMN [updated_at],  [deleted] ;
-
+--Bảng role
 CREATE TABLE [Role] (
-  [id] int PRIMARY KEY ,
-  [name]  nvarchar(20)
+  [id] int IDENTITY(1,1) PRIMARY KEY,
+  [name] nvarchar(20)
 )
 GO
 
 --Bảng người dùng
 CREATE TABLE [User] (
-  [id] int PRIMARY KEY IDENTITY(1, 1),
+  [id] int IDENTITY(1,1) PRIMARY KEY,
   [fullname] nvarchar(50) NOT NULL,
-  [username] VARCHAR(50) NOT NULL UNIQUE,
-  [password] varchar(32) NOT NULL,
+  [username] varchar(50) NOT NULL UNIQUE,
+  [password] varchar(70) NOT NULL,
   [email] varchar(150),
   [phone_number] varchar(20),
   [address] nvarchar(200),
-  [role_id] int DEFAULT 2,
+  [role_id] int NOT NULL,
   [created_at] datetime,
 
   FOREIGN KEY ([role_id]) REFERENCES [Role] ([id]) ON DELETE CASCADE ON UPDATE CASCADE
 )
 GO
 
-
-
 --Bảng danh mục
 CREATE TABLE [Category] (
-  [id] int PRIMARY KEY ,
-  [name] nvarchar(100),
-  [gender] varchar(50)
+  [id] int IDENTITY(1,1) PRIMARY KEY,
+  [name] nvarchar(100) NOT NULL,
+  [gender] varchar(50) NOT NULL
 )
 GO
 
 --Bảng nhà phân phối
 CREATE TABLE [Supply](
-	[id] INT IDENTITY(1,1) PRIMARY KEY,
-	[name] NVARCHAR(100) NOT NULL,
-	[address] NVARCHAR(100) NOT NULL,
-	[email] VARCHAR(50) NOT NULL,
-	[phone] VARCHAR(20) NOT NULL
+	[id] int IDENTITY(1,1) PRIMARY KEY,
+	[name] nvarchar(100) NOT NULL,
+	[address] nvarchar(100) NOT NULL,
+	[email] nvarchar(50) NOT NULL,
+	[phone] nvarchar(20) NOT NULL
 )
 GO
-
 
 --Bảng sản phẩm
 CREATE TABLE [Product] (
@@ -57,31 +53,29 @@ CREATE TABLE [Product] (
   [discount] int,
   [supply_id] INT,
   [thumbnail] varchar(500),
-  [description] NVARCHAR(1000),
-  [quantity] INT,
-  [sold] INT Default 0
+  [description] nvarchar(1000),
+  [quantity] int,
+  [sold] int Default 0
 
   FOREIGN KEY ([category_id]) REFERENCES [Category] ([id]) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY ([supply_id]) REFERENCES dbo.[Supply](id) ON DELETE CASCADE ON UPDATE CASCADE
 )
 GO
 
-
-
 --Bảng đơn hàng
 CREATE TABLE [Orders] (
-  [id] int PRIMARY KEY ,
+  [id] int IDENTITY(1,1) PRIMARY KEY,
   [user_id] int,
+  [consignee_name] nvarchar(50),
+  [address] nvarchar(200),
+  [phone_number] varchar(20),
+  [total_money] int,
   [order_date] datetime,
   [status] nvarchar(50),
-  [total_money] int,
 
   FOREIGN KEY ([user_id]) REFERENCES [User] ([id]) ON DELETE CASCADE ON UPDATE CASCADE
 )
 GO
-
-
-
 
 --Bảng chi tiết đơn hàng
 CREATE TABLE [Order_Details] (

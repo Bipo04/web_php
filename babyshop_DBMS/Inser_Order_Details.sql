@@ -1,6 +1,14 @@
 ﻿use AngelAndBabyShop
 go
 
+
+--insert giá trị price--
+update Order_Details 
+SET Order_Details. price = P.outbound_price
+FROM Product AS P
+WHERE P.id = Order_Details.product_id
+
+
 INSERT INTO Order_Details (order_id, product_id, num)
 VALUES 
 (1, 8, 10),
@@ -364,19 +372,3 @@ VALUES
 (200, 29, 2),
 (200, 4, 3)
 
---tính total_money
-
-UPDATE Orders
-SET total_money = subquery.total_money
-FROM Orders
-INNER JOIN (
-    SELECT 
-        O.id,
-        SUM(OD.price * OD.num) AS total_money
-    FROM 
-        Orders AS O
-    JOIN 
-        Order_Details AS OD ON O.id = OD.order_id
-    GROUP BY 
-        O.id
-) AS subquery ON Orders.id = subquery.id;

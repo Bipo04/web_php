@@ -46,25 +46,19 @@
                         <ul class="category-list d-flex justify-content-between"
                             style="list-style: none; border: none;">
                             <li class="category-item">
-                                <a href="#" class="category-item__link">Quản lý Sản phẩm</a>
+                                <a href="admin_display.html" class="category-item__link">Quản lý Sản phẩm</a>
                             </li>
                             <li class="category-item">
-                                <a href="#" class="category-item__link">Quản lý Đơn hàng</a>
+                                <a href="order.html" class="category-item__link">Quản lý Đơn hàng</a>
                             </li>
                             <li class="category-item">
-                                <a href="#" class="category-item__link">Quản lý Người dùng</a>
+                                <a href="user.html" class="category-item__link">Quản lý Người dùng</a>
                             </li>
                             <li class="category-item">
                                 <a href="#" class="category-item__link">Thống kê và Báo cáo </a>
                             </li>
                             <li class="category-item">
                                 <a href="#" class="category-item__link">Cài đặt</a>
-                            </li>
-                            <li class="category-item">
-                                <a href="#" class="category-item__link">Tương tác với Khách hàng</a>
-                            </li>
-                            <li class="category-item">
-                                <a href="#" class="category-item__link">Bảo mật</a>
                             </li>
                             <!-- Thêm các mục khác nếu cần -->
                         </ul>
@@ -97,38 +91,34 @@
                         <table id="productTable" class="table table-bordered">
                             <thead style="font-size: 20px;">
                                 <tr>
-                                    <th>id</th>
-                                    <th>category_ID</th>
-                                    <th>title</th>
-                                    <th>inbound_price</th>
-                                    <th>outbound_price</th>
-                                    <th>discount</th>
-                                    <th>supply</th>
-                                    <th>Images</th>
-                                    <th>quantity</th>
-                                    <th>sold</th>
-                                    <th>Action</th>
+                                    <th>ID</th>
+                                    <th>Giới tính</th>
+                                    <th>Danh Mục</th>
+                                    <th style="width: 150px;">Tiêu Đề</th>
+                                    <th>Giá Nhập</th>
+                                    <th>Giá Bán</th>
+                                    <th>Giảm Giá</th>
+                                    <th>Nhà Cung Cấp</th>
+                                    <th>Số Lượng</th>
+                                    <th>Trạng thái</th>
+                                    <th style="width: 150px;">Hành động</th>
                                 </tr>
                             </thead>
                             <tbody style="font-size: 15px;">
                                 <tr>
-                                    <td>1</td>
-                                    <td>Sản phẩm A</td>
+                                    <td>2</td>
+                                    <td>Nam</td>
                                     <td>Loại sản phẩm</td>
+                                    <td>Sản phẩm A</td>
                                     <td>10</td>
                                     <td>10</td>
                                     <td>10</td>
-                                    <td>10</td>
+                                    <td>Nhà A</td>
                                     <td>10000</td>
-                                    <td>Cửa hàng A</td>
-                                    <td>
-                                        <img id="img1_preview" src="#" alt="image" style="max-width: 200px;">
-                                        <input type="file" id="img1" onchange="previewImage(this, 'img1_preview')"
-                                            multiple>
-                                    </td>
+                                    <td>Còn hàng</td>
                                     <td>
                                         <button class="btn btn-primary" style="font-size: 15px;"
-                                            onclick="window.location.href='add_product.html'">Chỉnh
+                                            onclick="window.location.href='edit_product.html'">Chỉnh
                                             sửa</button>
                                         <button class="btn btn-danger" style="font-size: 15px;"
                                             onclick="deleteProduct(this)">Xóa</button>
@@ -136,19 +126,15 @@
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>Sản phẩm B</td>
+                                    <td>Nữ</td>
                                     <td>Loại sản phẩm</td>
+                                    <td>Sản phẩm B</td>
                                     <td>10</td>
                                     <td>10</td>
                                     <td>10</td>
-                                    <td>10</td>
+                                    <td>Nhà B</td>
                                     <td>10000</td>
-                                    <td>Cửa hàng A</td>
-                                    <td>
-                                        <img id="img2_preview" src="#" alt="image" style="max-width: 200px;">
-                                        <input type="file" id="img2" onchange="previewImage(this, 'img2_preview')"
-                                            multiple>
-                                    </td>
+                                    <td>Còn hàng</td>
                                     <td>
                                         <button class="btn btn-primary" style="font-size: 15px;"
                                             onclick="window.location.href='add_product.html'">Chỉnh sửa</button>
@@ -208,21 +194,6 @@
                 if (currentProductId > deletedProductId) {
                     rows[i].cells[0].innerText = currentProductId - 1;
                 }
-            }
-        }
-
-        function previewImage(input, imgId) {
-            var preview = document.getElementById(imgId);
-            var files = input.files;
-
-            if (files && files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                }
-
-                reader.readAsDataURL(files[0]);
             }
         }
     </script>

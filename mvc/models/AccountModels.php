@@ -1,6 +1,5 @@
 <?php
-require_once "./mvc/models/MyModels.php";
-class AccountModels extends MyModels {
+class AccountModels extends Database {
     protected $table = "Users";
 
     public function __construct() {
@@ -41,6 +40,7 @@ class AccountModels extends MyModels {
         $newValues = array_map(function($value) { return "'".$value."'"; }, array_values($data));
         $newValues = implode(", ", $newValues);
         $sql = "INSERT INTO $this->table ($keys) VALUES ($newValues)";
+        echo $sql;
         $query = $this->conn->prepare($sql);
         if ($query->execute()) {
             return json_encode(
@@ -62,7 +62,7 @@ class AccountModels extends MyModels {
     }
     
     private function findUsername($username) {
-        $sql = "SELECT * FROM $this->table WHERE username = :username";
+        $sql = "SELECT * FROM [$this->table] WHERE username = :username";
         $query = $this->conn->prepare($sql);
         $query->bindParam(':username', $username);
         $query->execute();
