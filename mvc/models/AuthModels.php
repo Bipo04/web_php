@@ -1,5 +1,5 @@
 <?php
-class AccountModels extends Database {
+class AuthModels extends Database {
     protected $table = "Users";
 
     public function __construct() {

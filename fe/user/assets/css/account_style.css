@@ -3,28 +3,22 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    }
+}
     
-    
-.profile {  margin: 10px 0;}
+.container {
+    width: 100%;
+} 
+
+.sidebar {
+    margin-left: 20px;
+    margin-top: 20px;
+}
     
 .profile-sidebar {  
     padding: 20px 0 10px 0;  
     background: #fff;
     margin-top: 20px;
 }
-    
-    
-.profile-userpic img {  
-    float: none;  
-    margin: 0 auto;  
-    width: 50%;  
-    height: 50%;  
-    -webkit-border-radius: 50% !important;  
-    -moz-border-radius: 50% !important;  
-    border-radius: 50% !important;
-}
-    
     
 .profile-usertitle {  
     text-align: center;  
