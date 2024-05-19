@@ -1,5 +1,12 @@
 ﻿Use AngelAndBabyShop
 go
+--insert thêm sản phẩm
+INSERT INTO dbo.Product (category_id, title, inbound_price, outbound_price, supply_id, description, thumbnail)
+VALUES
+(7, N'Áo thun sát nách ba lỗ nhấn viền bé trai Rabity', 100000, 139000, 5, N'Chất vải thoáng mát, kiểu dáng thời trang','ao_ba_lo_trai/ba_lo_1,ao_ba_lo_trai/ba_lo_2,ao_ba_lo_trai/ba_lo_3 '),
+(7, N'Áo sơ mi ngắn tay Vua sư tử Simba bé trai', 200000, 259000, 1, N'Chất vải thoáng mát, kiểu dáng thời trang, năng động','so_mi_su_tu/su_tu_1,so_mi_su_tu/su_tu_2,so_mi_su_tu/su_tu_3 ' );
+
+
 
 <<<<<<< HEAD
 --cập nhật cột discount
