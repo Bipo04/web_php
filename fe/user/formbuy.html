@@ -157,6 +157,21 @@
     </div>
 </body>
 <script>
+const profileText = document.querySelector(".profile-text");
+const item = document.querySelector(".profile-dropdown");
+
+profileText.addEventListener("click", (event) => {
+    item.classList.toggle("dropdown-active");
+    event.stopPropagation(); // Ngăn chặn sự kiện click từ việc lan ra ngoài
+});
+
+document.addEventListener("click", (event) => {
+    const isClickInsideItem = item.contains(event.target);
+    const isClickOnProfileText = event.target === profileText;
+    if (!isClickInsideItem && !isClickOnProfileText) {
+        item.classList.add("dropdown-active");
+    }
+});
 document.querySelector('.Update').onclick = () =>{
     document.querySelector('#fullname').removeAttribute('readonly');
     document.querySelector('#phone').removeAttribute('readonly');
