@@ -1,0 +1,117 @@
+/* sidebar */
+.sidebar {
+    left: 63px;
+    top: 150px;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    position: fixed;
+    height: 100%;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    color: red;
+}
+
+.sidebar a:hover:not(.active) {
+    color: red;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+/* @media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidebar a {
+        float: left;
+    }
+
+    div.content {
+        margin-left: 0;
+    }
+} */
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+/* @media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+} */
+.container {
+    flex-grow: 1;
+    margin-left: 210px;
+    margin-top: 60px;
+    background-color: white;
+    color: black;
+    width: calc(100% - 250px);
+}
+
+.product-list-container {
+    background-color: white;
+    position: relative;
+}
+
+.product-list-wrapper {
+    overflow: hidden;
+}
+.product-select {
+    position: sticky;
+    background-color: white;
+    padding-top: 10px;
+    top: 0;
+    z-index: 100;
+    padding-bottom: 20px;
+}
+
+.sort-select {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 16px;
+    background-size: 10px 10px;
+}
+
+/* .sort-select:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+} */
+
+.product-list {
+    display: flex;
+    align-items: center;
+    height: 400px;
+}
+
+.product-list-item {
+    margin-right: 46px;
+    position: relative;
+}
+
+.product-list-item-img {
+    transition: all 1s ease-in-out;
+    width: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.product_name {
+    width: 180px;
+    font-weight: 400;
+}
+.product_price {
+    width: 180px;
+    font-weight: 400;
+}

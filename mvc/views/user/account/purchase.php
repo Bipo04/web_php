@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="../../public/clients/css/navbar.css">
-    <link rel="stylesheet" href="../../public/clients/css/account.css">
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/clients/css/navbar.css">
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/clients/css/account.css">
 </head>
 
 <body>
@@ -47,13 +47,13 @@
         <div class="content-container">
             <div class="profile-content">
                 <h3 style="text-align: center;">Đơn hàng của bạn</h3>
-                <div class="card" style="margin-bottom: 10px; height: 60px; padding: auto;">
+                <div class="card">
                     <div class="card-body p-4">
                         <div class="row align-items-center">
                             <div class="col-md-2 d-flex justify-content-center">
                                 <p class="name_col" style="display: none;"></p>
                             </div>
-                            <div class="col-md-4 d-flex justify-content-center">
+                            <div class="col-md-2 d-flex justify-content-center">
                                 <p class="name_col">Tên sản phẩm</p>
                             </div>
                             <div class="col-md-2 d-flex justify-content-center">
@@ -75,7 +75,7 @@
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
                                     class="img-fluid" alt="Generic placeholder image">
                             </div>
-                            <div class="col-md-4 d-flex justify-content-center">
+                            <div class="col-md-2 d-flex justify-content-center">
                                 <div>
                                     <p class="content_col">iPad Air</p>
                                 </div>
@@ -103,7 +103,7 @@
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
                                     class="img-fluid" alt="Generic placeholder image">
                             </div>
-                            <div class="col-md-4 d-flex justify-content-center">
+                            <div class="col-md-2 d-flex justify-content-center">
                                 <div>
                                     <p class="content_col">iPad Air</p>
                                 </div>
@@ -125,23 +125,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row-cols-md-4">
+                    <div>
                         <div class="float-end">
-                            <p class="">
-                                <span style="font-size: 17px;padding-right: 5px;">Tổng: </span>
-                                <span style="font-size: 17px;">$799</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row-cols-md-4">
-                        <div class="float-end">
-                            <p class="d-flex">
+                            <p class="d-flex align-items-center">
                                 <span style="font-size: 17px;padding-right: 5px;">Trạng thái:</span>
-                                <span style="font-size: 17px;;">Hoàn thành</span>
+                                <span style="font-size: 17px;padding-right: 40px;">Hoàn thành</span>
                             </p>
                         </div>
                     </div>
-                    
+                    <div>
+                        <div class="float-end">
+                            <p class="d-flex align-items-center">
+                                <span style="font-size: 17px;padding-right: 5px;">Tổng: </span>
+                                <span style="font-size: 17px;padding-right:80px;">$799</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
