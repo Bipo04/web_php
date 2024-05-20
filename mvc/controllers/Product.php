@@ -7,11 +7,14 @@ class Product extends Controller {
     }
 
     public function index() {
-        $products = $this->ProductModel->getdata();
+        $req = new Request();
+        $data = $req->getFields();
+        $product = $this->ProductModel->findAll(['*'], $data);
         $this->view("layouts/client_layout", [
             "page" => "product/index",
             "title" => "Danh sách danh mục",
-            "product" => $products,
+            "css" => "product",
+            "product" => $product,
         ]);
     }
 }

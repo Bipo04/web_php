@@ -10,6 +10,7 @@ class Account extends Controller {
         $user = $this->AccountModel->getdata();
         $this->view("layouts/client_layout", [
             "page" => "account/profile",
+            "css" => ['account']
             // "title" => "Danh sách danh mục",
             // "categories" => $categories,
         ]);
@@ -19,6 +20,7 @@ class Account extends Controller {
         $user = $this->AccountModel->getdata();
         $this->view("layouts/client_layout", [
             "page" => "account/purchase",
+            "css" => ['account'],
             // "title" => "Danh sách danh mục",
             // "categories" => $categories,
         ]);

@@ -28,9 +28,8 @@ class App {
                 die;
             }
         } else {
-            require_once "./mvc/controllers/".$this->controller.".php";
+            $this->loadError();
         }
-   
         $this->controller = new $this->controller;
         if($arr) {
             $arr = array_values($arr);
@@ -39,7 +38,6 @@ class App {
             $this->action = $arr[0];
             unset($arr[0]);
         }
-
         $this->params = $arr ? array_values($arr) : [];
         if(method_exists($this->controller,$this->action)) {
             call_user_func_array([$this->controller,$this->action],$this->params);

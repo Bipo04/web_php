@@ -50,5 +50,13 @@ class Product extends Controller {
         $this->ProductModel->delete($data);
         header('location: http://localhost:8088/web/admin/product');
     }
+
+    public function update() {
+        $req = new Request();
+        $data = $req->getFields();
+        print_r($data);
+        // $this->ProductModel->delete($data);
+        // header('location: http://localhost:8088/web/admin/product');
+    }
 }
 ?>

@@ -4,7 +4,7 @@
     top: 150px;
     margin: 0;
     padding: 0;
-    width: 200px;
+    width: 150px;
     position: fixed;
     height: 100%;
 }
@@ -62,16 +62,13 @@
     position: relative;
 }
 
-.product-list-wrapper {
-    overflow: hidden;
-}
 .product-select {
     position: sticky;
     background-color: white;
     padding-top: 10px;
     top: 0;
     z-index: 100;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 }
 
 .sort-select {
@@ -92,12 +89,14 @@
 
 .product-list {
     display: flex;
-    align-items: center;
-    height: 400px;
+    flex-wrap: wrap; /* Cho phép các phần tử xuống dòng khi vượt quá chiều rộng của container */
+    gap: 5px; /* Khoảng cách giữa các phần tử */
 }
 
+
 .product-list-item {
-    margin-right: 46px;
+    margin-right: 33px;
+    height: 400px;
     position: relative;
 }
 

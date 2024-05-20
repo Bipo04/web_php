@@ -128,15 +128,20 @@ class MyModels extends Database {
     }
 
     function selectJoin($data = ['*'],
+        $limit = NULL,
         $where = NULL,
         $table_join = NULL,
         $query_join = NULL,
         $type_join  = NULL,
         $orderby = NULL,
-        $order = ' DESC'
+        $order = 'DESC'
         ) {
         $data = implode(",",$data);
-        $sql ="SELECT $data FROM $this->table";
+        $sql ="SELECT";
+        if($limit) {
+            $sql .= " TOP $limit ";
+        }
+        $sql .= " $data FROM $this->table";
         if (isset($where) && $where != NULL) {
             $fields = array_keys($where);
             $fields_list = implode("",$fields);
@@ -148,9 +153,8 @@ class MyModels extends Database {
             $where_sql = $this->buildWhereString($where);
             $sql .= " WHERE ".$where_sql;
             if ($orderby !='' && $orderby != NULL) {
-                $sql .= " ORDER BY ".$orderby.$order;
+                $sql .= " ORDER BY ".$orderby.' '.$order;
             }
-
             $query = $this->conn->prepare($sql);
             $query->execute(array_values($where));
         }

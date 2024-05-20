@@ -8,7 +8,6 @@ VALUES
 
 
 
-<<<<<<< HEAD
 --cập nhật cột discount
 UPDATE Product 
 SET discount = 0
@@ -26,8 +25,6 @@ SET sold = (
 )
 
 --cập nhật các cột còn lại
-=======
->>>>>>> origin
 INSERT INTO dbo.Product (category_id, title, inbound_price, outbound_price, supply_id, description, thumbnail)
 VALUES
 (1, N'Bộ thô ngắn tay bé gái Rabity', 129000, 229000, 1, N'Chất liệu: 100% cotton spandex co giãn, thấm hút và thoáng mồ hôi','bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_1,bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_2,bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_3,bo_ngan_tay_rabity/bo_ngan_tay_be_gai_Rabity_4'),

@@ -9,12 +9,14 @@ class Home extends Controller {
     }
     
     public function index() {
-        $data = $this->ProductModel->getdata();
-        // print_r($data[0]);
+        $dataGirl = $this->ProductModel->selectJoin(['*'], '10', ['gender' => 'girl'], 'Category', ['category_id', 'id'], 'INNER');
+        $dataBoy = $this->ProductModel->selectJoin(['*'], '10', ['gender' => 'boy'], 'Category', ['category_id', 'id'], 'INNER');
         $this->view("layouts/client_layout", [
             "page" => "home/index",
             "title" => "Trang chủ",
-            "product" => $data
+            "css" => ["main"],
+            "data" => ["dataGirl" => $dataGirl,
+                        "dataBoy" => $dataBoy]
         ]);
     }
 }

@@ -7,7 +7,7 @@ class User extends Controller {
     }
 
     public function index() {
-        $users = $this->UserModel->selectJoin(['*'], null, 'Roles', ['role_id', 'id'], 'INNER');
+        $users = $this->UserModel->selectJoin(['*'],null, null, 'Roles', ['role_id', 'id'], 'INNER');
         
         $this->view('layouts/admin_layout', [
             'page' => 'user/index',
