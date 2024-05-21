@@ -1,0 +1,38 @@
+body {  
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+    
+.container {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    margin-top: 50px;
+}
+.content-container{
+    margin: auto;
+}
+.card {
+    margin: 10px 0px;
+}
+.fixed-box{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f3e6e6;
+    height: 70px;
+    width: 100%;
+}
+.bottom-box{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+.sum{
+    padding-top: 7px;
+    margin-right: 10px;
+}
+.bottom-box a{
+    padding-right: 100px;
+}
