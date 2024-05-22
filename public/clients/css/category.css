@@ -93,6 +93,10 @@
     gap: 5px; /* Khoảng cách giữa các phần tử */
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
 
 .product-list-item {
     margin-right: 33px;

@@ -13,7 +13,7 @@ class Product extends Controller {
         $this->view("layouts/client_layout", [
             "page" => "product/index",
             "title" => "Danh sách danh mục",
-            "css" => "product",
+            "css" => ["product"],
             "product" => $product,
         ]);
     }

@@ -12,31 +12,36 @@ class Cart extends Controller {
 
     public function index() {
         $this->view("layouts/client_layout", [
-            "page" => "cart/index"
+            "page" => "cart/index",
+            "css" => ['shopping'],
         ]);
     }
     
     public function add() {
-        $request = new Request;
-        $data = $request->postFields();
-
-        if(isset($_SESSION['cart'])) {
-            $found = false;
-            foreach ($_SESSION['cart'] as &$item) {
-                if ($item['id'] == $data['id']) {
-                    $item['quantity']++;
-                    $found = true;
-                    break;
+        if(isset($_POST["add-card-btn"])) {
+            unset($_POST["add-card-btn"]);
+            $request = new Request();
+            $data = $request->postFields();
+            // unset($_SESSION['cart']);
+            if(isset($_SESSION['cart'])) {
+                $found = false;
+                for($i = 0; $i < count($_SESSION['cart']); $i++) {
+                    if($_SESSION['cart'][$i]['id'] == $data['id']) {
+                        $_SESSION['cart'][$i]['quantity'] += $data['quantity'];
+                        $found = true;
+                        break;
+                    }
+                }
+    
+                if(!$found) {
+                    $_SESSION['cart'][] = $data;
                 }
             }
-
-            if (!$found) {
+            else {
                 $_SESSION['cart'][] = $data;
             }
         }
-        else {
-            $_SESSION['cart'][] = $data;
-        }
+        header('location: http://localhost:8088/web/cart');
     }
 
     public function update() {
@@ -54,11 +59,10 @@ class Cart extends Controller {
     }
 
     public function buy() {
-        $this->OrderModels->add()
-        // $this->OrderDetailModels;
-        foreach($_SESSION['cart'] as $item) {
-            print_r($item);
-        }
+        $this->view("layouts/client_layout", [
+            "page" => "cart/buy",
+            "css" => ['shopping'],
+        ]);
     }
 }
 ?>

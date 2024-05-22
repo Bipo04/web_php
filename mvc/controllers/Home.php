@@ -9,8 +9,22 @@ class Home extends Controller {
     }
     
     public function index() {
-        $dataGirl = $this->ProductModel->selectJoin(['*'], '10', ['gender' => 'girl'], 'Category', ['category_id', 'id'], 'INNER');
-        $dataBoy = $this->ProductModel->selectJoin(['*'], '10', ['gender' => 'boy'], 'Category', ['category_id', 'id'], 'INNER');
+        $fields = [
+            'Product.id as id',
+            'category_id',
+            'title',
+            'inbound_price',
+            'outbound_price',
+            'discount',
+            'supply_id',
+            'thumbnail',
+            'description',
+            'quantity',
+            'sold',
+            'onsale'
+        ];
+        $dataGirl = $this->ProductModel->selectJoin($fields, '10', ['gender' => 'girl'], 'Category', ['category_id', 'id'], 'INNER');
+        $dataBoy = $this->ProductModel->selectJoin($fields, '10', ['gender' => 'boy'], 'Category', ['category_id', 'id'], 'INNER');
         $this->view("layouts/client_layout", [
             "page" => "home/index",
             "title" => "Trang chủ",

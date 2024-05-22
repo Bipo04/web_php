@@ -32,12 +32,14 @@ foreach($data['categories'] as $item) {
                 <?php
 foreach($data['products'] as $item) {
     $images = explode(',',$item['thumbnail']);
-    echo                    '<div class="product-list-item">
-                                <img class="product-list-item-img"
-                                    src="'._WEB_ROOT.'/public/clients/images/'.$images[0].'.jpg" alt="">
-                            <h6 class="product_name">'.$item['title'].'</h6>
-                            <h6 class="product_price">'.$item['outbound_price'].'$</h6>
-                        </div>';
+    echo                    '<a href="http://localhost:8088/web/product?id='.$item['id'].'">
+                                <div class="product-list-item">
+                                    <img class="product-list-item-img"
+                                        src="'._WEB_ROOT.'/public/clients/images/'.$images[0].'.jpg" alt="">
+                                    <h6 class="product_name">'.$item['title'].'</h6>
+                                    <h6 class="product_price">'.$item['outbound_price'].'$</h6>
+                                </div>
+                            </a>';
 }
                 ?>
             </div>

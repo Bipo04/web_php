@@ -5,7 +5,7 @@ body {
 }
     
 .container {
-    width: 100%;
+    width: 80%;
     display: flex;
     margin: auto;
     margin-top: 50px;
@@ -15,14 +15,21 @@ body {
 }
 .card {
     margin: 10px 0px;
+    width: 1100px;
 }
+
 .fixed-box{
-    position: fixed;
+    position: sticky;
     bottom: 0;
     width: 100%;
-    background-color: #f3e6e6;
+    background-color: white;
     height: 70px;
-    width: 100%;
+    align-content: center;
+    flex-wrap: nowrap;
+    border-color: black;
+    border: 1px solid rgba(0,0,0,0.175); /* Đặt màu viền là đen và độ dày là 2px */
+    padding: 10px; /* Đặt khoảng cách bên trong viền */
+    border-radius: 5px; /* Làm tròn các góc của box */
 }
 .bottom-box{
     display: flex;
@@ -35,4 +42,39 @@ body {
 }
 .bottom-box a{
     padding-right: 100px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.buy-btn  {
+    margin-left: 30px;
+
+}
+
+.img-fluid {
+    width: 700px;
+}
+
+.quantity .qtyminus,
+.quantity .qtyplus {
+    width: 34px;
+    height: 34px;
+    background: #212529;
+    text-align: center;
+    font-size: 19px;
+    color: #fff;
+    cursor: pointer;
+}
+.quantity .qtyminus {
+    border-radius: 3px 0 0 3px; 
+}
+.quantity .qtyplus {
+    border-radius: 0 3px 3px 0; 
+}
+.quantity .qty {
+    width: 60px;
+    text-align: center;
 }

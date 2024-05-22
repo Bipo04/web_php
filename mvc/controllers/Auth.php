@@ -1,9 +1,9 @@
 <?php
 class Auth extends Controller {
-    public $AccountModel;
+    public $AuthModel;
     
     public function __construct() {
-        $this->AccountModel = $this->model("AccountModels");
+        $this->AuthModel = $this->model("AuthModels");
     }
 
     public function index() {
@@ -14,9 +14,8 @@ class Auth extends Controller {
         if(isset($_POST['btn_log']) && $_POST['btn_log']) {
             unset($_POST['btn_log']);
             $request = new Request;
-            $data = $request->postFields();
-            print_r($data);            
-            $result = $this->AccountModel->login($data);
+            $data = $request->postFields();           
+            $result = $this->AuthModel->login($data);
             if($result) {
                 if($_SESSION['role'] == 'admin') {
                     header("Location: http://localhost:8088/web/admin/category");
@@ -38,7 +37,7 @@ class Auth extends Controller {
             unset($_POST['btn_reg']);
             $request = new Request;
             $data = $request->postFields();
-            $result = $this->AccountModel->register($data);
+            $result = $this->AuthModel->register($data);
             $result = json_decode($result, true);
             if($result['type'] == 'success')
                 $_SESSION['reg'] = 'true';

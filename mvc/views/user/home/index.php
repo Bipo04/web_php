@@ -11,12 +11,12 @@ foreach($data['data'] as $val) {
     <div class="product-list">';
     foreach($val as $item) {
     $images = explode(',',$item['thumbnail']);
-    echo                    '<div class="product-list-item">
+    echo                    '<a href="http://localhost:8088/web/product?id='.$item['id'].'"><div class="product-list-item">
                                 <img class="product-list-item-img"
                                     src="'._WEB_ROOT.'/public/clients/images/'.$images[0].'.jpg" alt="">
                             <h6 class="product_name">'.$item['title'].'</h6>
                             <h6 class="product_price">'.$item['outbound_price'].'$</h6>
-                        </div>';
+                        </div></a>';
     }
     echo '</div>
     <i class="fas fa-chevron-right arrow"></i>
@@ -24,81 +24,6 @@ foreach($data['data'] as $val) {
     </div>';
 }
                     ?>
-    </div>
-    <div class="content-container">
-        <div class="product-list-container">
-            <h1 class="product-list-title">NEW RELEASES</h1>
-            <div class="product-list-wrapper">
-                <div class="product-list">
-                    <div class="product-list-item">
-                        <img class="product-list-item-img"
-                            src="<?php echo _WEB_ROOT ?>/public/clients/images/ao_bomber_2.png" alt="">
-                        <h6 class="product_name">áo 1</h6>
-                        <h6 class="product_price">100$</h6>
-
-                    </div>
-                    <div class="product-list-item">
-                        <img class="product-list-item-img"
-                            src="<?php echo _WEB_ROOT ?>/public/clients/images/ao_bomber_2.png" alt="">
-                        <h6 class="product_name">áo 1</h6>
-                        <h6 class="product_price">100$</h6>
-
-                    </div>
-                    <div class="product-list-item">
-                        <img class="product-list-item-img"
-                            src="<?php echo _WEB_ROOT ?>/public/clients/images/ao_bomber_2.png" alt="">
-                        <h6 class="product_name">áo 1</h6>
-                        <h6 class="product_price">100$</h6>
-
-                    </div>
-                    <div class="product-list-item">
-                        <img class="product-list-item-img"
-                            src="<?php echo _WEB_ROOT ?>/public/clients/images/ao_bomber_2.png" alt="">
-                        <h6 class="product_name">áo 1</h6>
-                        <h6 class="product_price">100$</h6>
-
-                    </div>
-
-                    <div class="product-list-item">
-                        <img class="product-list-item-img"
-                            src="<?php echo _WEB_ROOT ?>/public/clients/images/ao_bomber_2.png" alt="">
-                        <h6 class="product_name">áo 1</h6>
-                        <h6 class="product_price">100$</h6>
-
-                    </div>
-                    <div class="product-list-item">
-                        <img class="product-list-item-img"
-                            src="<?php echo _WEB_ROOT ?>/public/clients/images/ao_bomber_2.png" alt="">
-                        <h6 class="product_name">áo 1</h6>
-                        <h6 class="product_price">100$</h6>
-
-                    </div>
-                    <div class="product-list-item">
-                        <img class="product-list-item-img"
-                            src="<?php echo _WEB_ROOT ?>/public/clients/images/ao_bomber_2.png" alt="">
-                        <h6 class="product_name">áo 1</h6>
-                        <h6 class="product_price">100$</h6>
-
-                    </div>
-                    <div class="product-list-item">
-                        <img class="product-list-item-img"
-                            src="<?php echo _WEB_ROOT ?>/public/clients/images/ao_bomber_2.png" alt="">
-                        <h6 class="product_name">áo 1</h6>
-                        <h6 class="product_price">100$</h6>
-
-                    </div>
-                    <div class="product-list-item">
-                        <img class="product-list-item-img"
-                            src="<?php echo _WEB_ROOT ?>/public/clients/images/ao_bomber_2.png" alt="">
-                        <h6 class="product_name">áo 1</h6>
-                        <h6 class="product_price">100$</h6>
-
-                    </div>
-
-                </div>
-            </div>
-            <i class="fas fa-chevron-right arrow"></i>
-        </div>
     </div>
 </div>
 
