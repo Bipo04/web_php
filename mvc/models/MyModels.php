@@ -15,6 +15,7 @@ class MyModels extends Database {
     }
 
     public function add($data) {
+        print_r($data);
         $keys = array_keys($data);
         $params = array_fill(0, count($keys), '?');
         $keys = implode(", ", $keys);
@@ -168,6 +169,12 @@ class MyModels extends Database {
             $query = $this->conn->prepare($sql);
             $query->execute();
         }
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function queryExecute($sql) {
+        $query = $this->conn->prepare($sql);
+        $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 

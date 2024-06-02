@@ -76,7 +76,7 @@ echo '<div class="fixed-box">
         <span style="font-size: 16px;padding-right: 5px;">'.$totalPrice.'</span>
         </p>
         <div class="buy-btn">
-            <a href="formbuy.html">
+            <a href="http://localhost:8088/web/cart/checkout">
                 <button class="btn btn-primary">Đặt hàng</button>
             </a>
         </div>

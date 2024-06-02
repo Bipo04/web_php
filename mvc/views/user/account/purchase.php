@@ -27,81 +27,64 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body p-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-2">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
-                                class="img-fluid" alt="Generic placeholder image">
-                        </div>
-                        <div class="col-md-4 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">iPad Air</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">1</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">$799</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">$799</p>
-                            </div>
-                        </div>
+            <?php
+foreach($data['purchase'] as $item) {
+    $total = 0;
+    echo 
+'<div class="card" style="margin-bottom: 10px;">';
+    foreach($item['products'] as $d) {
+        $total += $d['price']*$d['num'];
+        $thumbnails = explode(',', $d['thumbnail']);
+        echo 
+        '<div class="card-body p-4">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <img src="'._WEB_ROOT.'/public/clients/images/'.$thumbnails[0].'.jpg" alt=""
+                        class="img-fluid">
+                </div>
+                <div class="col-md-4 d-flex justify-content-center">
+                    <div>
+                        <p class="content_col">'.$d['title'].'</p>
                     </div>
                 </div>
-                <div class="card-body p-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-2">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
-                                class="img-fluid" alt="Generic placeholder image">
-                        </div>
-                        <div class="col-md-4 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">iPad Air</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">1</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">$799</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">$799</p>
-                            </div>
-                        </div>
+                <div class="col-md-2 d-flex justify-content-center">
+                    <div>
+                        <p class="content_col">'.$d['num'].'</p>
                     </div>
                 </div>
-                <div class="row-cols-md-4">
-                    <div class="float-end">
-                        <p class="">
-                            <span style="font-size: 17px;padding-right: 5px;">Tổng: </span>
-                            <span style="font-size: 17px;">$799</span>
-                        </p>
+                <div class="col-md-2 d-flex justify-content-center">
+                    <div>
+                        <p class="content_col">'.$d['price'].'</p>
                     </div>
                 </div>
-                <div class="row-cols-md-4">
-                    <div class="float-end">
-                        <p class="d-flex">
-                            <span style="font-size: 17px;padding-right: 5px;">Trạng thái:</span>
-                            <span style="font-size: 17px;;">Hoàn thành</span>
-                        </p>
+                <div class="col-md-2 d-flex justify-content-center">
+                    <div>
+                        <p class="content_col">'.$d['price']*$d['num'].'</p>
                     </div>
                 </div>
-
             </div>
+        </div>';
+    }
+    echo '<div class="row-cols-md-4">
+        <div class="float-end">
+            <p class="">
+                <span style="font-size: 17px;padding-right: 5px;">Tổng: </span>
+                <span style="font-size: 17px;">'.$total.'</span>
+            </p>
+        </div>
+    </div>
+    <div class="row-cols-md-4">
+        <div class="float-end">
+            <p class="d-flex">
+                <span style="font-size: 17px;padding-right: 5px;">Trạng thái:</span>
+                <span style="font-size: 17px;;">'.$item['status'].'</span>
+            </p>
+        </div>
+    </div>';
+
+echo '</div>';
+}
+?>
         </div>
     </div>
 </div>

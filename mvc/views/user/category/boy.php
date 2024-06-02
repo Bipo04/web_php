@@ -18,11 +18,17 @@ foreach($data['categories'] as $item) {
                 <h5 class="product-list-title">NEW RELEASES</h5>
                 <form action="a.php" method="POST">
                     <select id="sortSelect" class="sort-select">
-                        <option value="default" <?php if ($_SESSION['sort'] == 'default') echo 'selected'; ?>>Giá
+                        <option value="default"
+                            <?php if (isset($_SESSION['sort']) && $_SESSION['sort'] == 'default') echo 'selected'; ?>>
+                            Giá
                         </option>
-                        <option value="asc" <?php if ($_SESSION['sort'] == 'asc') echo 'selected'; ?>>Giá: Tăng dần
+                        <option value="asc"
+                            <?php if (isset($_SESSION['sort']) && $_SESSION['sort'] == 'asc') echo 'selected'; ?>>Giá:
+                            Tăng dần
                         </option>
-                        <option value="desc" <?php if ($_SESSION['sort'] == 'desc') echo 'selected'; ?>>Giá: Giảm
+                        <option value="desc"
+                            <?php if (isset($_SESSION['sort']) && $_SESSION['sort'] == 'desc') echo 'selected'; ?>>Giá:
+                            Giảm
                             dần</option>
                     </select>
                 </form>

@@ -35,13 +35,13 @@ foreach($data['css'] as $style) {
                 <a href="http://localhost:8088/web/cart"><button class="cart-text"><i
                             class="fa-solid fa-cart-shopping"></i></button></a>
                 <?php
-if(isset($_SESSION['user_id'])) {
+if(isset($_SESSION['user'])) {
     echo '<button class="profile-text"><i class="fa-solid fa-user"></i> Profile</i></button>
     <div class="profile-dropdown dropdown-active">
         <ul>
             <li style="margin-top: 10px"><a href="http://localhost:8088/web/account/profile">Thông tin</a>
             </li>
-            <li><a href="http://localhost:8088/web/auth/login">Đăng xuất</a></li>
+            <li><a href="http://localhost:8088/web/auth/logout">Đăng xuất</a></li>
         </ul>
     </div>';
 }

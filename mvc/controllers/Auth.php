@@ -17,10 +17,10 @@ class Auth extends Controller {
             $data = $request->postFields();           
             $result = $this->AuthModel->login($data);
             if($result) {
-                if($_SESSION['role'] == 'admin') {
+                if($_SESSION['user']['role_id'] == '1') {
                     header("Location: http://localhost:8088/web/admin/category");
                 }
-                if($_SESSION['role'] == 'user') {
+                if($_SESSION['user']['role_id'] == '2') {
                     header("Location: http://localhost:8088/web/home");
                 }
         

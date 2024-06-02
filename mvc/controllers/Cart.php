@@ -5,9 +5,9 @@ class Cart extends Controller {
     public $OrderModels;
     
     public function __construct() {
-        $this->ProductModel = $this->model("ProductModels");
-        $this->OrderDetailModels   = $this->model('OrderDetailModels');
-        $this->OrderModels         = $this->model('OrderModels');
+        $this->ProductModel         = $this->model("ProductModels");
+        $this->OrderDetailModels    = $this->model('OrderDetailModels');
+        $this->OrderModels          = $this->model('OrderModels');
     }
 
     public function index() {
@@ -58,11 +58,31 @@ class Cart extends Controller {
         header('location: http://localhost:8088/web/cart');
     }
 
-    public function buy() {
+    public function checkout() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_SESSION['temp']['fullname'] = $_POST['fullname'];
+            $_SESSION['temp']['phone_number'] = $_POST['phone_number'];
+            $_SESSION['temp']['address'] = $_POST['address'];
+        }
         $this->view("layouts/client_layout", [
             "page" => "cart/buy",
-            "css" => ['shopping'],
+            "css" => ['formbuy'],
         ]);
+    }
+    // id, user_id, order_date, status, consignee_name, address, phone_number
+    public function buy() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+            $time = date("Y-m-d H:m:s");
+            $data = [   'user_id'           => $_SESSION['user']['id'],
+                        'order_date'        => $time,
+                        'total_money'       => $_POST['totalprice'],
+                        'consignee_name'    => $_POST['consignee_name'],
+                        'address'           => $_POST['address'],
+                        'phone_number'      => $_POST['phone_number']
+            ];
+            $this->OrderModels->add($data);
+        }
     }
 }
 ?>

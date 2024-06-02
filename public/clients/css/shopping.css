@@ -78,3 +78,48 @@ a {
     width: 60px;
     text-align: center;
 }
+
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 23px;
+    margin-top: 18px;
+}
+
+.flex-end .sum {
+    width: 250px;
+}
+
+hr {
+    margin: 0;
+}
+
+label {
+    width: 200px;
+    margin: 10px auto;
+}
+
+.content {
+    margin-left: 20px;
+}
+
+.content .title {
+    font-size: 20px;
+    margin: 5px auto;
+}
+
+.content-profile {
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.content-profile .content-profile-item {
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.content-profile .content-profile-item button {
+    border: none;
+    background-color: white;
+    color: blue;
+}
