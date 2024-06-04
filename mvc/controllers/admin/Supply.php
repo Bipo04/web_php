@@ -12,6 +12,7 @@ class Supply extends Controller {
             'page' => 'supply/index',
             'title' => 'Danh sách nhà phâm phối',
             'supplies' => $supplies,
+            "type" => "qli",
         ]);
     }
 }

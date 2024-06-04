@@ -15,7 +15,6 @@ class MyModels extends Database {
     }
 
     public function add($data) {
-        print_r($data);
         $keys = array_keys($data);
         $params = array_fill(0, count($keys), '?');
         $keys = implode(", ", $keys);

@@ -47,6 +47,6 @@ if($data['product'])
         </div>
     </div>
 </div>
-</body>
-
-</html>
+</div>
+</div>
+</div>

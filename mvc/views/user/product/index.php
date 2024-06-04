@@ -42,12 +42,17 @@ echo $data['product'][0]['title'];
                     </h2>
 
                     <div class="product-price">
-                        <p class="new-price">Price: <span>
-                                <?php
-echo $data['product'][0]['outbound_price'];
-?>
+                        <div class="price-container">
+                            <p class="old-price">Giá:
+                                <span><?php echo $data['product'][0]['outbound_price']; ?></span>
+                            </p>
+                            <p class="new-price">
+                                <span><?php echo $data['product'][0]['outbound_price']; ?></span>
+                            </p>
+                        </div>
+                        </span>
+
                         </p>
-                        </span></p>
                         <h2>Mô tả sản phẩm: </h2>
                         <p>
                             <?php
@@ -62,23 +67,25 @@ echo $data['product'][0]['description'];
                             <input type="text" id="shared-qty" name="quantity" value="1" class="qty">
                             <div class="qtyplus">+</div>
                         </div>
-                        <form action=" http://localhost:8088/web/cart" method="post">
-                            <input type="hidden" name="id" value="<?= $data['product'][0]['id'] ?>">
-                            <input type="hidden" name="price" value="<?= $data['product'][0]['outbound_price'] ?>">
-                            <input type="hidden" name="title" value="<?= $data['product'][0]['title'] ?>">
-                            <input type="hidden" name="image" value="<?= $thumbnails[0]?>">
-                            <input type="hidden" name="quantity" id="form1-qty">
-                            <input type="submit" name="buy-btn" class="round-black-btn" value="Mua ngay">
-                        </form>
+                        <div class="button-container">
+                            <form action="http://localhost:8088/web/cart/add" method="post">
+                                <input type="hidden" name="id" value="<?= $data['product'][0]['id'] ?>">
+                                <input type="hidden" name="price" value="<?= $data['product'][0]['outbound_price'] ?>">
+                                <input type="hidden" name="title" value="<?= $data['product'][0]['title'] ?>">
+                                <input type="hidden" name="image" value="<?= $thumbnails[0]?>">
+                                <input type="hidden" name="quantity" id="form2-qty">
+                                <input type="submit" name="add-card-btn" class="round-black-btn" value="Thêm vào giỏ">
+                            </form>
 
-                        <form action="http://localhost:8088/web/cart/add" method="post">
-                            <input type="hidden" name="id" value="<?= $data['product'][0]['id'] ?>">
-                            <input type="hidden" name="price" value="<?= $data['product'][0]['outbound_price'] ?>">
-                            <input type="hidden" name="title" value="<?= $data['product'][0]['title'] ?>">
-                            <input type="hidden" name="image" value="<?= $thumbnails[0]?>">
-                            <input type="hidden" name="quantity" id="form2-qty">
-                            <input type="submit" name="add-card-btn" class="round-black-btn" value="Thêm vào giỏ">
-                        </form>
+                            <form action=" http://localhost:8088/web/cart/checkout" method="post">
+                                <input type="hidden" name="id" value="<?= $data['product'][0]['id'] ?>">
+                                <input type="hidden" name="price" value="<?= $data['product'][0]['outbound_price'] ?>">
+                                <input type="hidden" name="title" value="<?= $data['product'][0]['title'] ?>">
+                                <input type="hidden" name="image" value="<?= $thumbnails[0]?>">
+                                <input type="hidden" name="quantity" id="form1-qty">
+                                <input type="submit" name="buy-btn" class="round-black-btn" value="Mua ngay">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

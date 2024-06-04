@@ -50,7 +50,13 @@
             <hr>
             <?php
 $totalPrice = 0;
-foreach($_SESSION['cart'] as $item) {
+if($data['cart']) {
+    $result = $data['cart'];
+}
+else {
+    $result = $_SESSION['cart'];
+}
+foreach($result as $item) {
     $totalPrice += $item['price']*$item['quantity'];
     echo '
     <div class="card-body p-4">
@@ -123,6 +129,15 @@ echo '    <div class="flex-end">
         </div>
     </div>
 </div>
+<div id="orderSuccessModal" class="successModel">
+    <div class="successModel-content">
+        <span class="close">&times;</span>
+        <div class="successModel-content-success">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <p>Đặt hàng thành công!</p>
+    </div>
+</div>
 
 <script>
 const profileText = document.querySelector(".profile-text");
@@ -130,7 +145,7 @@ const item = document.querySelector(".profile-dropdown");
 
 profileText.addEventListener("click", (event) => {
     item.classList.toggle("dropdown-active");
-    event.stopPropagation(); // Ngăn chặn sự kiện click từ việc lan ra ngoài
+    event.stopPropagation();
 });
 
 document.addEventListener("click", (event) => {
@@ -152,31 +167,50 @@ document.getElementById('saveChangesBtn').addEventListener('click', function() {
 
     var fullname = document.getElementById('fullname').value;
     var phone_number = document.getElementById('phone_number').value;
-    var address = document.getElementById('address').value
-
-    // Cập nhật thông tin hiển thị bên ngoài modal
-    document.getElementById('n').innerText = fullname;
-    document.getElementById('p').innerText = phone_number;
-    document.getElementById('a').innerText = address;
+    var address = document.getElementById('address').value;
 
     const xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('n').innerText = fullname;
+            document.getElementById('p').innerText = phone_number;
+            document.getElementById('a').innerText = address;
+
+        }
+    };
+
     xhr.open('POST', 'http://localhost:8088/web/cart/checkout', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    xhr.send(`fullname=${fullname}&phone_number=${phone_number}&address=${address}`);
+    xhr.send(`fullname=${fullname}&phone_number=${phone_number}&address=${address}&type=change`);
 });
+
+var modal = document.getElementById("orderSuccessModal");
+var span = document.getElementsByClassName("close")[0];
 
 document.querySelector('.xacnhan').addEventListener('click', function() {
     var fullname = document.getElementById('fullname').value;
     var phone_number = document.getElementById('phone_number').value;
     var address = document.getElementById('address').value;
     var totalprice = document.querySelector('#tongtien').innerHTML;
+
     const xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            modal.style.display = "block";
+        }
+    };
+
     xhr.open('POST', 'http://localhost:8088/web/cart/buy', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
     xhr.send(
-        `consignee_name=${fullname}&phone_number=${phone_number}&address=${address}&totalprice=${totalprice}`
+        `consignee_name=${fullname}&phone_number=${phone_number}&address=${address}&totalprice=${totalprice}&type=buy`
     );
 });
+
+span.onclick = function() {
+    modal.style.display = "none";
+    window.location.href = "http://localhost:8088/web/home";
+}
 </script>

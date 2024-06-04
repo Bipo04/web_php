@@ -65,14 +65,6 @@ document.querySelector('.Save').onclick = () => {
     document.querySelector('.Save').classList.add('hidden');
     document.querySelector('.Update').classList.remove('hidden');
 }
-document.getElementById("nav_ac").onclick = function() {
-    myFunction()
-};
-
-/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
-function myFunction() {
-    document.getElementById("ac_menu").classList.toggle("show");
-}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

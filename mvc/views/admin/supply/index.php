@@ -44,6 +44,6 @@ if($data['supplies'])
         </div>
     </div>
 </div>
-</body>
-
-</html>
+</div>
+</div>
+</div>
