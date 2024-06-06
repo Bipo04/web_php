@@ -1,3 +1,9 @@
+document.getElementById("nav_ac").onclick = function () {
+    myFunction()
+};
+function myFunction() {
+    document.getElementById("ac_menu").classList.toggle("show");
+}
 // Hàm để hiển thị các hình ảnh đã chọn
 function previewImages(event) {
     const imageFiles = event.target.files;
