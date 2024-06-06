@@ -32,11 +32,11 @@
                                         <td>' . ucfirst($item['name']) . '</td>
                                         <td>' . $item['created_at'] . '</td>
                                         <td>
-                                        <button class="btn btn-primary"
+                                        <button class="btn btn-outline-primary"
                                             onclick="editUser(this)">Sửa</button>
                                         </td>
                                         <td>
-                                        <button class="btn btn-danger"
+                                        <button class="btn btn-outline-danger"
                                             onclick="deleteUser(this)">Xóa</button>
                                         </td>
                                     </tr>';

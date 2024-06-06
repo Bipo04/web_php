@@ -30,11 +30,11 @@ if($data['supplies'])
                                 <td>'.$item['phone'].'</td>
                                 <td>'.$item['email'].'</td>
                                 <td>
-                                <button class="btn btn-primary"
+                                <button class="btn btn-outline-primary"
                                     onclick="editBtn(this)">Sửa</button>
                                 </td>
                                 <td>
-                                <button class="btn btn-danger"
+                                <button class="btn btn-outline-danger"
                                     onclick="deleteBtn(this)">Xóa</button>
                                 </td>
                             </tr>';

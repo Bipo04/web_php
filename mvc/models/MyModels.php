@@ -2,9 +2,9 @@
 class MyModels extends Database {
     private $conn;
 
-    public function __construct() {
-        $this->conn = $this->getConnection();
-    }
+    // public function __construct() {
+    //     $this->conn = $this->getConnection();
+    // }
 
     public function getdata($data = ["*"]) {
         $data = implode(",", $data);

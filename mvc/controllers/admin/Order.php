@@ -11,11 +11,12 @@ class Order extends Controller {
     }
 
     public function index() {
-        // $supplies = $this->SupplyModel->getdata();
+        $orders = $this->OrderModel->getdata();
         $this->view('layouts/admin_layout', [
             'page' => 'order/index',
             'title' => 'Danh sách đơn hàng',
             'type' => 'qli',
+            'orders' => $orders
         ]);
     }
 
@@ -39,13 +40,19 @@ class Order extends Controller {
         ]);
     }
 
-    public function delete() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $req = new Request();
-            $data = $req->postFields();
-            $id = $data['id'];
-            $this->CategoryModel->deleteById($id);
-        }
+    public function detail() {
+        // $req = new Request();
+        // $data = $req->getFields();
+        // $id = $data['id'];
+        // $order = $this->OrderModel->findAll(['*'], ['id' => $id]);
+        // $orderDetails = $this->OrderDetailModel->findAll(['*'], ['order_id' => $id]);
+        $this->view('layouts/admin_layout', [
+            'page' => 'order/details',
+            'title' => 'Chi tiết đơn hàng',
+            'type' => 'qli',
+            // 'order' => $order,
+            // 'orderDetails' => $orderDetails
+        ]);
     }
 }
 ?>

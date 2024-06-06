@@ -76,7 +76,7 @@ $page = explode('/', $data['page']);
                             href="http://localhost:8088/web/admin/category">Danh mục</a>
                         <a class="collapse-item <?php if($page[0] == 'supply') echo 'active'; ?>"
                             href="http://localhost:8088/web/admin/supply">Nhà cung cấp</a>
-                        <a class="collapse-item <?php if($page[0] == 'supply') echo 'active'; ?>"
+                        <a class="collapse-item <?php if($page[0] == 'order') echo 'active'; ?>"
                             href="http://localhost:8088/web/admin/order">Đơn hàng</a>
                     </div>
                 </div>
