@@ -4,9 +4,10 @@
     </div>
     <div class="content-container">
         <?php
+$i = 0;
 foreach($data['data'] as $val) {
     echo '<div class="product-list-container">
-    <h1 class="product-list-title">Nữ</h1>
+    <h1 class="product-list-title">'.$data['data_title'][$i].'</h1>
     <div class="product-list-wrapper">
     <div class="product-list">';
     foreach($val as $item) {
@@ -22,6 +23,7 @@ foreach($data['data'] as $val) {
     <i class="fas fa-chevron-right arrow"></i>
     </div>
     </div>';
+    $i++;
 }
                     ?>
     </div>

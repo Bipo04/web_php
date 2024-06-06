@@ -12,6 +12,7 @@ class Product extends Controller {
             'page' => 'product/index',
             'title' => 'Danh sách sản phẩm',
             'product' => $products,
+            "type" => "qli",
         ]);
     }
 
@@ -41,6 +42,7 @@ class Product extends Controller {
         $this->view('layouts/admin_layout', [
             'page' => 'product/add',
             'title' => 'Thêm sản phẩm',
+            "type" => "qli",
         ]);
     }
 

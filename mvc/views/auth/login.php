@@ -9,6 +9,16 @@
 </head>
 
 <body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="brand-container">
+                <h1 class="name-shop"><a href="http://localhost:8088/web/home">Angel&BB</a></h1>
+            </div>
+            <div class="tittle">
+                Đăng nhập
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="login form">
             <header>Login</header>

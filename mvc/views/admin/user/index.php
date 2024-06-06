@@ -46,6 +46,6 @@ if($data['users'])
         </div>
     </div>
 </div>
-</body>
-
-</html>
+</div>
+</div>
+</div>

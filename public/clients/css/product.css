@@ -76,20 +76,26 @@ font-size: 15px;
     font-weight: 600;
     color: #252525;
 }
-.product-price{
-    margin: 1rem 0;
-    font-size: 15px;
-    font-weight: 500;
+.price-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
-.product-price h2{
-font-size: 20px;
+
+.new-price span {
+    font-size: 25px;
+    color: green;
+    font-weight: 600;
 }
-.new-price{
-font-size: 20px;
+
+.old-price span {
+    font-size: 16px;
+    color: gray;
+    text-decoration: line-through;
+    opacity: 0.6;
+    margin-right: 10px;
 }
-.new-price span{
-    color: #256eff;
-}
+
 .product-detail h2{
     text-transform: capitalize;
     color: #12263a;
@@ -256,4 +262,9 @@ font-size: 20px;
 }
 .mb-20 {
     margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các form, có thể điều chỉnh */
 }

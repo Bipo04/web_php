@@ -11,11 +11,9 @@ class AuthModels extends Database {
         if($kq) {
             if (password_verify($data['password'], $kq['password'])) {
                 if($kq['role_id'] == "1") {
-                    $_SESSION['role'] = 'admin';
-                    $_SESSION['user_id'] = $kq['id'];
+                    $_SESSION['user'] = $kq;
                 } else if($kq['role_id'] == 2) {
-                    $_SESSION['role'] = 'user';
-                    $_SESSION['user_id'] = $kq['id'];
+                    $_SESSION['user'] = $kq;
                 }
                 return true;
             }

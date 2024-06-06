@@ -55,7 +55,8 @@ CREATE TABLE [Product] (
   [thumbnail] varchar(500),
   [description] nvarchar(1000),
   [quantity] int,
-  [sold] int Default 0
+  [sold] int Default 0,
+  hot BIT
 
   FOREIGN KEY ([category_id]) REFERENCES [Category] ([id]) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY ([supply_id]) REFERENCES dbo.[Supply](id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -71,7 +72,7 @@ CREATE TABLE [Orders] (
   [phone_number] varchar(20),
   [total_money] int,
   [order_date] datetime,
-  [status] nvarchar(50),
+  [status] nvarchar(50) NOT NULL DEFAULT N'Đang xử lí',
 
   FOREIGN KEY ([user_id]) REFERENCES [User] ([id]) ON DELETE CASCADE ON UPDATE CASCADE
 )

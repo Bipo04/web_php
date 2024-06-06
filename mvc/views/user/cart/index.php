@@ -69,19 +69,19 @@ if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
     </div>';
     $totalPrice += $item['price']*$item['quantity'];
 }
-echo '<div class="fixed-box">
-<div class="bottom-box float-end">
-    <p class="sum">
-        <span style="font-size: 16px;padding-right: 5px;">Tổng thanh toán: </span>
-        <span style="font-size: 16px;padding-right: 5px;">'.$totalPrice.'</span>
-        </p>
-        <div class="buy-btn">
-            <a href="formbuy.html">
-                <button class="btn btn-primary">Đặt hàng</button>
-            </a>
-        </div>
-    </div>
-</div>';
+echo '  <div class="fixed-box">
+            <div class="bottom-box float-end">
+                <p class="sum">
+                    <span style="font-size: 16px;padding-right: 5px;">Tổng thanh toán: </span>
+                    <span style="font-size: 16px;padding-right: 5px;">'.$totalPrice.'</span>
+                </p>
+                <form action="http://localhost:8088/web/cart/checkout" method="post">
+                    <div class="buy-btn">
+                        <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                    </div>
+                </form>
+            </div>
+        </div>';
 }
 else {
 echo '<div class="card" style="height: 400px; border:none; display: flex;justify-content: center;align-items: center; ">

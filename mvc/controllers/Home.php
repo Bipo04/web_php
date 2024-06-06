@@ -30,7 +30,8 @@ class Home extends Controller {
             "title" => "Trang chủ",
             "css" => ["main"],
             "data" => ["dataGirl" => $dataGirl,
-                        "dataBoy" => $dataBoy]
+                        "dataBoy" => $dataBoy],
+            "data_title" => ["Nữ", "Nam"]
         ]);
     }
 }

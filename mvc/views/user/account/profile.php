@@ -9,16 +9,16 @@
             <h3 class="profile-content-title">Thông tin cá nhân</h3>
             <div class="account-info">
                 <label for="fullname">Họ và tên:</label>
-                <input type="text" id="fullname" name="fullname" value="Nguyễn Văn A" readonly>
+                <input type="text" id="fullname" name="fullname" value="<?=$_SESSION['user']['fullname']?>" readonly>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="nguyenvana@example.com" readonly>
+                <input type="email" id="email" name="email" value="<?=$_SESSION['user']['email']?>" readonly>
 
                 <label for="phone">Số điện thoại:</label>
-                <input type="text" id="phone" name="phone" value="0987654321" readonly>
+                <input type="text" id="phone" name="phone" value="<?=$_SESSION['user']['phone_number']?>" readonly>
 
                 <label for="username">Địa chỉ:</label>
-                <input type="text" id="address" name="address" value="quận Hoàng Mai, Hà Nội" readonly>
+                <input type="text" id="address" name="address" value="<?=$_SESSION['user']['address']?>" readonly>
             </div>
             <button class="btn btn-primary Update">Chỉnh sửa</button>
             <button class="btn btn-primary Save hidden">Lưu thay đổi</button>
@@ -64,14 +64,6 @@ document.querySelector('.Save').onclick = () => {
     document.querySelector('#address').setAttribute('readonly', true);
     document.querySelector('.Save').classList.add('hidden');
     document.querySelector('.Update').classList.remove('hidden');
-}
-document.getElementById("nav_ac").onclick = function() {
-    myFunction()
-};
-
-/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
-function myFunction() {
-    document.getElementById("ac_menu").classList.toggle("show");
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

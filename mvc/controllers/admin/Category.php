@@ -22,6 +22,7 @@ class Category extends Controller {
             "page" => "category/index",
             "title" => "Danh sách danh mục",
             "category" => $categories,
+            "type" => "qli",
         ]);
     }
     
@@ -37,6 +38,7 @@ class Category extends Controller {
         $this->view('layouts/admin_layout', [
             'page' => 'category/add',
             'title' => 'Thêm danh mục',
+            "type" => "qli",
         ]);
     }
     
@@ -65,6 +67,7 @@ class Category extends Controller {
             "page" => "category/update",
             "title" => "Sửa danh mục",
             "category" => $a,
+            "type" => "qli",
         ]);
     }
 

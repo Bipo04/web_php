@@ -13,6 +13,7 @@ class User extends Controller {
             'page' => 'user/index',
             'title' => 'Danh sách người dùng',
             'users' => $users,
+            "type" => "qli",
         ]);
     }
 }

@@ -171,6 +171,12 @@ class MyModels extends Database {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function queryExecute($sql) {
+        $query = $this->conn->prepare($sql);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     private function buildUpdateString($data) {
         $keys_data = array_keys($data);
         $updateArray = [];
