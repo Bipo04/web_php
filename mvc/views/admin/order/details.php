@@ -1,119 +1,94 @@
+<style>
+    .card1 {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        display: flex; 
+        align-items: center; 
+    }
+    .card1-info{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .card1-info .box1 {
+        width: 25%;
+        text-align: center;
+    }
+    .card1child {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px; 
+        align-items: center; 
+    }
+    .card1child-img{
+        width: 15%;
+    }
+    .card1child-info{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .card1child-info .box1child {
+        width: 25%;
+        text-align: center;
+        margin:auto;  
+    }
+</style>
 <div class="container">
     <div class="content-container">
-        <div class="profile-content">
-            <!-- Ten don hang -->
-            <h1 class="h3 mb-2 text-gray-800 text-center"><?php echo $data['title'] ?></h1>
-            <div class="card" style="height: 60px;">
-                <div class="card-body p-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <p class="name_col" style="display: none;"></p>
-                        </div>
-                        <div class="col-md-4 d-flex justify-content-center">
-                            <p class="name_col">Tên sản phẩm</p>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <p class="name_col">Số lượng</p>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <p class="name_col">Giá bán</p>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <p class="name_col">Thành tiền</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="card1">
+        <div style="width: 15%;"></div>
+        <div class="card1-info">
+            <div class="box1">Tên sản phẩm </div>
+            <div class="box1">Số lượng </div>
+            <div class="box1">Giá bán</div>
+            <div class="box1">Thành tiền</div>
+        </div>
+    </div>
             <!-- 1 san pham  -->
-            <div class="card">
-                <div class="card-body p-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-2">
-                            <img src="/Product_img/ao_bomber/ao_bomber_1.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="col-md-4 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">Áo bomber</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">3</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">150.000 VND</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">450000 VND</p>
-                            </div>
-                        </div>
+            <div class="card1child">
+                <div style="display: flex;">
+                    <div class="card1child-img"><img src="\web\Product_img\ao_ba_lo_trai\ba_lo_1.jpg" alt="Ba lỗ" class="img-fluid"></div>
+                    <div class="card1child-info">
+                        <div class="box1child">Áo ba lỗ</div>
+                        <div class="box1child">3</div>
+                        <div class="box1child">100000 VND</div>
+                        <div class="box1child">300000 VND</div>
                     </div>
                 </div>
-                <div class="row-cols-md-4">
-                    <div class="float-end">
-                        <p class="">
-                            <span style="padding-right: 5px;">Tổng: </span>
-                            <span>450000 VND</span>
-                        </p>
-                    </div>
+                <div style="padding:5px">Thông tin người đặt hàng:
+                    <span>Anh A</span>
                 </div>
-                <div class="row-cols-md-4">
-                    <div class="float-end">
-                        <p class="d-flex">
-                            <span style="padding-right: 5px;">Trạng thái:</span>
-                            <span>Đang xử lý</span>
-                        </p>
-                    </div>
-                </div>
+                <!-- <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 57.5%;">Người đặt hàng
+                            <p class="userorder1">Anh A</p>
+                        </td>
+                        <td style="width: 21.25%;text-align:center;">Tổng
+                            <p class="sum1">300000 VND</p>
+                        </td>
+                        <td style="width: 21.25%;text-align:center;">Trạng thái
+                            <p class="status1">Đang xử lý</p>
+                        </td>
+                    </tr>
+                </table> -->
             </div>
             <!-- het 1 san pham  -->
-            <div class="card">
-                <div class="card-body p-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-2">
-                            <img src="/Product_img/ao_bomber/ao_bomber_2.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="col-md-4 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">Áo bomber</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">5</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">200000 VND</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <div>
-                                <p class="content_col">1000000 VND</p>
-                            </div>
-                        </div>
+            <div class="card1child">
+                <div style="display: flex;">
+                    <div class="card1child-img"><img src="\web\Product_img\ao_ba_lo_trai\ba_lo_1.jpg" alt="Ba lỗ" class="img-fluid"></div>
+                    <div class="card1child-info">
+                        <div class="box1child">Áo ba lỗ</div>
+                        <div class="box1child">3</div>
+                        <div class="box1child">100000 VND</div>
+                        <div class="box1child">300000 VND</div>
                     </div>
                 </div>
-                <div class="row-cols-md-4">
-                    <div class="float-end">
-                        <p class="">
-                            <span style="padding-right: 5px;">Tổng: </span>
-                            <span>1000000</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="row-cols-md-4">
-                    <div class="float-end">
-                        <p class="d-flex">
-                            <span style="padding-right: 5px;">Trạng thái:</span>
-                            <span>Đã giao </span>
-                        </p>
-                    </div>
+                <div style="padding:5px">Thông tin người đặt hàng:
+                    <span>Anh A</span>
                 </div>
             </div>
         </div>

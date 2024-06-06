@@ -41,6 +41,7 @@ function detailsOrder(btn) {
     // var row = btn.parentNode.parentNode;
     // var IDCell = row.cells[0]; 
     // const orderID = IDCell.innerText.trim(); 
+
     const url = "orderdetails.html";
     // Chuyển hướng đến trang chi tiết đơn hàng
     window.location.href = url;
