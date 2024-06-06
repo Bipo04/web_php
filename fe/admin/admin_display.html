@@ -10,30 +10,7 @@
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.5.2-web/css/all.min.css">
-    <style>
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-        }
-
-        .category-list {
-            display: flex;
-            justify-content: space-between;
-            /* Các mục sẽ được căn cách đều nhau trên dòng */
-            padding: 0;
-            /* Xóa padding mặc định của danh sách */
-        }
-
-        .category-item {
-            flex: 1;
-            /* Các mục chiếm hết không gian trên dòng ngang */
-            margin-right: 10px;
-            /* Khoảng cách giữa các mục */
-        }
-    </style>
+    <link rel="stylesheet" href="./css/admin_display.css">
 </head>
 
 <body>
@@ -165,38 +142,7 @@
             <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
         </footer>
     </div>
-
-    <script>
-        var i = 2;
-        document.getElementById("nav_ac").onclick = function () {
-            myFunction()
-        };
-        /* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
-        function myFunction() {
-            document.getElementById("ac_menu").classList.toggle("show");
-        }
-    </script>
-    <script>
-        function deleteProduct(btn) {
-            var row = btn.parentNode.parentNode;
-            var table = row.parentNode;
-
-            // Lấy ID của sản phẩm sẽ bị xóa
-            var deletedProductId = parseInt(row.cells[0].innerText);
-
-            // Xóa hàng
-            table.removeChild(row);
-
-            // Cập nhật ID của các sản phẩm dưới
-            var rows = table.rows;
-            for (var i = 0; i < rows.length; i++) {
-                var currentProductId = parseInt(rows[i].cells[0].innerText);
-                if (currentProductId > deletedProductId) {
-                    rows[i].cells[0].innerText = currentProductId - 1;
-                }
-            }
-        }
-    </script>
 </body>
 
 </html>
+<script src="js/admin_display.js"></script>
