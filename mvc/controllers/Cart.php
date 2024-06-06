@@ -1,13 +1,13 @@
 <?php
 class Cart extends Controller {
     public $ProductModel;
-    public $OrderDetailModels;
-    public $OrderModels;
+    public $OrderDetailModel;
+    public $OrderModel;
     
     public function __construct() {
         $this->ProductModel         = $this->model("ProductModels");
-        $this->OrderDetailModels    = $this->model('OrderDetailModels');
-        $this->OrderModels          = $this->model('OrderModels');
+        $this->OrderDetailModel    = $this->model('OrderDetailModels');
+        $this->OrderModel          = $this->model('OrderModels');
     }
 
     public function index() {
@@ -124,13 +124,12 @@ class Cart extends Controller {
                             'address'           => $_POST['address'],
                             'phone_number'      => $_POST['phone_number']
                 ];
-                $kq = $this->OrderModels->add($data);
+                $kq = $this->OrderModel->add($data);
                 $result = json_decode($kq, true);
                 if($result['type'] == 'success') {
                     if(isset($_SESSION['buy2'])) {
                         $products = $_SESSION['buy2'];
                         unset($_SESSION['buy2']);
-                        echo "Đã xóa";
                     }
                     else {
                         $products = $_SESSION['cart'];
@@ -142,7 +141,7 @@ class Cart extends Controller {
                                 'num' => $item['quantity'],
                                 'price' => $item['price']
                         ];
-                        $this->OrderDetailModels->add($d);
+                        $this->OrderDetailModel->add($d);
                     }
                 }
             }
