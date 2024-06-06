@@ -4,63 +4,44 @@ document.getElementById("nav_ac").onclick = function () {
 function myFunction() {
     document.getElementById("ac_menu").classList.toggle("show");
 }
-function toggleInfo(card) {
-    var infoTable = card.querySelector(".info-table");
-    if (infoTable.style.display === "block") {
-        infoTable.style.display = "none"; // Ẩn bảng nếu đã hiển thị
+function editOrder(button) {
+    const orderRow = button.closest('tr');
+    const statusCell = orderRow.querySelector('.order-status');
+    const editButton = button;
+
+    if (editButton.textContent === "Chỉnh sửa") {
+        // Lưu trạng thái hiện tại
+        const currentStatus = statusCell.textContent;
+        // Tạo dropdown
+        statusCell.innerHTML = `
+            <select class="form-control" style="font-size: 15px">
+                <option ${currentStatus === 'Đang xử lý' ? 'selected' : ''}>Đang xử lý</option>
+                <option ${currentStatus === 'Đang giao hàng' ? 'selected' : ''}>Đang giao hàng</option>
+                <option ${currentStatus === 'Đã giao hàng' ? 'selected' : ''}>Đã giao hàng</option>
+            </select>
+        `;
+        // Đổi nút thành "Lưu"
+        editButton.textContent = "Lưu";
+        editButton.classList.remove('btn-outline-primary');
+        editButton.classList.add('btn-outline-success');
     } else {
-        infoTable.style.display = "block"; // Hiển thị bảng nếu chưa hiển thị
-        infoTable.style.height = infoTable.scrollHeight + "px"; // Thiết lập chiều cao cho hiệu ứng trượt xuống
+        // Lấy trạng thái mới từ dropdown
+        const newStatus = statusCell.querySelector('select').value;
+        // Cập nhật trạng thái trong bảng
+        statusCell.textContent = newStatus;
+
+        // Đổi nút lại thành "Chỉnh sửa"
+        editButton.textContent = "Chỉnh sửa";
+        editButton.classList.remove('btn-outline-success');
+        editButton.classList.add('btn-outline-primary');
     }
 }
-function deleteProduct(event, btn) {
-    event.preventDefault(); // Ngăn chặn hành vi mặc định của button (tránh reload trang)
-
-    var productRow = btn.closest('.row.align-items-center'); // Tìm hàng chứa nút "Xóa" bằng cách đi lên DOM tree
-    var tableBody = productRow.parentNode; // Lấy phần body của bảng chứa sản phẩm
-
-    // Lấy ID của sản phẩm sẽ bị xóa (ở đây lấy từ thẻ <p> trong cột đầu tiên của hàng sản phẩm)
-    var deletedProductId = parseInt(productRow.querySelector('.content').innerText);
-
-    // Xóa hàng sản phẩm khỏi danh sách
-    tableBody.removeChild(productRow);
-}
-function deleteProduct(event, btn) {
-    event.preventDefault(); // Ngăn chặn hành vi mặc định của button (tránh reload trang)
-
-    var productRow = btn.closest('.row.align-items-center'); // Tìm hàng chứa nút "Xóa" bằng cách đi lên DOM tree
-    var tableBody = productRow.parentNode; // Lấy phần body của bảng chứa sản phẩm
-
-    var productHeight = productRow.clientHeight; // Lấy chiều cao của hàng sản phẩm sẽ bị xóa
-
-    // Xóa hàng sản phẩm khỏi danh sách
-    tableBody.removeChild(productRow);
-
-    // Lấy chiều cao hiện tại của khung sau khi xóa sản phẩm
-    var currentHeight = tableBody.clientHeight;
-
-    // Cập nhật lại chiều cao của khung sau khi xóa sản phẩm
-    tableBody.style.height = (currentHeight - productHeight) + 'px';
-}
-function deleteProduct2(event, btn) {
-    event.preventDefault(); // Ngăn chặn hành vi mặc định của button (tránh reload trang)
-
-    var productRow = btn.closest('.card'); // Tìm hàng chứa nút "Xóa" bằng cách đi lên DOM tree
-    if (!productRow) {
-        console.error('Không tìm thấy card để xóa.');
-        return;
-    }
-
-    try {
-        // Lấy phần tử cha của card (trong trường hợp này là danh sách các card)
-        var cardList = productRow.parentNode;
-        // Xóa card khỏi danh sách
-        cardList.removeChild(productRow);
-        // Cập nhật lại ID của các card còn lại trong danh sách
-        var remainingCards = cardList.querySelectorAll('.card');
-        remainingCards.forEach((card, index) => {
-            card.querySelector('.lead').textContent = (index + 1).toString(); // Cập nhật ID
-        });
-    } catch (error) {
-    }
+function detailsOrder(btn) {
+    // Hàm lấy ID của Order nếu cần nhé
+    // var row = btn.parentNode.parentNode;
+    // var IDCell = row.cells[0]; 
+    // const orderID = IDCell.innerText.trim(); 
+    const url = "orderdetails.html";
+    // Chuyển hướng đến trang chi tiết đơn hàng
+    window.location.href = url;
 }

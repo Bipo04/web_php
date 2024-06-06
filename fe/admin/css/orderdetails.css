@@ -1,11 +1,3 @@
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-}
-
 .category-list {
     display: flex;
     justify-content: space-between;
@@ -14,6 +6,19 @@ label {
     /* Xóa padding mặc định của danh sách */
 }
 
+.container {
+    margin-top: 50px;
+    max-width: 75%;
+}
+
+.card {
+    margin-bottom: 10px;
+    padding: auto;
+    font-size: 17px;
+}
+
+
+
 .category-item {
     flex: 1;
     /* Các mục chiếm hết không gian trên dòng ngang */
@@ -21,8 +26,10 @@ label {
     /* Khoảng cách giữa các mục */
 }
 
-/* CSS để xác định kích thước chữ của dropdown */
-.form-select {
-    font-size: 15px;
-    /* Đặt kích thước chữ cho dropdown */
+.card-body {
+    font-size: 17px;
+}
+
+.float-end p span {
+    font-size: 17px;
 }
