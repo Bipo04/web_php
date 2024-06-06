@@ -252,8 +252,16 @@
 <script>
   // JavaScript để xử lý xóa sản phẩm
   function deleteProduct(btn) {
-      var product = btn.closest('.card-body'); // Lấy phần tử cha của nút, tức là sản phẩm chứa nút này
-      product.parentNode.removeChild(product); // Xóa sản phẩm khỏi danh sách
+    var xoa = confirm("Bạn có chắc muốn xóa không?");
+            if (xoa) {
+                console.log("Đã xóa sản phẩm");
+                // Thực hiện hành động xóa ở đây, ví dụ: gửi request đến server để xóa dữ liệu
+                var product = btn.closest('.card-body'); // Lấy phần tử cha của nút, tức là sản phẩm chứa nút này
+                product.parentNode.removeChild(product); // Xóa sản phẩm khỏi danh sách
+            } else {
+                // alert("Hủy bỏ!");
+                // Không thực hiện hành động xóa
+            }
   }
 </script>
 </html>
