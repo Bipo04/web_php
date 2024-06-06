@@ -7,7 +7,9 @@ class User extends Controller {
     }
 
     public function index() {
-        $users = $this->UserModel->selectJoin(['*'],null, null, 'Roles', ['role_id', 'id'], 'INNER');
+        $select =   ['Users.id', 'fullname', 'username', 'email',
+                    'phone_number', 'address', 'Roles.name', 'created_at'];
+        $users = $this->UserModel->selectJoin($select ,null, null, 'Roles', ['role_id', 'id'], 'INNER');
         
         $this->view('layouts/admin_layout', [
             'page' => 'user/index',
@@ -15,6 +17,41 @@ class User extends Controller {
             'users' => $users,
             "type" => "qli",
         ]);
+    }
+
+    // public function add() {
+    //     if(isset($_POST['btn'])) {
+    //         $req = new Request();
+    //         unset($_POST['btn']);
+    //         $data = $req->postFields();
+    //         $this->UserModel->add($data);
+    //         header('location: http://localhost:8088/web/admin/supply');
+    //     }
+
+    //     $this->view('layouts/admin_layout', [
+    //         'page' => 'user/add',
+    //         'title' => 'Thêm tài khoản',
+    //         'type' => 'qli',
+    //     ]);
+    // }
+
+    public function update() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $role = strtolower($_POST['role']);
+            $query = "EXEC updateUser ".$id.", '".$role."'";
+            echo $query;
+            $this->UserModel->queryExecute($query);
+        }
+    }
+
+    public function delete() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $req = new Request();
+            $data = $req->postFields();
+            $id = $data['id'];
+            $this->CategoryModel->deleteById($id);
+        }
     }
 }
 ?>

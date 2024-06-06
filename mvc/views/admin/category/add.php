@@ -1,17 +1,15 @@
 <div class="container" style="width:60%">
-    <div class="panel-heading" style="margin-top: 10px">
-        <h2 class=" text-center"><?php echo $data['title'] ?></h2>
-    </div>
+    <h1 class="h3 mb-2 text-gray-800 text-center"><?php echo $data['title'] ?></h1>
     <form action="" method="post">
         <div class="form-group mb-3">
             <label for="">Tên</label>
-            <input type="text" name="category_name" class="form-control">
+            <input type="text" name="name" class="form-control">
         </div>
         <div class="form-group mb-3">
             <label for="gender">Giới tính</label>
             <select name="gender" id="gender" class="form-control">
-                <option value="male">Nam</option>
-                <option value="female">Nữ</option>
+                <option value="boy">Nam</option>
+                <option value="girl">Nữ</option>
             </select>
         </div>
         <div class="form-group mb-3">
@@ -20,5 +18,6 @@
     </form>
 </div>
 </div>
+<div class="a" style="width=100%; height:100px;"></div>
 </div>
 </div>
