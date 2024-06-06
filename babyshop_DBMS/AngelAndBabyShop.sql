@@ -56,7 +56,7 @@ CREATE TABLE [Product] (
   [description] nvarchar(1000),
   [quantity] int,
   [sold] int Default 0,
-  hot BIT
+  [hot] BIT
 
   FOREIGN KEY ([category_id]) REFERENCES [Category] ([id]) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY ([supply_id]) REFERENCES dbo.[Supply](id) ON DELETE CASCADE ON UPDATE CASCADE
