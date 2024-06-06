@@ -1,7 +1,7 @@
 ﻿use AngelAndBabyShop
 go
 
-INSERT INTO Orders (id, user_id, order_date, status, consignee_name, address, phone_number)
+INSERT INTO Orders (user_id, order_date, status, consignee_name, address, phone_number)
 VALUES
 (38,'2024-03-18 16:12:50',N'Đang xử lí',N'Võ Đức Dũng',N'1515 Đường M, Quận Thanh Xuân, Hà Nội','0184208545'),
 (42,'2023-06-16 15:10:29',N'Đã giao', N'Huỳnh Thùy Thi',N'1510 Đường M, Quận Thanh Xuân, Hà Nội','0348533900'),

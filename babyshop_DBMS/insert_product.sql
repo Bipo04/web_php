@@ -1,17 +1,31 @@
 ﻿Use AngelAndBabyShop
 go
---insert thêm sản phẩm
-INSERT INTO dbo.Product (category_id, title, inbound_price, outbound_price, supply_id, description, thumbnail)
-VALUES
-(7, N'Áo thun sát nách ba lỗ nhấn viền bé trai Rabity', 100000, 139000, 5, N'Chất vải thoáng mát, kiểu dáng thời trang','ao_ba_lo_trai/ba_lo_1,ao_ba_lo_trai/ba_lo_2,ao_ba_lo_trai/ba_lo_3 '),
-(7, N'Áo sơ mi ngắn tay Vua sư tử Simba bé trai', 200000, 259000, 1, N'Chất vải thoáng mát, kiểu dáng thời trang, năng động','so_mi_su_tu/su_tu_1,so_mi_su_tu/su_tu_2,so_mi_su_tu/su_tu_3 ' );
 
-
-
---cập nhật cột discount
+--cập nhật cột discount lưu trữ trực tiếp giá sản phẩm sau giảm giá
+--các sản phẩm không giảm thì discount = 0
 UPDATE Product 
 SET discount = 0
 WHERE id > 0;
+--các sp giảm giá
+UPDATE Product 
+SET discount = outbound_price- 20000
+WHERE category_id = 1;
+
+UPDATE Product 
+SET discount = outbound_price - 30000
+WHERE category_id = 3 OR category_id = 4;
+
+UPDATE Product 
+SET discount = outbound_price - 25000
+WHERE category_id = 8 OR category_id = 7;
+
+UPDATE Product 
+SET discount = outbound_price - 50000
+WHERE category_id = 2 ;
+
+UPDATE Product 
+SET discount = outbound_price - 100000
+WHERE id = 29;
 
 --cập nhật cột số lượng sản phẩm
 UPDATE Product SET quantity = 10000;

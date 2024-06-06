@@ -1,13 +1,6 @@
 ﻿use AngelAndBabyShop
 go
 
-
---insert giá trị price sau khi đã nhập bảng product--
-update Order_Details 
-SET Order_Details. price = P.outbound_price
-FROM Product AS P
-WHERE P.id = Order_Details.product_id
-
 -- insert các cột khác
 INSERT INTO Order_Details (order_id, product_id, num)
 VALUES 
@@ -371,4 +364,13 @@ VALUES
 (200, 21, 1),
 (200, 29, 2),
 (200, 4, 3)
+
+--insert giá trị price sau khi đã nhập bảng product--
+update Order_Details 
+SET Order_Details. price = CASE
+		WHEN P.discount = 0 then P.outbound_price
+		ELSE P.discount
+		END
+FROM Product AS P
+WHERE P.id = Order_Details.product_id
 

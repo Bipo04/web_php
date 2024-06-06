@@ -13,3 +13,4 @@ BEGIN
 	FROM Product p JOIN inserted i ON p.id = i.product_id
 
 END
+
