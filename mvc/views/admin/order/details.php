@@ -36,60 +36,58 @@
         text-align: center;
         margin:auto;  
     }
+    .user1order{
+        margin-left:20px;
+        display:flex;
+    }
 </style>
 <div class="container">
     <div class="content-container">
-    <div class="card1">
-        <div style="width: 15%;"></div>
-        <div class="card1-info">
-            <div class="box1">Tên sản phẩm </div>
-            <div class="box1">Số lượng </div>
-            <div class="box1">Giá bán</div>
-            <div class="box1">Thành tiền</div>
-        </div>
-    </div>
-            <!-- 1 san pham  -->
-            <div class="card1child">
-                <div style="display: flex;">
-                    <div class="card1child-img"><img src="\web\Product_img\ao_ba_lo_trai\ba_lo_1.jpg" alt="Ba lỗ" class="img-fluid"></div>
-                    <div class="card1child-info">
-                        <div class="box1child">Áo ba lỗ</div>
-                        <div class="box1child">3</div>
-                        <div class="box1child">100000 VND</div>
-                        <div class="box1child">300000 VND</div>
-                    </div>
-                </div>
-                <div style="padding:5px">Thông tin người đặt hàng:
-                    <span>Anh A</span>
-                </div>
-                <!-- <table style="width: 100%;">
-                    <tr>
-                        <td style="width: 57.5%;">Người đặt hàng
-                            <p class="userorder1">Anh A</p>
-                        </td>
-                        <td style="width: 21.25%;text-align:center;">Tổng
-                            <p class="sum1">300000 VND</p>
-                        </td>
-                        <td style="width: 21.25%;text-align:center;">Trạng thái
-                            <p class="status1">Đang xử lý</p>
-                        </td>
-                    </tr>
-                </table> -->
+        <div style="text-align:center;font-size: 25px;">Thông tin đơn hàng</div>
+        <div style="padding:0 20px;">
+            <p style="margin-bottom:5px;"><strong>Người nhận: </strong>Bùi Thúy Hương</p>
+            <p style="margin-bottom:5px;"><strong>Số điện thoại: </strong>0241620594</p>
+            <p style="margin-bottom:5px;"><strong>Địa chỉ: </strong>55 Đường M, Quận Cầu Giấy, Hà Nội</p>
+        </div>  
+        <div class="card1">
+            <div style="width: 15%;"></div>
+            <div class="card1-info">
+                <div class="box1">Tên sản phẩm </div>
+                <div class="box1">Số lượng </div>
+                <div class="box1">Giá bán</div>
+                <div class="box1">Thành tiền</div>
             </div>
-            <!-- het 1 san pham  -->
-            <div class="card1child">
-                <div style="display: flex;">
-                    <div class="card1child-img"><img src="\web\Product_img\ao_ba_lo_trai\ba_lo_1.jpg" alt="Ba lỗ" class="img-fluid"></div>
-                    <div class="card1child-info">
-                        <div class="box1child">Áo ba lỗ</div>
-                        <div class="box1child">3</div>
-                        <div class="box1child">100000 VND</div>
-                        <div class="box1child">300000 VND</div>
-                    </div>
+        </div>
+        <!-- 1 san pham  -->
+        <div class="card1child">
+            <div style="display: flex;">
+                <div class="card1child-img"><img src="\web\Product_img\ao_ba_lo_trai\ba_lo_1.jpg" alt="Ba lỗ" class="img-fluid"></div>
+                <div class="card1child-info">
+                    <div class="box1child">Áo ba lỗ</div>
+                    <div class="box1child">3</div>
+                    <div class="box1child">100000 VND</div>
+                    <div class="box1child">300000 VND</div>
                 </div>
-                <div style="padding:5px">Thông tin người đặt hàng:
-                    <span>Anh A</span>
+            </div>
+        </div>
+        <!-- het 1 san pham  -->
+        <div class="card1child">
+            <div style="display: flex;">
+                <div class="card1child-img"><img src="\web\Product_img\ao_ba_lo_trai\ba_lo_1.jpg" alt="Ba lỗ" class="img-fluid"></div>
+                <div class="card1child-info">
+                    <div class="box1child">Áo ba lỗ</div>
+                    <div class="box1child">3</div>
+                    <div class="box1child">100000 VND</div>
+                    <div class="box1child">300000 VND</div>
                 </div>
+            </div>
+        </div>
+        <div style="display: flex;font-size:20px;margin-bottom:20px">
+            <div style="width:80%;"></div>
+            <div><strong>Tổng:</strong></div>
+            <div style="width:2%"></div>
+            <div class="sum1">
+                <span>600000 VND</span>
             </div>
         </div>
     </div>
