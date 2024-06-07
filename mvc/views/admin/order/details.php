@@ -42,7 +42,7 @@
     }
 </style>
 <div class="container">
-    <div class="content-container">
+    <div class="content-container" style="margin-left:30px;">
         <div style="text-align:center;font-size: 25px;">Thông tin đơn hàng</div>
         <div style="padding:0 20px;">
             <p style="margin-bottom:5px;"><strong>Người nhận: </strong>Bùi Thúy Hương</p>
