@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     var tableRows = document.querySelectorAll(".recent_order tbody tr");
-    var maxRows = 4;
+    var maxRows = 3;
     var currentPage = 1;
 
     function showRows(page) {
