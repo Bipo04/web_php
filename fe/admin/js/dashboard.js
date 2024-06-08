@@ -1,4 +1,69 @@
 document.addEventListener("DOMContentLoaded", function () {
+    var tableRows = document.querySelectorAll(".recent_order tbody tr");
+    var maxRows = 4;
+    var currentPage = 1;
+
+    function showRows(page) {
+        var start = (page - 1) * maxRows;
+        var end = start + maxRows;
+
+        tableRows.forEach(function (row, index) {
+            if (index >= start && index < end) {
+                row.style.display = "table-row";
+            } else {
+                row.style.display = "none";
+            }
+        });
+
+        var totalRows = tableRows.length;
+        var totalPages = Math.ceil(totalRows / maxRows);
+
+        var pageInfo = document.getElementById("pageInfo");
+        if (totalPages > 1) {
+            pageInfo.textContent = "Trang " + page + "/" + totalPages;
+            pageInfo.style.display = "inline"; // Hiển thị thông tin trang
+        } else {
+            pageInfo.style.display = "none"; // Ẩn thông tin trang nếu chỉ có một trang
+        }
+
+        var previousButton = document.getElementById("previousButton");
+        var nextButton = document.getElementById("nextButton");
+
+        if (currentPage === 1) {
+            previousButton.style.display = "none"; // Ẩn nút "Trang trước" khi ở trang đầu tiên
+        } else {
+            previousButton.style.display = "inline";
+        }
+
+        if (currentPage === totalPages || totalPages === 0) {
+            nextButton.style.display = "none"; // Ẩn nút "Trang sau" khi ở trang cuối cùng hoặc không có trang nào
+        } else {
+            nextButton.style.display = "inline";
+        }
+    }
+
+    showRows(currentPage);
+
+    document.getElementById("previousButton").addEventListener("click", function () {
+        if (currentPage > 1) {
+            currentPage--;
+            showRows(currentPage);
+        }
+    });
+
+    document.getElementById("nextButton").addEventListener("click", function () {
+        var totalRows = tableRows.length;
+        var totalPages = Math.ceil(totalRows / maxRows);
+
+        if (currentPage < totalPages) {
+            currentPage++;
+            showRows(currentPage);
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
     // Pie Chart for Order Statuses
     var pieChartElem = document.getElementById('pieChart'); // Lấy phần tử canvas với id 'pieChart'
     var pieLabels = JSON.parse(pieChartElem.getAttribute('data-labels')); // Lấy nhãn từ dữ liệu JSON trong thuộc tính 'data-labels' và chuyển đổi thành mảng

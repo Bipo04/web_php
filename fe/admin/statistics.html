@@ -20,7 +20,7 @@
         <h1 class="text-center">Thống kê</h1>
         <div class="row mt-4">
             <!-- Combined Line and Bar Chart with Time Picker -->
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                         Thống kê theo thời gian
@@ -53,18 +53,91 @@
 
             </class>
             <!-- Pie Chart for Order Statuses -->
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        Thống kê đơn hàng theo ngày
+                        Thống kê đơn hàng danh mục
                     </div>
                     <div class="card-body">
-                        <canvas id="pieChart" data-labels='["Đang xử lý", "Đang giao hàng", "Đã giao hàng"]'
+                        <canvas id="pieChart" data-labels='["Nam", "Đang giao hàng", "Đã giao hàng"]'
                             data-status="[50, 30, 201]">
                         </canvas>
-                    </div>s
+                    </div>
                 </div>
             </div>
+            <h2 class="text-center mb-4">Báo cáo doanh thu sản phẩm</h2>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="dateType">Xem theo:</label>
+                    <select class="form-select" id="dateType">
+                        <option value="day">Ngày</option>
+                        <option value="week">Tuần</option>
+                        <option value="month">Tháng</option>
+                    </select>
+                </div>
+            </div>
+            <table class="table table-bordered mb-5" id="reportTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá nhập</th>
+                        <th>Giá bán</th>
+                        <th>Số lượng bán</th>
+                        <th>Doanh thu</th>
+                        <th>Lợi nhuận</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Sản phẩm A</td>
+                        <td class="costPrice">10000</td>
+                        <td class="sellingPrice">15000</td>
+                        <td class="quantitySold">100</td>
+                        <td class="revenue"></td>
+                        <td class="profit"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Sản phẩm B</td>
+                        <td class="costPrice">100000</td>
+                        <td class="sellingPrice">150000</td>
+                        <td class="quantitySold">130</td>
+                        <td class="revenue"></td>
+                        <td class="profit"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Sản phẩm C</td>
+                        <td class="costPrice">20000</td>
+                        <td class="sellingPrice">35000</td>
+                        <td class="quantitySold">180</td>
+                        <td class="revenue"></td>
+                        <td class="profit"></td>
+                    </tr>
+                    <!-- Thêm các dòng khác tương tự cho các sản phẩm khác -->
+                </tbody>
+            </table>
+            <h2 class="text-center mb-4">Bảng Tổng hợp</h2>
+            <table class="table table-bordered" id="summaryTable">
+                <thead>
+                    <tr>
+                        <th>Tổng số lượng sản phẩm bán ra</th>
+                        <th>Tổng giá trị sản phẩm bán ra</th>
+                        <th>Tổng doanh thu</th>
+                        <th>Lợi nhuận</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="totalProductsSold"></td>
+                        <td class="totalSalesValue"></td>
+                        <td class="totalRevenue"></td>
+                        <td class="totalProfit"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <script src="./js/statistics.js"></script>

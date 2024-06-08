@@ -191,8 +191,8 @@
 .main1 .insights .progress1 .number {
     font-size: 13px;
     position: absolute;
-    top: 7%;
-    left: 10%;
+    top: 20%;
+    left: 25%;
     height: 100%;
     width: 100%;
     display: flex;
@@ -205,9 +205,22 @@
     font-size: 15px;
 }
 
-.main1 .recent_order h2 {
+.main1 .recent_order h2,
+div {
     color: var(--clr-dark);
     padding: 10px;
+}
+
+.main1 .recent_order>div>div button span {
+    background-color: var(--clr-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    text-align: center;
+    padding: 5px;
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+    color: var(--clr-dark);
+    width: 98%;
 }
 
 .main1 .recent_order table {
