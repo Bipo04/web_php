@@ -2,57 +2,59 @@
 class Order extends Controller {
     public $ProductModel;
     public $OrderDetailModel;
-    public $OrderModel;
+    public $OrdersModel;
     
     public function __construct() {
         $this->ProductModel         = $this->model("ProductModels");
         $this->OrderDetailModel    = $this->model('OrderDetailModels');
-        $this->OrderModel          = $this->model('OrderModels');
+        $this->OrdersModel          = $this->model('OrdersModels');
     }
 
     public function index() {
-        $orders = $this->OrderModel->getdata();
-        $this->view('layouts/admin_layout', [
-            'page' => 'order/index',
-            'title' => 'Danh sách đơn hàng',
-            'type' => 'qli',
-            'orders' => $orders
-        ]);
+        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+            $orders = $this->OrdersModel->getdata();
+            $this->view('layouts/admin_layout', [
+                'page' => 'order/index',
+                'title' => 'Danh sách đơn hàng',
+                'type' => 'qli',
+                'orders' => $orders
+            ]);
+        } else {
+            require_once './mvc/errors/forbidden.php';
+        }
     }
 
     public function update() {
-        if(isset($_POST['btn'])) {
-            $req = new Request();
-            unset($_POST['btn']);
-            $data = $req->postFields();
-            $id = $data['id'];
-            unset($data['id']);
-            $this->SupplyModel->update($data, ['id' => $id]);
-            header('location: http://localhost:8088/web/admin/supply');
+        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $id = $_POST['id'];
+                $status = $_POST['status'];
+                $this->OrdersModel->update(['status' => $status], ['id' => $id]);
+            }
+        } else {
+            require_once './mvc/errors/forbidden.php';
         }
-        $id = $_GET['id'];
-        $supply = $this->SupplyModel->findAll(['*'], ['id' => $id]);
-        $this->view('layouts/admin_layout', [
-            'page' => 'supply/update',
-            'title' => 'Chỉnh sửa thông tin nhà cung cấp',
-            'type' => 'qli',
-            'supply' => $supply[0]
-        ]);
     }
 
     public function detail() {
-        // $req = new Request();
-        // $data = $req->getFields();
-        // $id = $data['id'];
-        // $order = $this->OrderModel->findAll(['*'], ['id' => $id]);
-        // $orderDetails = $this->OrderDetailModel->findAll(['*'], ['order_id' => $id]);
-        $this->view('layouts/admin_layout', [
-            'page' => 'order/details',
-            'title' => 'Chi tiết đơn hàng',
-            'type' => 'qli',
-            // 'order' => $order,
-            // 'orderDetails' => $orderDetails
-        ]);
+        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+            $req = new Request();
+            $data = $req->getFields();
+            $id = $data['id'];
+            $order = $this->OrdersModel->findAll(['*'], ['id' => $id]);
+            $select = ['order_id', 'product_id', 'title', 'num', 'price', 'thumbnail'];
+            $orderDetails = $this->OrderDetailModel->selectJoin($select, null, ['order_id' => $id], 
+            'Product', ['product_id', 'id'],  'LEFT');
+            $this->view('layouts/admin_layout', [
+                'page' => 'order/details',
+                'title' => 'Chi tiết đơn hàng',
+                'type' => 'qli',
+                'order' => $order[0],
+                'orderDetails' => $orderDetails
+            ]);
+        } else {
+            require_once './mvc/errors/forbidden.php';
+        }
     }
 }
 ?>

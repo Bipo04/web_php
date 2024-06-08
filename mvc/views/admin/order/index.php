@@ -19,7 +19,7 @@
                         <?php
 $index = 1;
 foreach($data['orders'] as $item) {
-    echo '              <tr>
+    echo '              <tr id="'.$item['id'].'">
                             <td>'.$index++.'</td>
                             <td>'.$item['consignee_name'].'</td>
                             <td>'.$item['phone_number'].'</td>

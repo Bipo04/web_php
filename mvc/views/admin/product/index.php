@@ -65,33 +65,37 @@ function editBtn(btn) {
 }
 
 function deleteBtn(btn) {
-    var row = btn.parentNode.parentNode;
-    var table = row.parentNode;
-    var deletedId = row.id; // Get the ID part from 'row-ID'
-    const xhr = new XMLHttpRequest();
+    var xoa = confirm("Bạn có chắc muốn xóa không?");
+    if (xoa) {
+        var row = btn.parentNode.parentNode;
+        var table = row.parentNode;
+        var deletedId = row.id; // Get the ID part from 'row-ID'
+        const xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function() {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                // Remove row from table
-                table.removeChild(row);
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    // Remove row from table
+                    table.removeChild(row);
 
-                // Update row numbers
-                var rows = table.getElementsByTagName('tr');
-                for (var i = 0; i < rows.length; i++) {
-                    var cells = rows[i].getElementsByTagName('td');
-                    if (cells.length > 0) {
-                        cells[0].innerText = i - 1;
+                    // Update row numbers
+                    var rows = table.getElementsByTagName('tr');
+                    for (var i = 0; i < rows.length; i++) {
+                        var cells = rows[i].getElementsByTagName('td');
+                        if (cells.length > 0) {
+                            cells[0].innerText = i - 1;
+                        }
                     }
+                } else {
+                    alert("Có lỗi xảy ra. Vui lòng thử lại.");
                 }
-            } else {
-                alert("Có lỗi xảy ra. Vui lòng thử lại.");
             }
-        }
-    };
+        };
 
-    xhr.open('POST', 'http://localhost:8088/web/admin/product/delete', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send(`id=${deletedId}`);
+        xhr.open('POST', 'http://localhost:8088/web/admin/product/delete', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(`id=${deletedId}`);
+        console.log("Đã xóa sản phẩm");
+    }
 }
 </script>

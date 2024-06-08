@@ -10,8 +10,8 @@
                         <tr>
                             <th>STT</th>
                             <th width=250px>Họ và tên</th>
-                            <th width=110px>Tên đăng nhập</th>
-                            <th width=140px>Số điện thoại</th>
+                            <th width=110px>Username</th>
+                            <th width=140px>Phone</th>
                             <th>Email</th>
                             <th>Role</th>
                             <th>Ngày tạo</th>
@@ -92,8 +92,10 @@ function editUser(btn) {
     roleCell.appendChild(selectRole);
 
     // Thay đổi nút chỉnh sửa thành "Xác nhận"
-    var editButton = row.querySelector('.btn-primary');
+    var editButton = row.querySelector('.btn-outline-primary');
     editButton.innerText = 'OK';
+    editButton.classList.remove('btn-outline-primary');
+    editButton.classList.add('btn-outline-success');
     editButton.setAttribute('onclick', 'confirmEdit(this)');
 }
 
@@ -112,46 +114,50 @@ function confirmEdit(btn) {
         if (this.readyState == 4 && this.status == 200) {
             // Cập nhật vai trò của người dùng
             roleCell.innerText = newRole;
+            // Thay đổi nút "Xác nhận" thành "Sửa" và gán lại hàm chỉnh sửa
+            btn.innerText = 'Sửa';
+            btn.setAttribute('onclick', 'editUser(this)');
+            btn.classList.remove('btn-outline-success');
+            btn.classList.add('btn-outline-primary');
         }
     };
 
     xhr.open('POST', 'http://localhost:8088/web/admin/user/update', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(`id=${UserId}&role=${newRole}`);
-
-    // Thay đổi nút "Xác nhận" thành "Sửa" và gán lại hàm chỉnh sửa
-    btn.innerText = 'Sửa';
-    btn.setAttribute('onclick', 'editUser(this)');
 }
 
 
 function deleteUser(btn) {
-    var row = btn.parentNode.parentNode;
-    var table = row.parentNode;
+    var xoa = confirm("Bạn có chắc muốn xóa không?");
+    if (xoa) {
+        var row = btn.parentNode.parentNode;
+        var table = row.parentNode;
 
-    // Lấy ID của sản phẩm sẽ bị xóa
-    var deletedUserId = row.id;
+        // Lấy ID của sản phẩm sẽ bị xóa
+        var deletedUserId = row.id;
 
-    const xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            // Xóa hàng
-            table.removeChild(row);
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // Xóa hàng
+                table.removeChild(row);
 
-            // Cập nhật ID của các sản phẩm dưới
-            var rows = table.rows;
-            for (var i = 0; i < rows.length; i++) {
-                var currentProductId = parseInt(rows[i].cells[0].innerText);
-                if (currentProductId > deletedUserId) {
-                    rows[i].cells[0].innerText = currentProductId - 1;
+                // Cập nhật ID của các sản phẩm dưới
+                var rows = table.rows;
+                for (var i = 0; i < rows.length; i++) {
+                    var currentProductId = parseInt(rows[i].cells[0].innerText);
+                    if (currentProductId > deletedUserId) {
+                        rows[i].cells[0].innerText = currentProductId - 1;
+                    }
                 }
             }
-        }
-    };
+        };
 
-    xhr.open('POST', 'http://localhost:8088/web/admin/user', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send(`id=${deletedUserId}`); // Corrected the variable name
+        xhr.open('POST', 'http://localhost:8088/web/admin/user', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(`id=${deletedUserId}`); // Corrected the variable name
+    }
 }
 </script>

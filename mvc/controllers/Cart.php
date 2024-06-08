@@ -2,12 +2,12 @@
 class Cart extends Controller {
     public $ProductModel;
     public $OrderDetailModel;
-    public $OrderModel;
+    public $OrdersModel;
     
     public function __construct() {
-        $this->ProductModel         = $this->model("ProductModels");
+        $this->ProductModel        = $this->model("ProductModels");
         $this->OrderDetailModel    = $this->model('OrderDetailModels');
-        $this->OrderModel          = $this->model('OrderModels');
+        $this->OrdersModel         = $this->model('OrdersModels');
     }
 
     public function index() {
@@ -124,7 +124,7 @@ class Cart extends Controller {
                             'address'           => $_POST['address'],
                             'phone_number'      => $_POST['phone_number']
                 ];
-                $kq = $this->OrderModel->add($data);
+                $kq = $this->OrdersModel->add($data);
                 $result = json_decode($kq, true);
                 if($result['type'] == 'success') {
                     if(isset($_SESSION['buy2'])) {

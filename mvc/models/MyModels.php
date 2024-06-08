@@ -2,9 +2,9 @@
 class MyModels extends Database {
     private $conn;
 
-    // public function __construct() {
-    //     $this->conn = $this->getConnection();
-    // }
+    public function __construct() {
+        $this->conn = $this->getConnection();
+    }
 
     public function getdata($data = ["*"]) {
         $data = implode(",", $data);
@@ -45,6 +45,7 @@ class MyModels extends Database {
             $data_sql = $this->buildUpdateString($data);
             $where_sql = $this->buildWhereString($where);
             $sql = "UPDATE $this->table SET $data_sql WHERE $where_sql";
+            echo $sql;
             $query = $this->conn->prepare($sql);
             if ($query->execute(array_merge(array_values($data), array_values($where)))) {
                 return json_encode(

@@ -44,8 +44,8 @@ textarea {
         </div>
         <div class="form-group mb-3">
             <label for="">Mô tả</label>
-            <div><textarea name="description" id="" style="height=100%; weight=100% color: #6e707e;border: 1px solid #d1d3e2;
-    border-radius: .35rem;"><?=$data['product']['description'] ?></textarea>
+            <div><textarea name="description" id=""
+                    style="height=100%; weight=100%; color: #6e707e;border: 1px solid #d1d3e2; border-radius: .35rem;"><?=$data['product']['description'] ?></textarea>
             </div>
         </div>
         <div class="form-group mb-3">
