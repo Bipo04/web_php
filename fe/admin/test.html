@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biểu đồ Doanh thu Theo Ngày</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div style="width: 75%; margin: auto;">
+        <canvas id="revenueChart"></canvas>
+    </div>
+
+    <div id="data" style="display: none;">
+        <div data-day="Thứ Hai" data-revenue="2200000"></div>
+        <div data-day="Thứ Ba" data-revenue="3500000"></div>
+        <div data-day="Thứ Tư" data-revenue="2800000"></div>
+        <div data-day="Thứ Năm" data-revenue="5000000"></div>
+        <div data-day="Thứ Sáu" data-revenue="4400000"></div>
+        <div data-day="Thứ Bảy" data-revenue="6000000"></div>
+        <div data-day="Chủ Nhật" data-revenue="4500000"></div>
+    </div>
+
+    <script>
+        // Dữ liệu doanh thu từ phần HTML
+        const dataDiv = document.getElementById('data');
+        const labels = [];
+        const revenueData = [];
+
+        // Lặp qua mỗi thẻ div trong phần HTML để lấy dữ liệu
+        dataDiv.querySelectorAll('div').forEach(div => {
+            labels.push(div.dataset.day); // Thêm ngày vào mảng nhãn
+            revenueData.push(parseInt(div.dataset.revenue)); // Thêm doanh thu vào mảng dữ liệu
+        });
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Doanh thu hàng ngày',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: revenueData,
+                fill: false,
+            }]
+        };
+
+        // Cấu hình biểu đồ Chart.js
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return '₫' + value.toLocaleString(); // Hiển thị đơn vị tiền tệ
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Khởi tạo biểu đồ
+        const myChart = new Chart(
+            document.getElementById('revenueChart'),
+            config
+        );
+    </script>
+</body>
+
+</html>

@@ -248,19 +248,19 @@ td {
     margin: 1rem;
 }
 
-.TopSellingProduct {
+.ThongKe {
     font-size: 15px;
     text-align: center;
 
 }
 
-.TopSellingProduct h2 {
+.ThongKe h2 {
     font-size: 2.5rem;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.TopSellingProduct table {
+.ThongKe .card1 {
     background-color: var(--clr-white);
     width: 100%;
     border-radius: var(--card-border-radius);
@@ -271,32 +271,6 @@ td {
     color: var(--clr-dark);
 }
 
-.TopSellingProduct table th,
-td {
-    padding: 15px 0px 15px 0px;
-}
-
-.TopSellingProduct table:hover {
+.ThongKe .card1:hover {
     box-shadow: none;
-}
-
-.TopSellingProduct table tbody tr {
-    height: 3.8rem;
-    border-top: 1px solid var(--clr-dark);
-    color: var(--clr-dark-variant);
-}
-
-.TopSellingProduct table tbody td {
-    height: 3.8rem;
-    border-top: 1px solid var(--clr-dark);
-}
-
-.TopSellingProduct img {
-    width: 70px;
-}
-
-.TopSellingProduct a {
-    text-align: center;
-    display: block;
-    margin: 1rem;
 }
