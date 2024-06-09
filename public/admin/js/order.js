@@ -2,14 +2,13 @@ function editOrder(button) {
     const orderRow = button.closest('tr');
     const statusCell = orderRow.querySelector('.order-status');
     const editButton = button;
-    console.log(editButton.textContent);
     if (editButton.textContent === "Sửa") {
         // Lưu trạng thái hiện tại
         const currentStatus = statusCell.textContent;
         // Tạo dropdown
         statusCell.innerHTML = `
             <select class="form-control">
-                <option ${currentStatus === 'Đang xử lý' ? 'selected' : ''}>Đang xử lý</option>
+                <option ${currentStatus === 'Đang xử lí' ? 'selected' : ''}>Đang xử lí</option>
                 <option ${currentStatus === 'Đang giao hàng' ? 'selected' : ''}>Đang giao hàng</option>
                 <option ${currentStatus === 'Đã giao hàng' ? 'selected' : ''}>Đã giao hàng</option>
             </select>
@@ -21,12 +20,22 @@ function editOrder(button) {
     } else {
         // Lấy trạng thái mới từ dropdown
         const newStatus = statusCell.querySelector('select').value;
-        // Cập nhật trạng thái trong bảng
-        statusCell.textContent = newStatus;
+        const id = orderRow.id;
+        const xhr = new XMLHttpRequest();
 
-        // Đổi nút lại thành "Chỉnh sửa"
-        editButton.textContent = "Sửa";
-        editButton.classList.remove('btn-outline-success');
-        editButton.classList.add('btn-outline-primary');
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // Cập nhật trạng thái trong bảng
+                statusCell.textContent = newStatus;
+                // Đổi nút lại thành "Chỉnh sửa"
+                editButton.textContent = "Sửa";
+                editButton.classList.remove('btn-outline-success');
+                editButton.classList.add('btn-outline-primary');
+            }
+        };
+    
+        xhr.open('POST', 'http://localhost:8088/web/admin/order/update', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(`id=${id}&status=${newStatus}`);
     }
 }

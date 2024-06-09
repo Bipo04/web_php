@@ -1,6 +1,6 @@
 <?php
 require_once "./mvc/models/MyModels.php";
-class OrderModels extends MyModels {
+class OrdersModels extends MyModels {
     protected $table = "Orders";
 }
 ?>

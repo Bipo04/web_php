@@ -6,23 +6,15 @@ class Dashboard extends Controller {
     }
     
     public function index() {
-        // if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-        //     $categories = $this->CategoryModel->getdata();
-        //     $this->view("layouts/admin_layout", [
-        //         "page" => "category/index",
-        //         "title" => "Danh sách danh mục",
-        //         "category" => $categories,
-        //     ]);
-        // } else {
-        //     echo "FORBIDDEN";
-        // }
-
-        $categories = $this->CategoryModel->getdata();
-        $this->view("layouts/admin_layout", [
-            "page" => "dashboard/index",
-            "title" => "Danh sách danh mục",
-            "type" => "none"
-        ]);
+        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+            $this->view("layouts/admin_layout", [
+                "page" => "dashboard/index",
+                "title" => "Dashboard",
+                "type" => "none"
+            ]);
+        } else {
+            require_once './mvc/errors/forbidden.php';
+        }
     }
 
 }

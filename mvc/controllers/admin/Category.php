@@ -6,70 +6,75 @@ class Category extends Controller {
     }
     
     public function index() {
-        // if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-        //     $categories = $this->CategoryModel->getdata();
-        //     $this->view("layouts/admin_layout", [
-        //         "page" => "category/index",
-        //         "title" => "Danh sách danh mục",
-        //         "category" => $categories,
-        //     ]);
-        // } else {
-        //     echo "FORBIDDEN";
-        // }
-
-        $categories = $this->CategoryModel->getdata();
-        $this->view("layouts/admin_layout", [
-            "page" => "category/index",
-            "title" => "Danh sách danh mục",
-            "category" => $categories,
-            "type" => "qli",
-        ]);
+        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+            $categories = $this->CategoryModel->getdata();
+            $this->view("layouts/admin_layout", [
+                "page" => "category/index",
+                "title" => "Danh sách danh mục",
+                "category" => $categories,
+                "type" => "qli",
+            ]);
+        } else {
+            require_once './mvc/errors/forbidden.php';
+        }
     }
     
     public function add() {
-        if(isset($_POST['btn'])) {
-            $req = new Request();
-            unset($_POST['btn']);
-            $data = $req->postFields();
-            $this->CategoryModel->add($data);
-            header('location: http://localhost:8088/web/admin/category');
+        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+            if(isset($_POST['btn'])) {
+                $req = new Request();
+                unset($_POST['btn']);
+                $data = $req->postFields();
+                $this->CategoryModel->add($data);
+                header('location: http://localhost:8088/web/admin/category');
+            }
+    
+            $this->view('layouts/admin_layout', [
+                'page' => 'category/add',
+                'title' => 'Thêm danh mục',
+                "type" => "qli",
+            ]);
+        } else {
+            require_once './mvc/errors/forbidden.php';
         }
-
-        $this->view('layouts/admin_layout', [
-            'page' => 'category/add',
-            'title' => 'Thêm danh mục',
-            "type" => "qli",
-        ]);
     }
     
     public function delete() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $req = new Request();
-            $data = $req->postFields();
-            $id = $data['id'];
-            $this->CategoryModel->deleteById($id);
+        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $req = new Request();
+                $data = $req->postFields();
+                $id = $data['id'];
+                $this->CategoryModel->deleteById($id);
+            }
+        } else {
+            require_once './mvc/errors/forbidden.php';
         }
     }
 
     public function update() {
-        $req = new Request();
-        if(isset($_POST['btn']) && $_POST['btn']) {
-            unset($_POST['btn']);
-            $id = $_POST['id'];
-            unset($_POST['id']);
-            $data = $req->postFields();
-            $this->CategoryModel->update($data, ['id' => $id]);
-            header('location: http://localhost:8088/web/admin/category');
-            die;
+        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+            $req = new Request();
+            if(isset($_POST['btn']) && $_POST['btn']) {
+                unset($_POST['btn']);
+                $id = $_POST['id'];
+                unset($_POST['id']);
+                $data = $req->postFields();
+                $this->CategoryModel->update($data, ['id' => $id]);
+                header('location: http://localhost:8088/web/admin/category');
+                die;
+            }
+            $data = $req->getFields();
+            $a = $this->CategoryModel->findAll(['*'], ['id' => $data['id']]);
+            $this->view("layouts/admin_layout", [
+                "page" => "category/update",
+                "title" => "Sửa danh mục",
+                "category" => $a,
+                "type" => "qli",
+            ]);
+        } else {
+            require_once './mvc/errors/forbidden.php';
         }
-        $data = $req->getFields();
-        $a = $this->CategoryModel->findAll(['*'], ['id' => $data['id']]);
-        $this->view("layouts/admin_layout", [
-            "page" => "category/update",
-            "title" => "Sửa danh mục",
-            "category" => $a,
-            "type" => "qli",
-        ]);
     }
 
 }
