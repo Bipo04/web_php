@@ -1,75 +1,107 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biểu đồ Doanh thu Theo Ngày</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Revenue Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .revenue-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .revenue-section div {
+            flex: 1;
+            margin: 0 10px;
+            padding: 20px;
+            background-color: #e7e7e7;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .revenue-section div h2 {
+            margin: 0 0 10px 0;
+        }
+
+        .revenue-section div p {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <div style="width: 75%; margin: auto;">
-        <canvas id="revenueChart"></canvas>
-    </div>
-
-    <div id="data" style="display: none;">
-        <div data-day="Thứ Hai" data-revenue="2200000"></div>
-        <div data-day="Thứ Ba" data-revenue="3500000"></div>
-        <div data-day="Thứ Tư" data-revenue="2800000"></div>
-        <div data-day="Thứ Năm" data-revenue="5000000"></div>
-        <div data-day="Thứ Sáu" data-revenue="4400000"></div>
-        <div data-day="Thứ Bảy" data-revenue="6000000"></div>
-        <div data-day="Chủ Nhật" data-revenue="4500000"></div>
+    <div class="container">
+        <h1>Revenue Dashboard</h1>
+        <div class="revenue-section">
+            <div>
+                <h2>Daily Revenue</h2>
+                <p id="daily-revenue">Loading...</p>
+            </div>
+            <div>
+                <h2>Weekly Revenue</h2>
+                <p id="weekly-revenue">Loading...</p>
+            </div>
+        </div>
+        <div class="revenue-section">
+            <div>
+                <h2>Monthly Revenue</h2>
+                <p id="monthly-revenue">Loading...</p>
+            </div>
+            <div>
+                <h2>Yearly Revenue</h2>
+                <p id="yearly-revenue">Loading...</p>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Dữ liệu doanh thu từ phần HTML
-        const dataDiv = document.getElementById('data');
-        const labels = [];
-        const revenueData = [];
-
-        // Lặp qua mỗi thẻ div trong phần HTML để lấy dữ liệu
-        dataDiv.querySelectorAll('div').forEach(div => {
-            labels.push(div.dataset.day); // Thêm ngày vào mảng nhãn
-            revenueData.push(parseInt(div.dataset.revenue)); // Thêm doanh thu vào mảng dữ liệu
-        });
-
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Doanh thu hàng ngày',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1,
-                data: revenueData,
-                fill: false,
-            }]
-        };
-
-        // Cấu hình biểu đồ Chart.js
-        const config = {
-            type: 'line',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: function (value) {
-                                return '₫' + value.toLocaleString(); // Hiển thị đơn vị tiền tệ
-                            }
-                        }
-                    }
-                }
+        async function fetchRevenue(type) {
+            try {
+                const response = await fetch(`getRevenue.php?type=${type}`);
+                const data = await response.json();
+                return data.revenue;
+            } catch (error) {
+                console.error('Error fetching revenue:', error);
+                return 'Error';
             }
-        };
+        }
 
-        // Khởi tạo biểu đồ
-        const myChart = new Chart(
-            document.getElementById('revenueChart'),
-            config
-        );
+        async function updateRevenue() {
+            document.getElementById('daily-revenue').innerText = await fetchRevenue('daily');
+            document.getElementById('weekly-revenue').innerText = await fetchRevenue('weekly');
+            document.getElementById('monthly-revenue').innerText = await fetchRevenue('monthly');
+            document.getElementById('yearly-revenue').innerText = await fetchRevenue('yearly');
+        }
+
+        updateRevenue();
     </script>
 </body>
 

@@ -1,104 +1,329 @@
+// // Danh so va chuyen trang cho table1
+// document.addEventListener("DOMContentLoaded", function () {
+//     var tableRows = document.querySelectorAll(".table1 #data1 tr");
+//     var maxRows = 10;
+//     var currentPage = 1;
+
+//     function showRows(page) {
+//         var start = (page - 1) * maxRows;
+//         var end = start + maxRows;
+
+//         tableRows.forEach(function (row, index) {
+//             if (index >= start && index < end) {
+//                 row.style.display = "table-row";
+//             } else {
+//                 row.style.display = "none";
+//             }
+//         });
+
+//         var totalRows = tableRows.length;
+//         var totalPages = Math.ceil(totalRows / maxRows);
+
+//         var pageInfo = document.getElementById("pageInfo");
+//         if (totalPages >= 1) {
+//             pageInfo.textContent = "Trang " + page + "/" + totalPages;
+//             pageInfo.style.display = "inline"; // Hiển thị thông tin trang
+//         } else {
+//             pageInfo.style.display = "none"; // Ẩn thông tin trang nếu chỉ có một trang
+//         }
+
+//         var previousButton = document.getElementById("previousButton");
+//         var nextButton = document.getElementById("nextButton");
+//     }
+
+//     showRows(currentPage);
+
+//     document.getElementById("previousButton").addEventListener("click", function () {
+//         if (currentPage > 1) {
+//             currentPage--;
+//             showRows(currentPage);
+//         }
+//     });
+
+//     document.getElementById("nextButton").addEventListener("click", function () {
+//         var totalRows = tableRows.length;
+//         var totalPages = Math.ceil(totalRows / maxRows);
+
+//         if (currentPage < totalPages) {
+//             currentPage++;
+//             showRows(currentPage);
+//         }
+//     });
+// });
+// document.addEventListener("DOMContentLoaded", function () {
+//     var tableRows = document.querySelectorAll(".table1 #data2 tr");
+//     var maxRows = 10;
+//     var currentPage = 1;
+
+//     function showRows(page) {
+//         var start = (page - 1) * maxRows;
+//         var end = start + maxRows;
+
+//         tableRows.forEach(function (row, index) {
+//             if (index >= start && index < end) {
+//                 row.style.display = "table-row";
+//             } else {
+//                 row.style.display = "none";
+//             }
+//         });
+
+//         var totalRows = tableRows.length;
+//         var totalPages = Math.ceil(totalRows / maxRows);
+
+//         var pageInfo = document.getElementById("pageInfo");
+//         if (totalPages >= 1) {
+//             pageInfo.textContent = "Trang " + page + "/" + totalPages;
+//             pageInfo.style.display = "inline"; // Hiển thị thông tin trang
+//         } else {
+//             pageInfo.style.display = "none"; // Ẩn thông tin trang nếu chỉ có một trang
+//         }
+
+//         var previousButton = document.getElementById("previousButton");
+//         var nextButton = document.getElementById("nextButton");
+//     }
+
+//     showRows(currentPage);
+
+//     document.getElementById("previousButton").addEventListener("click", function () {
+//         if (currentPage > 1) {
+//             currentPage--;
+//             showRows(currentPage);
+//         }
+//     });
+
+//     document.getElementById("nextButton").addEventListener("click", function () {
+//         var totalRows = tableRows.length;
+//         var totalPages = Math.ceil(totalRows / maxRows);
+
+//         if (currentPage < totalPages) {
+//             currentPage++;
+//             showRows(currentPage);
+//         }
+//     });
+// });
+// document.addEventListener("DOMContentLoaded", function () {
+//     var tableRows = document.querySelectorAll(".table1 #data3 tr");
+//     var maxRows = 10;
+//     var currentPage = 1;
+
+//     function showRows(page) {
+//         var start = (page - 1) * maxRows;
+//         var end = start + maxRows;
+
+//         tableRows.forEach(function (row, index) {
+//             if (index >= start && index < end) {
+//                 row.style.display = "table-row";
+//             } else {
+//                 row.style.display = "none";
+//             }
+//         });
+
+//         var totalRows = tableRows.length;
+//         var totalPages = Math.ceil(totalRows / maxRows);
+
+//         var pageInfo = document.getElementById("pageInfo");
+//         if (totalPages >= 1) {
+//             pageInfo.textContent = "Trang " + page + "/" + totalPages;
+//             pageInfo.style.display = "inline"; // Hiển thị thông tin trang
+//         } else {
+//             pageInfo.style.display = "none"; // Ẩn thông tin trang nếu chỉ có một trang
+//         }
+
+//         var previousButton = document.getElementById("previousButton");
+//         var nextButton = document.getElementById("nextButton");
+//     }
+
+//     showRows(currentPage);
+
+//     document.getElementById("previousButton").addEventListener("click", function () {
+//         if (currentPage > 1) {
+//             currentPage--;
+//             showRows(currentPage);
+//         }
+//     });
+
+//     document.getElementById("nextButton").addEventListener("click", function () {
+//         var totalRows = tableRows.length;
+//         var totalPages = Math.ceil(totalRows / maxRows);
+
+//         if (currentPage < totalPages) {
+//             currentPage++;
+//             showRows(currentPage);
+//         }
+//     });
+// });
+// document.addEventListener("DOMContentLoaded", function () {
+//     var tableRows = document.querySelectorAll(".table1 #data4 tr");
+//     var maxRows = 10;
+//     var currentPage = 1;
+
+//     function showRows(page) {
+//         var start = (page - 1) * maxRows;
+//         var end = start + maxRows;
+
+//         tableRows.forEach(function (row, index) {
+//             if (index >= start && index < end) {
+//                 row.style.display = "table-row";
+//             } else {
+//                 row.style.display = "none";
+//             }
+//         });
+
+//         var totalRows = tableRows.length;
+//         var totalPages = Math.ceil(totalRows / maxRows);
+
+//         var pageInfo = document.getElementById("pageInfo");
+//         if (totalPages >= 1) {
+//             pageInfo.textContent = "Trang " + page + "/" + totalPages;
+//             pageInfo.style.display = "inline"; // Hiển thị thông tin trang
+//         } else {
+//             pageInfo.style.display = "none"; // Ẩn thông tin trang nếu chỉ có một trang
+//         }
+
+//         var previousButton = document.getElementById("previousButton");
+//         var nextButton = document.getElementById("nextButton");
+//     }
+
+//     showRows(currentPage);
+
+//     document.getElementById("previousButton").addEventListener("click", function () {
+//         if (currentPage > 1) {
+//             currentPage--;
+//             showRows(currentPage);
+//         }
+//     });
+
+//     document.getElementById("nextButton").addEventListener("click", function () {
+//         var totalRows = tableRows.length;
+//         var totalPages = Math.ceil(totalRows / maxRows);
+
+//         if (currentPage < totalPages) {
+//             currentPage++;
+//             showRows(currentPage);
+//         }
+//     });
+// });
 document.addEventListener("DOMContentLoaded", function () {
-    // Combined Line and Bar Chart with Time Picker
-    var combinedChartElem = document.getElementById('combinedChart');
-    var ctxCombined = combinedChartElem.getContext('2d');
-    var combinedChart = new Chart(ctxCombined, {
-        type: 'bar',
-        data: {
-            labels: JSON.parse(combinedChartElem.getAttribute('data-daily-labels')),
-            datasets: [{
-                label: 'Đơn hàng',
-                type: 'line',
-                data: JSON.parse(combinedChartElem.getAttribute('data-daily-orders')),
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            },
-            {
-                label: 'Doanh thu',
-                type: 'line',
-                data: JSON.parse(combinedChartElem.getAttribute('data-daily-sale')),
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            },
-            {
-                label: 'Lợi nhuận',
-                type: 'line',
-                data: JSON.parse(combinedChartElem.getAttribute('data-daily-income')),
-                backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                borderColor: 'rgba(255, 206, 86, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+    var currentPage = 1;
+
+    function showRows(page) {
+        var tableBody = document.getElementById("data" + page);
+        var tableRows = tableBody.querySelectorAll("tr");
+        var maxRows = 10;
+
+        tableRows.forEach(function (row, index) {
+            if (index < maxRows) {
+                row.style.display = "table-row";
+            } else {
+                row.style.display = "none";
             }
+        });
+
+        var totalRows = tableRows.length;
+        var totalPages = Math.ceil(totalRows / maxRows);
+
+        var pageInfo = document.getElementById("pageInfo");
+        pageInfo.textContent = "Trang " + page + "/" + totalPages;
+
+        var previousButton = document.getElementById("previousButton");
+        var nextButton = document.getElementById("nextButton");
+
+        previousButton.disabled = page === 1;
+        nextButton.disabled = page === totalPages;
+    }
+
+    // Hiển thị trang đầu tiên khi trang web được tải
+    showRows(currentPage);
+
+    // Xử lý sự kiện khi nhấn nút "Trang trước"
+    document.getElementById("previousButton").addEventListener("click", function () {
+        if (currentPage > 1) {
+            currentPage--;
+            showRows(currentPage);
         }
     });
 
-    document.getElementById('timePeriod').addEventListener('change', function () {
-        var period = this.value;
-        if (period === 'daily') {
-            combinedChart.data.labels = JSON.parse(combinedChartElem.getAttribute('data-daily-labels'));
-            combinedChart.data.datasets[0].data = JSON.parse(combinedChartElem.getAttribute('data-daily-orders'));
-            combinedChart.data.datasets[1].data = JSON.parse(combinedChartElem.getAttribute('data-daily-sale'));
-            combinedChart.data.datasets[2].data = JSON.parse(combinedChartElem.getAttribute('data-daily-income'));
-        } else if (period === 'weekly') {
-            combinedChart.data.labels = JSON.parse(combinedChartElem.getAttribute('data-weekly-labels'));
-            combinedChart.data.datasets[0].data = JSON.parse(combinedChartElem.getAttribute('data-weekly-orders'));
-            combinedChart.data.datasets[1].data = JSON.parse(combinedChartElem.getAttribute('data-weekly-sale'));
-            combinedChart.data.datasets[2].data = JSON.parse(combinedChartElem.getAttribute('data-weekly-income'));
-        } else if (period === 'monthly') {
-            combinedChart.data.labels = JSON.parse(combinedChartElem.getAttribute('data-monthly-labels'));
-            combinedChart.data.datasets[0].data = JSON.parse(combinedChartElem.getAttribute('data-monthly-orders'));
-            combinedChart.data.datasets[1].data = JSON.parse(combinedChartElem.getAttribute('data-monthly-sale'));
-            combinedChart.data.datasets[2].data = JSON.parse(combinedChartElem.getAttribute('data-monthly-income'));
+    // Xử lý sự kiện khi nhấn nút "Trang tiếp theo"
+    document.getElementById("nextButton").addEventListener("click", function () {
+        var nextPage = currentPage + 1;
+        var nextTableBody = document.getElementById("data" + nextPage);
+
+        if (nextTableBody) {
+            currentPage++;
+            showRows(currentPage);
         }
-        combinedChart.update();
+    });
+});
+
+// Select Tat ca , Ngay , Thang , Nam
+document.addEventListener("DOMContentLoaded", function () {
+    var selectOption = document.getElementById('selectOption');
+    var tbodyList = document.querySelectorAll('.content-table tbody');
+
+    selectOption.addEventListener('change', function () {
+        var selectedValue = this.value;
+
+        // Ẩn tất cả các tbody
+        tbodyList.forEach(function (tbody) {
+            tbody.classList.add('hidden');
+        });
+
+        // Hiển thị tbody tương ứng với giá trị được chọn
+        var selectedTbody = document.getElementById('data' + selectedValue);
+        if (selectedTbody) {
+            selectedTbody.classList.remove('hidden');
+        }
+    });
+});
+// Danh so va chuyen trang cho table2
+document.addEventListener("DOMContentLoaded", function () {
+    var tableRows = document.querySelectorAll(".TopSellingProduct tbody tr");
+    var maxRows = 5;
+    var currentPage = 1;
+
+    function showRows(page) {
+        var start = (page - 1) * maxRows;
+        var end = start + maxRows;
+
+        tableRows.forEach(function (row, index) {
+            if (index >= start && index < end) {
+                row.style.display = "table-row";
+            } else {
+                row.style.display = "none";
+            }
+        });
+
+        var totalRows = tableRows.length;
+        var totalPages = Math.ceil(totalRows / maxRows);
+
+        var pageInfo = document.getElementById("pageInfo1");
+        if (totalPages >= 1) {
+            pageInfo.textContent = "Trang " + page + "/" + totalPages;
+            pageInfo.style.display = "inline"; // Hiển thị thông tin trang
+        } else {
+            pageInfo.style.display = "none"; // Ẩn thông tin trang nếu chỉ có một trang
+        }
+
+        var previousButton = document.getElementById("previousButton1");
+        var nextButton = document.getElementById("nextButton1");
+    }
+
+    showRows(currentPage);
+
+    document.getElementById("previousButton1").addEventListener("click", function () {
+        if (currentPage > 1) {
+            currentPage--;
+            showRows(currentPage);
+        }
     });
 
-    // Pie Chart for Order Statuses
-    var pieChartElem = document.getElementById('pieChart');
-    var pieLabels = JSON.parse(pieChartElem.getAttribute('data-labels'));
-    var pieData = JSON.parse(pieChartElem.getAttribute('data-status'));
+    document.getElementById("nextButton1").addEventListener("click", function () {
+        var totalRows = tableRows.length;
+        var totalPages = Math.ceil(totalRows / maxRows);
 
-    var ctxPie = pieChartElem.getContext('2d');
-    var pieChart = new Chart(ctxPie, {
-        type: 'pie',
-        data: {
-            labels: pieLabels,
-            datasets: [{
-                data: pieData,
-                backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
-                borderColor: ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            var label = context.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            if (context.parsed !== null) {
-                                label += context.parsed + ' orders';
-                            }
-                            return label;
-                        }
-                    }
-                }
-            }
+        if (currentPage < totalPages) {
+            currentPage++;
+            showRows(currentPage);
         }
     });
 });
