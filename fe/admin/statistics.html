@@ -22,9 +22,48 @@
     <h1 style="text-align: center;margin: 10px;font-size: 30px;">Thống kê</h1>
     <div class="container1">
         <div class="main1">
+            <div style="display: flex;margin-bottom: 10px;">
+                <span>
+                    <h2 style="margin-bottom: 16.6px;">Thống kê doanh thu </h2>
+                </span>
+                <div style="padding-left: 10px;">
+                    <select id="selectPeriod" class=" form-select" aria-label="Default select example"
+                        style="font-size: 13px;width: 100px;">
+                        <option value="daily">Theo Ngày</option>
+                        <option value="monthly">Theo Tháng</option>
+                        <option value="yearly">Theo Năm</option>
+                    </select>
+                </div>
+            </div>
+            <div class="BieuDoDoanhThu">
+                <div>
+                    <canvas id="combinedChart"></canvas>
+                </div>
 
+                <div id="revenueData" style="display: none;">
+                    <div id="dailyData"
+                        data-labels='["Ngày 1", "Ngày 2", "Ngày 3", "Ngày 4", "Ngày 5", "Ngày 6", "Ngày 7"]'
+                        data-values='[100, 150, 200, 180, 220, 250, 300]'></div>
+                    <div id="monthlyData"
+                        data-labels='["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7"]'
+                        data-values='[2000, 2500, 2800, 3000, 3200, 3500, 3800]'></div>
+                    <div id="yearlyData" data-labels='["Năm 2020", "Năm 2021", "Năm 2022", "Năm 2023", "Năm 2024"]'
+                        data-values='[25000, 30000, 35000, 40000, 45000]'></div>
+                </div>
+
+                <div id="profitData" style="display: none;">
+                    <div id="dailyProfit"
+                        data-labels='["Ngày 1", "Ngày 2", "Ngày 3", "Ngày 4", "Ngày 5", "Ngày 6", "Ngày 7"]'
+                        data-values='[50, 75, 100, 90, 110, 125, 150]'></div>
+                    <div id="monthlyProfit"
+                        data-labels='["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7"]'
+                        data-values='[1000, 1250, 1400, 1500, 1600, 1750, 1900]'></div>
+                    <div id="yearlyProfit" data-labels='["Năm 2020", "Năm 2021", "Năm 2022", "Năm 2023", "Năm 2024"]'
+                        data-values='[15000, 18000, 21000, 24000, 27000]'></div>
+                </div>
+            </div>
             <div class="table1">
-                <h2>Đơn hàng gần đây</h2>
+                <h2>Thống kê sản phẩm</h2>
                 <div style="display: flex;justify-content: space-between;padding-right: 30px;">
                     <div style="display: flex;">
                         <div style="min-width: 90px;font-size: 14px;padding: auto;">Sap xep theo:</div>
@@ -166,6 +205,102 @@
                             <td>4</td>
                             <td>400000</td>
                         </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
+                            <td>129000</td>
+                            <td>229000</td>
+                            <td>4</td>
+                            <td>400000</td>
+                        </tr>
                     </tbody>
                     <!-- Thong ke theo Thang -->
                     <tbody id="data3" class="hidden">
@@ -193,7 +328,7 @@
             </div>
         </div>
         <div class="TopSellingProduct">
-            <h2>Top 10 sản phẩm bán chạy</h2>
+            <h2>Top 20 sản phẩm bán chạy</h2>
             <div>
                 <table class="tableTSP">
                     <thead>
@@ -275,9 +410,79 @@
                             </td>
                             <td>13</td>
                         </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ao elsa</td>
+                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
+                            </td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ao elsa</td>
+                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
+                            </td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ao elsa</td>
+                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
+                            </td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ao elsa</td>
+                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
+                            </td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ao elsa</td>
+                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
+                            </td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ao elsa</td>
+                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
+                            </td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ao elsa</td>
+                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
+                            </td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ao elsa</td>
+                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
+                            </td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ao elsa</td>
+                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
+                            </td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ao elsa</td>
+                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
+                            </td>
+                            <td>13</td>
+                        </tr>
                     </tbody>
                 </table>
-                <div class="page1" style="font-size: 13px;padding-left: 250px;">
+                <div class="page1" style="font-size: 13px;padding-left: 250px;padding-top: 5px;">
                     <button id="previousButton1"><span class="material-symbols-outlined" style="font-size: 13px;">
                             arrow_back_ios
                         </span></button>
@@ -291,5 +496,6 @@
     </div>
 </body>
 <script src="./js/statistics.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 
 </html>

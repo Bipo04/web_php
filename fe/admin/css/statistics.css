@@ -19,8 +19,7 @@
 
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
-    --box-shadow: 0 2rem 3rem var(--clr-light);
-
+    --box-shadow: 0rem 0rem 3rem var(--clr-light);
 }
 
 .container1 {
@@ -31,10 +30,14 @@
     margin: 0 auto;
 }
 
+.main1 {
+    width: auto;
+}
+
 .content-table,
 .tableTSP {
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 25px 0 0 0;
     font-size: 0.9em;
     width: 100%;
     border-radius: 5px 5px 0 0;
@@ -73,9 +76,8 @@
 }
 
 .TopSellingProduct {
-    margin-top: 3rem;
+    margin-left: 5px;
     transition: all .3s ease;
-    margin-right: 2rem;
 }
 
 .TopSellingProduct>h2 {
@@ -123,4 +125,16 @@
     width: 25px;
     height: 24.7px;
     border: 0.2px;
+}
+
+.BieuDoDoanhThu {
+    background-color: var(--clr-white);
+    width: 100%;
+    border-radius: 1.5rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+    color: var(--clr-dark);
+    padding: 10px;
+    margin-bottom: 20px;
 }

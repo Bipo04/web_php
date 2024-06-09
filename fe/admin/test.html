@@ -4,104 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revenue Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            width: 80%;
-            max-width: 800px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .revenue-section {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .revenue-section div {
-            flex: 1;
-            margin: 0 10px;
-            padding: 20px;
-            background-color: #e7e7e7;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .revenue-section div h2 {
-            margin: 0 0 10px 0;
-        }
-
-        .revenue-section div p {
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-    </style>
+    <title>Doanh thu</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Revenue Dashboard</h1>
-        <div class="revenue-section">
-            <div>
-                <h2>Daily Revenue</h2>
-                <p id="daily-revenue">Loading...</p>
-            </div>
-            <div>
-                <h2>Weekly Revenue</h2>
-                <p id="weekly-revenue">Loading...</p>
-            </div>
-        </div>
-        <div class="revenue-section">
-            <div>
-                <h2>Monthly Revenue</h2>
-                <p id="monthly-revenue">Loading...</p>
-            </div>
-            <div>
-                <h2>Yearly Revenue</h2>
-                <p id="yearly-revenue">Loading...</p>
-            </div>
-        </div>
+    <div id="revenueData" style="display: none;">
+        <div id="dailyData" data-labels='["Ngày 1", "Ngày 2", "Ngày 3", "Ngày 4", "Ngày 5", "Ngày 6", "Ngày 7"]'
+            data-values='[100, 150, 200, 180, 220, 250, 300]'></div>
+        <div id="monthlyData"
+            data-labels='["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7"]'
+            data-values='[2000, 2500, 2800, 3000, 3200, 3500, 3800]'></div>
+        <div id="yearlyData" data-labels='["Năm 2020", "Năm 2021", "Năm 2022", "Năm 2023", "Năm 2024"]'
+            data-values='[25000, 30000, 35000, 40000, 45000]'></div>
+    </div>
+    <div>
+        <select id="selectPeriod">
+            <option value="daily">Ngày</option>
+            <option value="monthly">Tháng</option>
+            <option value="yearly">Năm</option>
+        </select>
+    </div>
+    <div>
+        <canvas id="revenueChart"></canvas>
     </div>
 
     <script>
-        async function fetchRevenue(type) {
-            try {
-                const response = await fetch(`getRevenue.php?type=${type}`);
-                const data = await response.json();
-                return data.revenue;
-            } catch (error) {
-                console.error('Error fetching revenue:', error);
-                return 'Error';
+        // Lấy dữ liệu từ phần tử HTML
+        const revenueDataDiv = document.getElementById('revenueData');
+        const dailyData = JSON.parse(revenueDataDiv.querySelector('#dailyData').getAttribute('data-values'));
+        const monthlyData = JSON.parse(revenueDataDiv.querySelector('#monthlyData').getAttribute('data-values'));
+        const yearlyData = JSON.parse(revenueDataDiv.querySelector('#yearlyData').getAttribute('data-values'));
+
+        // Thiết lập biểu đồ mặc định
+        let currentData = dailyData;
+        let currentLabels = JSON.parse(revenueDataDiv.querySelector('#dailyData').getAttribute('data-labels'));
+
+        // Thiết lập biểu đồ
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: currentLabels,
+                datasets: [{
+                    label: 'Doanh thu',
+                    data: currentData,
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-        }
+        });
 
-        async function updateRevenue() {
-            document.getElementById('daily-revenue').innerText = await fetchRevenue('daily');
-            document.getElementById('weekly-revenue').innerText = await fetchRevenue('weekly');
-            document.getElementById('monthly-revenue').innerText = await fetchRevenue('monthly');
-            document.getElementById('yearly-revenue').innerText = await fetchRevenue('yearly');
-        }
-
-        updateRevenue();
+        // Lắng nghe sự kiện thay đổi lựa chọn
+        document.getElementById('selectPeriod').addEventListener('change', function () {
+            const selectedValue = this.value;
+            if (selectedValue === 'daily') {
+                currentData = dailyData;
+                currentLabels = JSON.parse(revenueDataDiv.querySelector('#dailyData').getAttribute('data-labels'));
+            } else if (selectedValue === 'monthly') {
+                currentData = monthlyData;
+                currentLabels = JSON.parse(revenueDataDiv.querySelector('#monthlyData').getAttribute('data-labels'));
+            } else if (selectedValue === 'yearly') {
+                currentData = yearlyData;
+                currentLabels = JSON.parse(revenueDataDiv.querySelector('#yearlyData').getAttribute('data-labels'));
+            }
+            revenueChart.data.labels = currentLabels;
+            revenueChart.data.datasets[0].data = currentData;
+            revenueChart.update();
+        });
     </script>
 </body>
 
