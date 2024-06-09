@@ -14,7 +14,7 @@ GROUP BY
     YEAR(order_date), 
     MONTH(order_date);
 
---view giá nhập, giá bán và số lượng bán của từng sản phẩm
+--view giá nhập, giá bán và số lượng bán, lãi của từng sản phẩm
 CREATE VIEW Sale 
 AS
 SELECT 

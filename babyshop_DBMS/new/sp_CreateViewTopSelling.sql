@@ -31,10 +31,10 @@ BEGIN
         Year DESC, Month DESC, total_quantity_sold DESC;
     ');
 
-
 END;
 
 DROP Procedure CreateTopSellingProductsView
-EXEc CreateTopSellingProductsView;
+DROP TopSellingProductsByMonth
+EXEC CreateTopSellingProductsView;
 
 SELECT * FROM TopSellingProducts
