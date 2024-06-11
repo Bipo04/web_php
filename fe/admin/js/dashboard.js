@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }]
         },
         options: {
-            responsive: true, // Biểu đồ có thể phản hồi và điều chỉnh kích thước
+            responsive: false, // Biểu đồ có thể phản hồi và điều chỉnh kích thước
             plugins: {
                 legend: {
                     position: 'top', // Vị trí của chú thích

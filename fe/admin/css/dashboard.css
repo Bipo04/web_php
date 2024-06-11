@@ -288,6 +288,6 @@ td {
     color: var(--clr-dark);
 }
 
-/* .ThongKe .card1:hover {
+.ThongKe .card1:hover {
     box-shadow: none;
-} */
+}
