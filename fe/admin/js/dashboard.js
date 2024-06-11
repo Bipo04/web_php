@@ -90,7 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }]
         },
         options: {
-            responsive: false, // Biểu đồ có thể phản hồi và điều chỉnh kích thước
+            responsive: false,
+            maintainAspectRatio: false,
             plugins: {
                 legend: {
                     position: 'top', // Vị trí của chú thích
@@ -128,6 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }]
         },
         options: {
+            responsive: false,
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true
