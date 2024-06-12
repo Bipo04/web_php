@@ -161,7 +161,7 @@
                 </div>
             </div>
             <h3>Doanh thu theo tuần</h3>
-            <div class="card1" style="margin-bottom:10px">
+            <div class="card1" style="margin-bottom:70px">
                 <canvas id="combinedChart"
                     data-daily-labels='["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"]'
                     data-daily-sale="[20, 30, 25, 35, 30,45,23,12]"  width="auto" height="170">
