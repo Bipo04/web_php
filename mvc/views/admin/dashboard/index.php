@@ -2,7 +2,11 @@
     <div class="container1">
         <div class="main1">
             <div style="display: flex;justify-content: space-between;padding-right: 30px;">
-                <h1>Dashboard</h1>
+                <h2>Dashboard</h2>
+
+                <div class="date1">
+                    <input type="date">
+                </div>
             </div>
 
             <div class="insights">
@@ -13,7 +17,7 @@
                     <div class="middle">
                         <div class="left">
                             <h5>Doanh thu</h5>
-                            <h4>25.000VND</h4>
+                            <h3>25.000VND</h3>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -25,7 +29,7 @@
                     <div class="middle">
                         <div class="left">
                             <h5>Số đơn hàng</h5>
-                            <h4>13 Đơn hàng</h4>
+                            <h3>13 Đơn hàng</h3>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -39,7 +43,7 @@
                     <div class="middle">
                         <div class="left">
                             <h5>Lợi nhuận</h5>
-                            <h4>25.000VND</h4>
+                            <h3>25.000VND</h3>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -47,15 +51,17 @@
                 <!-- end selling -->
             </div>
             <!-- recent order -->
-            <div class="recent_order">
+            <class class="recent_order">
                 <div style="display: flex;justify-content: space-between;padding-right: 30px;">
                     <h2>Đơn hàng gần đây</h2>
                     <div class="page1">
-                        <button id="previousButton"><span class="material-symbols-outlined" style="font-size: 13px;">
+                        <button id="previousButton"><span class="material-symbols-outlined"
+                                style="font-size: 13px;">
                                 arrow_back_ios
                             </span></button>
                         <span id="pageInfo"></span>
-                        <button id="nextButton"><span class="material-symbols-outlined" style="font-size: 13px;">
+                        <button id="nextButton"><span class="material-symbols-outlined"
+                                style="font-size: 13px;">
                                 arrow_forward_ios
                             </span></button>
                     </div>
@@ -142,7 +148,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </class>
             <!-- recent order -->
         </div>
         <div class="ThongKe">
@@ -150,15 +156,15 @@
             <div class="card1">
                 <div class="card1-body">
                     <canvas id="pieChart" data-status="[50, 30, 201]"
-                        data-labels='["Đang xử lý", "Đang giao hàng", "Đã giao hàng"]'>
+                        data-labels='["Đang xử lý", "Đang giao hàng", "Đã giao hàng"]' width="auto" height="310" >
                     </canvas>
                 </div>
             </div>
             <h3>Doanh thu theo tuần</h3>
-            <div class="card1">
+            <div class="card1" style="margin-bottom:10px">
                 <canvas id="combinedChart"
                     data-daily-labels='["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"]'
-                    data-daily-sale="[20, 30, 25, 35, 30,45,23,12]">
+                    data-daily-sale="[20, 30, 25, 35, 30,45,23,12]"  width="auto" height="170">
                 </canvas>
             </div>
         </div>
@@ -167,7 +173,3 @@
 
 <script src="<?=_WEB_ROOT?>/public/admin/js/dashboard.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-</div>
-<div class="a" style="width=100%; height:100px;"></div>
-</div>
-</div>

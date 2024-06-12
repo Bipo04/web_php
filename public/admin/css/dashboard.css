@@ -46,6 +46,7 @@
 }
 
 .body1 {
+    height: auto;
     font-size: 0.88rem;
     user-select: none;
     overflow-x: hidden;
@@ -56,7 +57,7 @@
     display: grid;
     width: 96%;
     gap: 1.8rem;
-    grid-template-columns: 75% 25%;
+    grid-template-columns: 66% 33%;
     margin: 0 auto;
 }
 
@@ -93,7 +94,7 @@
     margin-top: 1rem;
     box-shadow: var(--box-shadow);
     transition: all .3s ease;
-    margin-right: 2rem;
+    margin-right: 1rem;
     max-height: 190px;
 }
 
@@ -161,6 +162,11 @@
 .page1 {
     padding: 15px;
     padding-left: 0px;
+}
+
+.main1 .recent_order>h2,
+div {
+    color: var(--clr-dark);
 }
 
 .main1 .recent_order>div>div button span {
@@ -232,6 +238,9 @@ td {
     box-shadow: var(--box-shadow);
     transition: all .3s ease;
     color: var(--clr-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ThongKe .card1:hover {
