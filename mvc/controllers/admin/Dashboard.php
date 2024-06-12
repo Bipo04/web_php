@@ -15,6 +15,8 @@ class Dashboard extends Controller {
         // } else {
         //     require_once './mvc/errors/forbidden.php';
         // }
+
+        
         $this->view("layouts/admin_layout", [
             "page" => "dashboard/index",
             "title" => "Dashboard",
