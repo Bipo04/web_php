@@ -2,7 +2,7 @@
     <div class="container1">
         <div class="main1">
             <div style="display: flex;justify-content: space-between;padding-right: 30px;">
-                <h2>Dashboard</h2>
+                <h4>Dashboard</h4>
 
                 <div class="date1">
                     <input type="date">
@@ -17,7 +17,7 @@
                     <div class="middle">
                         <div class="left">
                             <h5>Doanh thu</h5>
-                            <h3>25.000VND</h3>
+                            <h4>25.000VND</h4>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -29,7 +29,7 @@
                     <div class="middle">
                         <div class="left">
                             <h5>Số đơn hàng</h5>
-                            <h3>13 Đơn hàng</h3>
+                            <h4>13 Đơn hàng</h4>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -43,7 +43,7 @@
                     <div class="middle">
                         <div class="left">
                             <h5>Lợi nhuận</h5>
-                            <h3>25.000VND</h3>
+                            <h4>25.000VND</h4>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -53,7 +53,7 @@
             <!-- recent order -->
             <class class="recent_order">
                 <div style="display: flex;justify-content: space-between;padding-right: 30px;">
-                    <h2>Đơn hàng gần đây</h2>
+                    <h4>Đơn hàng gần đây</h4>
                     <div class="page1">
                         <button id="previousButton"><span class="material-symbols-outlined"
                                 style="font-size: 13px;">

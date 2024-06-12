@@ -77,8 +77,8 @@
     display: inline-block;
     background-color: var(--clr-white);
     border-radius: var(--border-radius-1);
-    margin-top: 1rem;
-    padding: 0.5rem 1.6rem;
+    /* margin-top: 1rem; */
+    padding: 0.25rem 1.6rem;
 }
 
 .main1 .insights {
@@ -132,7 +132,7 @@
     font-size: 1.6rem;
 }
 
-.main1 h1 {
+/* .main1 h1 {
     color: var(--clr-dark);
 }
 
@@ -142,7 +142,7 @@
 
 .main1 .insights p {
     font-size: 13px;
-}
+} */
 
 .main1 .insights h3 {
     color: var(--clr-dark);
@@ -158,13 +158,13 @@
     font-size: 15px;
 }
 
-.main1 .recent_order>div>h2,
+.main1 .recent_order>div>h4,
 .page1 {
     padding: 15px;
     padding-left: 0px;
 }
 
-.main1 .recent_order>h2,
+.main1 .recent_order>h4,
 div {
     color: var(--clr-dark);
 }
