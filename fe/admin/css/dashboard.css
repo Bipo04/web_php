@@ -1,4 +1,7 @@
 :root {
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
     --clr-primary: #7380ec;
     --clr-danger: #ff7782;
     --clr-success: #41f1b6;
@@ -55,7 +58,7 @@
     display: grid;
     width: 96%;
     gap: 1.8rem;
-    grid-template-columns: auto 40rem;
+    grid-template-columns: 55rem 30rem;
     margin: 0 auto;
 }
 
@@ -82,16 +85,18 @@
 .main1 .insights {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    font-size: 15px;
 }
 
 .main1 .insights>div {
     background-color: var(--clr-white);
-    padding: var(--card-padding);
+    padding: 13px 13px 0px 26px;
     border-radius: var(--card-border-radius);
     margin-top: 1rem;
     box-shadow: var(--box-shadow);
     transition: all .3s ease;
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
+    max-height: 190px;
 }
 
 .main1 .insights>div:hover {
@@ -106,23 +111,19 @@
     font-size: 2rem;
 }
 
+
 .main1 .insights>div.orders span {
     background: var(--clr-primary);
 }
 
-.main1 .insights .orders svg circle {
-    stroke: var(--clr-primary);
-}
 
 .main1 .insights>div.income span {
     background: var(--clr-success);
 }
 
-.main1 .insights .income svg circle {
-    stroke: var(--clr-success);
-}
 
 .main1 .insights>div .middle {
+    max-width: 170px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -152,52 +153,6 @@
     color: var(--clr-dark);
 }
 
-.main1 .insights .progress1 {
-    position: relative;
-    height: 68px;
-    width: 68px;
-    border-radius: 50px;
-}
-
-.main1 .insights svg {
-    width: 100px;
-    height: 80px;
-    position: relative;
-    top: 0;
-}
-
-.main1 .insights svg circle {
-    fill: none;
-    stroke: var(--clr-primary);
-    transform: rotate(270, 80, 80);
-    stroke-width: 5;
-}
-
-.main1 .insights .sales svg circle {
-    stroke-dashoffset: 10;
-    stroke-dasharray: 150;
-}
-
-.main1 .insights .sales svg circle {
-    stroke-dashoffset: 10;
-    stroke-dasharray: 150;
-}
-
-.main1 .insights .sales svg circle {
-    stroke: coral;
-}
-
-.main1 .insights .progress1 .number {
-    font-size: 13px;
-    position: absolute;
-    top: 5%;
-    left: 10%;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .main1 .recent_order {
     margin-top: 2rem;
@@ -267,25 +222,23 @@ td {
 
 .ThongKe {
     font-size: 15px;
-    text-align: center;
-
 }
 
-.ThongKe h2 {
-    font-size: 2.5rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.ThongKe h3 {
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .ThongKe .card1 {
     background-color: var(--clr-white);
     width: 100%;
     border-radius: var(--card-border-radius);
-    padding: var(--card-padding);
+    padding: 10px;
     text-align: center;
     box-shadow: var(--box-shadow);
     transition: all .3s ease;
     color: var(--clr-dark);
+    max-width: 320px;
 }
 
 .ThongKe .card1:hover {
