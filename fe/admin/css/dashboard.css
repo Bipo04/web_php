@@ -58,7 +58,7 @@
     display: grid;
     width: 96%;
     gap: 1.8rem;
-    grid-template-columns: 55rem 30rem;
+    grid-template-columns: 50rem 25rem;
     margin: 0 auto;
 }
 
