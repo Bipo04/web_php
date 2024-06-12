@@ -1,98 +1,172 @@
-<div class="container-fluid">
+<div class="body1">
+    <div class="container1">
+        <div class="main1">
+            <div style="display: flex;justify-content: space-between;padding-right: 30px;">
+                <h1>Dashboard</h1>
+            </div>
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    </div>
-
-    <!-- Content Row -->
-    <div class="row">
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Earnings (Monthly)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+            <div class="insights">
+                <div class="sales">
+                    <span class="material-symbols-outlined">
+                        trending_up
+                    </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h5>Doanh thu</h5>
+                            <h4>25.000VND</h4>
                         </div>
                     </div>
+                    <p>Trong 24 giờ</p>
+                </div>
+                <div class="orders">
+                    <span class="material-symbols-outlined">
+                        order_approve
+                    </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h5>Số đơn hàng</h5>
+                            <h4>13 Đơn hàng</h4>
+                        </div>
+                    </div>
+                    <p>Trong 24 giờ</p>
+                </div>
+                <!-- end selling -->
+                <!-- selling -->
+                <div class="income">
+                    <span class="material-symbols-outlined">
+                        stacked_line_chart
+                    </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h5>Lợi nhuận</h5>
+                            <h4>25.000VND</h4>
+                        </div>
+                    </div>
+                    <p>Trong 24 giờ</p>
+                </div>
+                <!-- end selling -->
+            </div>
+            <!-- recent order -->
+            <div class="recent_order">
+                <div style="display: flex;justify-content: space-between;padding-right: 30px;">
+                    <h2>Đơn hàng gần đây</h2>
+                    <div class="page1">
+                        <button id="previousButton"><span class="material-symbols-outlined" style="font-size: 13px;">
+                                arrow_back_ios
+                            </span></button>
+                        <span id="pageInfo"></span>
+                        <button id="nextButton"><span class="material-symbols-outlined" style="font-size: 13px;">
+                                arrow_forward_ios
+                            </span></button>
+                    </div>
+                </div>
+                <table id="recentOrderTable">
+                    <thead>
+                        <tr>
+                            <th>Người đặt hàng</th>
+                            <th>Giá trị</th>
+                            <th>Thời gian</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Trần Thùy Hà</td>
+                            <td>456000VND</td>
+                            <td>2024-03-18 16:12:50</td>
+                            <td class="text-danger">Đang xử lí</td>
+                            <td class="text-primary"><a href="">Chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trần Thùy Hà</td>
+                            <td>456000VND</td>
+                            <td>2024-03-18 16:12:50</td>
+                            <td class="text-danger">Đang xử lí</td>
+                            <td class="text-primary"><a href="">Chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trần Thùy Hà</td>
+                            <td>456000VND</td>
+                            <td>2024-03-18 16:12:50</td>
+                            <td class="text-danger">Đang xử lí</td>
+                            <td class="text-primary"><a href="">Chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trần Thùy Hà</td>
+                            <td>456000VND</td>
+                            <td>2024-03-18 16:12:50</td>
+                            <td class="text-danger">Đang xử lí</td>
+                            <td class="text-primary"><a href="">Chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trần Thùy Hà 123</td>
+                            <td>456000VND</td>
+                            <td>2024-03-18 16:12:50</td>
+                            <td class="text-danger">Đang xử lí</td>
+                            <td class="text-primary"><a href="">Chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trần Thùy Hà</td>
+                            <td>456000VND</td>
+                            <td>2024-03-18 16:12:50</td>
+                            <td class="text-danger">Đang xử lí</td>
+                            <td class="text-primary"><a href="">Chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trần Thùy Hà</td>
+                            <td>456000VND</td>
+                            <td>2024-03-18 16:12:50</td>
+                            <td class="text-danger">Đang xử lí</td>
+                            <td class="text-primary"><a href="">Chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trần Thùy Hà</td>
+                            <td>456000VND</td>
+                            <td>2024-03-18 16:12:50</td>
+                            <td class="text-danger">Đang xử lí</td>
+                            <td class="text-primary"><a href="">Chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trần Thùy Hà</td>
+                            <td>456000VND</td>
+                            <td>2024-03-18 16:12:50</td>
+                            <td class="text-danger">Đang xử lí</td>
+                            <td class="text-primary"><a href="">Chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <td>Trần Thùy Hà</td>
+                            <td>456000VND</td>
+                            <td>2024-03-18 16:12:50</td>
+                            <td class="text-danger">Đang xử lí</td>
+                            <td class="text-primary"><a href="">Chi tiết</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- recent order -->
+        </div>
+        <div class="ThongKe">
+            <h3>Đơn hàng theo ngày</h3>
+            <div class="card1">
+                <div class="card1-body">
+                    <canvas id="pieChart" data-status="[50, 30, 201]"
+                        data-labels='["Đang xử lý", "Đang giao hàng", "Đã giao hàng"]'>
+                    </canvas>
                 </div>
             </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Earnings (Annual)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
-                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pending Requests Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pending Requests</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
+            <h3>Doanh thu theo tuần</h3>
+            <div class="card1">
+                <canvas id="combinedChart"
+                    data-daily-labels='["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"]'
+                    data-daily-sale="[20, 30, 25, 35, 30,45,23,12]">
+                </canvas>
             </div>
         </div>
     </div>
 </div>
 
-</div>
+<script src="<?=_WEB_ROOT?>/public/admin/js/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 </div>
 <div class="a" style="width=100%; height:100px;"></div>
 </div>
