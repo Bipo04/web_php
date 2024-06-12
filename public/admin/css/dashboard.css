@@ -46,7 +46,6 @@
 }
 
 .body1 {
-    height: 100vh;
     font-size: 0.88rem;
     user-select: none;
     overflow-x: hidden;
@@ -57,11 +56,7 @@
     display: grid;
     width: 96%;
     gap: 1.8rem;
-<<<<<<< HEAD
-    grid-template-columns: 50rem 25rem;
-=======
-    grid-template-columns: 66% 33%;
->>>>>>> origin
+    grid-template-columns: 75% 25%;
     margin: 0 auto;
 }
 
@@ -98,11 +93,7 @@
     margin-top: 1rem;
     box-shadow: var(--box-shadow);
     transition: all .3s ease;
-<<<<<<< HEAD
-    margin-right: 1rem;
-=======
     margin-right: 2rem;
->>>>>>> origin
     max-height: 190px;
 }
 
@@ -170,11 +161,6 @@
 .page1 {
     padding: 15px;
     padding-left: 0px;
-}
-
-.main1 .recent_order>h2,
-div {
-    color: var(--clr-dark);
 }
 
 .main1 .recent_order>div>div button span {

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 
+<?php
+$page = explode('/', $data['page']);
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -20,11 +24,15 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo _WEB_ROOT ?>/public/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <?php
+if($page[0] == 'dashboard') {
+    echo '    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="'._WEB_ROOT.'/public/admin/css/dashboard.css">';
+}
+?>
 
 </head>
-<?php
-$page = explode('/', $data['page']);
-?>
 
 <body id="page-top">
 
