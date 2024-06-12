@@ -95,7 +95,7 @@
     margin-top: 1rem;
     box-shadow: var(--box-shadow);
     transition: all .3s ease;
-    /* margin-right: 2rem; */
+    margin-right: 1rem;
     max-height: 190px;
 }
 
