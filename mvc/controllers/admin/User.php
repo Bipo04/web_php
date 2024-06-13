@@ -7,7 +7,7 @@ class User extends Controller {
     }
 
     public function index() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             $select =   ['Users.id', 'fullname', 'username', 'email',
                         'phone_number', 'address', 'Roles.name', 'created_at'];
             $users = $this->UserModel->selectJoin($select ,null, null, 'Roles', ['role_id', 'id'], 'INNER');
@@ -40,7 +40,7 @@ class User extends Controller {
     // }
 
     public function update() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $id = $_POST['id'];
                 $role = strtolower($_POST['role']);
@@ -54,7 +54,7 @@ class User extends Controller {
     }
 
     public function delete() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $req = new Request();
                 $data = $req->postFields();

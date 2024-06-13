@@ -6,7 +6,7 @@
         </p>
         <?php
 $totalPrice = 0;
-if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+if(isset($_SESSION[$_COOKIE['userId']]['cart']) && count($_SESSION[$_COOKIE['userId']]['cart']) > 0) {
     echo '        <div class="card" style="margin-bottom: 10px;">
     <div class="card-body p-4">
         <div class="row align-items-center">
@@ -30,7 +30,7 @@ if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
         </div>
     </div>
 </div>';
-    foreach($_SESSION['cart'] as  $key => $item) {
+    foreach($_SESSION[$_COOKIE['userId']]['cart'] as  $key => $item) {
     $gia = $item['price']*$item['quantity'];
     echo '<div class="card">
     <div class="card-body p-4">

@@ -11,7 +11,7 @@ class Order extends Controller {
     }
 
     public function index() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             $orders = $this->OrdersModel->getdata();
             $this->view('layouts/admin_layout', [
                 'page' => 'order/index',
@@ -25,7 +25,7 @@ class Order extends Controller {
     }
 
     public function update() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $id = $_POST['id'];
                 $status = $_POST['status'];
@@ -37,7 +37,7 @@ class Order extends Controller {
     }
 
     public function detail() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             $req = new Request();
             $data = $req->getFields();
             $id = $data['id'];

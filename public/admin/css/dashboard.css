@@ -107,7 +107,6 @@
     padding: 0.5rem;
     border-radius: 50%;
     color: var(--clr-white);
-    font-size: 2rem;
 }
 
 
@@ -164,10 +163,6 @@
     padding-left: 0px;
 }
 
-.main1 .recent_order>h4,
-div {
-    color: var(--clr-dark);
-}
 
 .main1 .recent_order>div>div button span {
     background-color: var(--clr-white);

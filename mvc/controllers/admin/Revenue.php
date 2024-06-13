@@ -1,17 +1,21 @@
 <?php
 class Revenue extends Controller {
-    // public $SupplyModel;
+    public $OrdersModel;
 
     public function __construct() {
-        // $this->SupplyModel = $this->model('SupplyModels');
+        $this->OrdersModel = $this->model('OrdersModels');
     }
 
     public function index() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
+            $data = $this->OrdersModel->queryExecute("SELECT *
+                                                    FROM DayProfit('2024-06-13')
+                                                    ORDER BY sold;"
+                                                    );
             $this->view('layouts/admin_layout', [
                 'page' => 'revenue/index',
-                'title' => 'Danh sách nhà cung cấp',
                 'type' => 'none',
+                'revenue' => $data
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';

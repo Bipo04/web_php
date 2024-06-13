@@ -16,22 +16,17 @@ foreach($data['categories'] as $item) {
         <div class="product-list-container">
             <div class="product-select">
                 <h5 class="product-list-title">NEW RELEASES</h5>
-                <form action="a.php" method="POST">
-                    <select id="sortSelect" class="sort-select">
-                        <option value="default"
-                            <?php if (isset($_SESSION['sort']) && $_SESSION['sort'] == 'default') echo 'selected'; ?>>
-                            Giá
-                        </option>
-                        <option value="asc"
-                            <?php if (isset($_SESSION['sort']) && $_SESSION['sort'] == 'asc') echo 'selected'; ?>>Giá:
-                            Tăng dần
-                        </option>
-                        <option value="desc"
-                            <?php if (isset($_SESSION['sort']) && $_SESSION['sort'] == 'desc') echo 'selected'; ?>>Giá:
-                            Giảm
-                            dần</option>
-                    </select>
-                </form>
+                <select id="sortSelect" class="sort-select">
+                    <option value="default" <?php if($data['order'] == 'default') echo 'selected'; ?>>
+                        Giá
+                    </option>
+                    <option value="asc" <?php if ($data['order'] == 'asc') echo 'selected'; ?>>Giá:
+                        Tăng dần
+                    </option>
+                    <option value="desc" <?php if ($data['order'] == 'desc') echo 'selected'; ?>>Giá:
+                        Giảm
+                        dần</option>
+                </select>
             </div>
 
             <div class="product-list">
@@ -82,20 +77,10 @@ document.addEventListener("click", (event) => {
 // });
 
 document.getElementById('sortSelect').addEventListener('change', function() {
-    // Lấy giá trị của lựa chọn
-    var sortValue = this.value;
-
-    // Tạo một yêu cầu POST mới
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8088/web/category/girl', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            window.location.reload();
-        }
-    };
-    // Gửi dữ liệu lên server
-    xhr.send('sort=' + sortValue);
+    const currentUrl = window.location.href;
+    const url = currentUrl.split('?')[0];
+    console.log(url);
+    const sortValue = this.value;
+    window.location.href = `${url}?order=${sortValue}&sortBy=price`;
 });
 </script>

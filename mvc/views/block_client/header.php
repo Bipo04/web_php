@@ -35,7 +35,20 @@ foreach($data['css'] as $style) {
                 <a href="http://localhost:8088/web/cart"><button class="cart-text"><i
                             class="fa-solid fa-cart-shopping"></i></button></a>
                 <?php
-if(isset($_SESSION['user'])) {
+if(isset($_COOKIE['userId'])) {
+    if($_SESSION[$_COOKIE['userId']]['role_id'] == 1) {
+        echo '<button class="profile-text"><i class="fa-solid fa-user"></i> Profile</i></button>
+    <div class="profile-dropdown dropdown-active">
+        <ul>
+            <li style="margin-top: 10px"><a href="http://localhost:8088/web/admin/dashboard">Quản lí</a>
+            </li>
+            <li><a href="http://localhost:8088/web/account/profile">Thông tin</a>
+            </li>
+            <li><a href="http://localhost:8088/web/auth/logout">Đăng xuất</a></li>
+        </ul>
+    </div>';
+    }
+    else {
     echo '<button class="profile-text"><i class="fa-solid fa-user"></i> Profile</i></button>
     <div class="profile-dropdown dropdown-active">
         <ul>
@@ -44,6 +57,7 @@ if(isset($_SESSION['user'])) {
             <li><a href="http://localhost:8088/web/auth/logout">Đăng xuất</a></li>
         </ul>
     </div>';
+    }
 }
 else {
     echo '<a href="http://localhost:8088/web/auth/login"><button class="profile-text">Đăng nhập</button></a>';

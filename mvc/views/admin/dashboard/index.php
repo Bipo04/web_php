@@ -16,8 +16,8 @@
                     </span>
                     <div class="middle">
                         <div class="left">
-                            <h5>Doanh thu</h5>
-                            <h4>25.000VND</h4>
+                            <h6 style="margin-top:8px">Số đơn hàng</h6>
+                            <h4>5</h4>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -28,8 +28,8 @@
                     </span>
                     <div class="middle">
                         <div class="left">
-                            <h5>Số đơn hàng</h5>
-                            <h4>13 Đơn hàng</h4>
+                            <h6 style="margin-top:8px">Doanh thu</h6>
+                            <h4>25.000VND</h4>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -42,7 +42,7 @@
                     </span>
                     <div class="middle">
                         <div class="left">
-                            <h5>Lợi nhuận</h5>
+                            <h6 style="margin-top:8px">Lợi nhuận</h6>
                             <h4>25.000VND</h4>
                         </div>
                     </div>
@@ -55,13 +55,11 @@
                 <div style="display: flex;justify-content: space-between;padding-right: 30px;">
                     <h4>Đơn hàng gần đây</h4>
                     <div class="page1">
-                        <button id="previousButton"><span class="material-symbols-outlined"
-                                style="font-size: 13px;">
+                        <button id="previousButton"><span class="material-symbols-outlined" style="font-size: 13px;">
                                 arrow_back_ios
                             </span></button>
                         <span id="pageInfo"></span>
-                        <button id="nextButton"><span class="material-symbols-outlined"
-                                style="font-size: 13px;">
+                        <button id="nextButton"><span class="material-symbols-outlined" style="font-size: 13px;">
                                 arrow_forward_ios
                             </span></button>
                     </div>
@@ -156,7 +154,7 @@
             <div class="card1">
                 <div class="card1-body">
                     <canvas id="pieChart" data-status="[50, 30, 201]"
-                        data-labels='["Đang xử lý", "Đang giao hàng", "Đã giao hàng"]' width="auto" height="310" >
+                        data-labels='["Đang xử lý", "Đang giao hàng", "Đã giao hàng"]' width="auto" height="310">
                     </canvas>
                 </div>
             </div>
@@ -164,7 +162,7 @@
             <div class="card1" style="margin-bottom:70px">
                 <canvas id="combinedChart"
                     data-daily-labels='["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"]'
-                    data-daily-sale="[20, 30, 25, 35, 30,45,23,12]"  width="auto" height="170">
+                    data-daily-sale="[20, 30, 25, 35, 30,45,23,12]" width="auto" height="170">
                 </canvas>
             </div>
         </div>

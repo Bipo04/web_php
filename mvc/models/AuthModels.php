@@ -11,15 +11,30 @@ class AuthModels extends Database {
         if($kq) {
             if (password_verify($data['password'], $kq['password'])) {
                 if($kq['role_id'] == "1") {
-                    $_SESSION['user'] = $kq;
+                    $role = 'admin';
                 } else if($kq['role_id'] == 2) {
-                    $_SESSION['user'] = $kq;
+                   $role = 'user';
                 }
-                return true;
+                return json_encode(
+                    array(
+                        'type'  => 'success',
+                        'id'    => $kq['id'],
+                        'role'  => $role,
+                        'data'  => $kq,
+                    )
+                );
             }
-            return false;
+            return json_encode(
+                array(
+                    'type'  => 'fail',
+                )
+            );
         }
-        return false;
+        return json_encode(
+            array(
+                'type'  => 'fail',
+            )
+        );
     }
 
     public function register($data) {

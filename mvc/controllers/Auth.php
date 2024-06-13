@@ -16,12 +16,20 @@ class Auth extends Controller {
             $request = new Request;
             $data = $request->postFields();           
             $result = $this->AuthModel->login($data);
-            if($result) {
-                if($_SESSION['user']['role_id'] == '1') {
-                    header("Location: http://localhost:8088/web/admin/category");
+            $check = json_decode($result,true);
+            if($check['type'] == 'success') {
+                $id = 'id_' . $check['id'];
+                session_unset(); // Properly clear the session
+                setcookie('userId', $id, time() + (86400 * 30), "/");
+                $_SESSION[$id] = $check['data'];
+
+                if ($check['role'] == 'admin') {
+                    header("Location: http://localhost:8088/web/admin/dashboard");
+                    exit(); // Ensure no further code execution
                 }
-                if($_SESSION['user']['role_id'] == '2') {
+                if ($check['role'] == 'user') {
                     header("Location: http://localhost:8088/web/home");
+                    exit(); // Ensure no further code execution
                 }
         
             } else {
@@ -49,7 +57,8 @@ class Auth extends Controller {
     }
 
     public function logout() {
-        session_unset();
+        unset($_SESSION[$_COOKIE['userId']]);
+        setcookie('userId', $id, 0, "/");
         header('location: http://localhost:8088/web/auth/login');
     }
 }

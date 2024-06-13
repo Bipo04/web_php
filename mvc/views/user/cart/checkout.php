@@ -6,22 +6,22 @@
                 <div class="title">Địa chỉ nhận hàng</div>
                 <div class="content-profile">
                     <div class="content-profile-item" id="n">
-                        <?php if(isset($_SESSION['temp']) && $_SESSION['temp']['fullname'] != '') {
-                            echo $_SESSION['temp']['fullname']; 
+                        <?php if(isset($_SESSION[$_COOKIE['userId']]['temp']) && $_SESSION[$_COOKIE['userId']]['temp']['fullname'] != '') {
+                            echo $_SESSION[$_COOKIE['userId']]['temp']['fullname']; 
                         }
-                        else echo $_SESSION['user']['fullname']; ?>
+                        else echo $_SESSION[$_COOKIE['userId']]['fullname']; ?>
                     </div>
                     <div class="content-profile-item" id="p">
-                        <?php if(isset($_SESSION['temp']) && $_SESSION['temp']['phone_number'] != '') {
-                            echo $_SESSION['temp']['phone_number']; 
+                        <?php if(isset($_SESSION[$_COOKIE['userId']]['temp']) && $_SESSION[$_COOKIE['userId']]['temp']['phone_number'] != '') {
+                            echo $_SESSION[$_COOKIE['userId']]['temp']['phone_number']; 
                         }
-                        else echo $_SESSION['user']['phone_number']; ?>
+                        else echo $_SESSION[$_COOKIE['userId']]['phone_number']; ?>
                     </div>
                     <div class="content-profile-item" id="a">
-                        <?php if(isset($_SESSION['temp']) && $_SESSION['temp']['address'] != '') {
-                            echo $_SESSION['temp']['address']; 
+                        <?php if(isset($_SESSION[$_COOKIE['userId']]['temp']) && $_SESSION[$_COOKIE['userId']]['temp']['address'] != '') {
+                            echo $_SESSION[$_COOKIE['userId']]['temp']['address']; 
                         }
-                        else echo $_SESSION['user']['address']; ?>
+                        else echo $_SESSION[$_COOKIE['userId']]['address']; ?>
                     </div>
                     <div class="content-profile-item" id="change"><button>Thay đổi</button></div>
                 </div>
@@ -54,7 +54,7 @@ if($data['cart']) {
     $result = $data['cart'];
 }
 else {
-    $result = $_SESSION['cart'];
+    $result = $_SESSION[$_COOKIE['userId']]['cart'];
 }
 foreach($result as $item) {
     $totalPrice += $item['price']*$item['quantity'];
@@ -103,24 +103,24 @@ echo '    <div class="flex-end">
             <div class="Modal-formbuy">
                 <div>
                     <label for="fullname">Họ tên người nhận:</label>
-                    <input type="text" id="fullname" name="fullname" value="<?php if(isset($_SESSION['temp']) && $_SESSION['temp']['fullname'] != '') {
-                            echo $_SESSION['temp']['fullname']; 
+                    <input type="text" id="fullname" name="fullname" value="<?php if(isset($_SESSION[$_COOKIE['userId']]['temp']) && $_SESSION[$_COOKIE['userId']]['temp']['fullname'] != '') {
+                            echo $_SESSION[$_COOKIE['userId']]['temp']['fullname']; 
                         }
-                        else echo $_SESSION['user']['fullname']; ?>">
+                        else echo $_SESSION[$_COOKIE['userId']]['fullname']; ?>">
                 </div>
                 <div>
                     <label for="phone_number">Số điện thoại:</label>
-                    <input type="text" id="phone_number" name="phone_number" value="<?php if(isset($_SESSION['temp']) && $_SESSION['temp']['phone_number'] != '') {
-                            echo $_SESSION['temp']['phone_number']; 
+                    <input type="text" id="phone_number" name="phone_number" value="<?php if(isset($_SESSION[$_COOKIE['userId']]['temp']) && $_SESSION[$_COOKIE['userId']]['temp']['phone_number'] != '') {
+                            echo $_SESSION[$_COOKIE['userId']]['temp']['phone_number']; 
                         }
-                        else echo $_SESSION['user']['phone_number']; ?>">
+                        else echo $_SESSION[$_COOKIE['userId']]['phone_number']; ?>">
                 </div>
                 <div>
                     <label for="address">Địa chỉ nhận hàng:</label>
-                    <input type="text" id="address" name="address" value="<?php if(isset($_SESSION['temp']) && $_SESSION['temp']['address'] != '') {
-                            echo $_SESSION['temp']['address']; 
+                    <input type="text" id="address" name="address" value="<?php if(isset($_SESSION[$_COOKIE['userId']]['temp']) && $_SESSION[$_COOKIE['userId']]['temp']['address'] != '') {
+                            echo $_SESSION[$_COOKIE['userId']]['temp']['address']; 
                         }
-                        else echo $_SESSION['user']['address']; ?>">
+                        else echo $_SESSION[$_COOKIE['userId']]['address']; ?>">
                 </div>
                 <div>
                     <div class="btn btn-primary" id="saveChangesBtn">Lưu thay đổi</div>

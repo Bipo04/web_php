@@ -90,9 +90,8 @@
     display: block;
     position: absolute;
     background-color: #e1d9d9bd;
-    top: 39px;
+    top: 46px;
     width: 120px;
-
     z-index: 102;
     border-radius: 5px;
 }

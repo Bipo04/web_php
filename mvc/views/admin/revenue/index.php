@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="h3 mb-2 text-gray-800 text-center"><?php echo $data['title'] ?></h1>
+    <h1 class="h3 mb-2 text-gray-800 text-center">Bảng tổng hợp</h1>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <h1 class="h3 mb-2 text-gray-800 text-center"><?php echo $data['title'] ?></h1>
+    <h1 class="h3 mb-2 text-gray-800 text-center">Thống kê theo sản phẩm</h1>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
@@ -42,33 +42,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Sản phẩm A</td>
-                            <td class="costPrice">10000</td>
-                            <td class="sellingPrice">15000</td>
-                            <td class="quantitySold">100</td>
+                        <?php
+$index = 1;
+foreach($data['revenue'] as $item) {
+    echo '              <tr>
+                            <td>'.$index++.'</td>
+                            <td>'.$item['Name'].'</td>
+                            <td class="costPrice">'.$item['Inbound_price'].'</td>
+                            <td class="sellingPrice">'.$item['Outbound_price'].'</td>
+                            <td class="quantitySold">'.$item['sold'].'</td>
                             <td class="revenue"></td>
                             <td class="profit"></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Sản phẩm B</td>
-                            <td class="costPrice">100000</td>
-                            <td class="sellingPrice">150000</td>
-                            <td class="quantitySold">130</td>
-                            <td class="revenue"></td>
-                            <td class="profit"></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Sản phẩm C</td>
-                            <td class="costPrice">20000</td>
-                            <td class="sellingPrice">35000</td>
-                            <td class="quantitySold">180</td>
-                            <td class="revenue"></td>
-                            <td class="profit"></td>
-                        </tr>
+                        </tr>';
+}
+?>
                         <!-- Thêm các dòng khác tương tự cho các sản phẩm khác -->
                     </tbody>
                 </table>
@@ -80,3 +67,8 @@
 <div class="a" style="width=100%; height:100px;"></div>
 </div>
 </div>
+
+
+<script>
+
+</script>

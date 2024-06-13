@@ -7,7 +7,7 @@ class Supply extends Controller {
     }
 
     public function index() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             $supplies = $this->SupplyModel->getdata();
             $this->view('layouts/admin_layout', [
                 'page' => 'supply/index',
@@ -21,7 +21,7 @@ class Supply extends Controller {
     }
 
     public function add() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             if(isset($_POST['btn'])) {
                 $req = new Request();
                 unset($_POST['btn']);
@@ -41,7 +41,7 @@ class Supply extends Controller {
     }
 
     public function update() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             if(isset($_POST['btn'])) {
                 $req = new Request();
                 unset($_POST['btn']);
@@ -65,7 +65,7 @@ class Supply extends Controller {
     }
 
     public function delete() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $req = new Request();
                 $data = $req->postFields();

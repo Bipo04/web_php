@@ -6,7 +6,7 @@ class Category extends Controller {
     }
     
     public function index() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             $categories = $this->CategoryModel->getdata();
             $this->view("layouts/admin_layout", [
                 "page" => "category/index",
@@ -20,7 +20,7 @@ class Category extends Controller {
     }
     
     public function add() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             if(isset($_POST['btn'])) {
                 $req = new Request();
                 unset($_POST['btn']);
@@ -40,7 +40,7 @@ class Category extends Controller {
     }
     
     public function delete() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $req = new Request();
                 $data = $req->postFields();
@@ -53,7 +53,7 @@ class Category extends Controller {
     }
 
     public function update() {
-        if(isset($_SESSION['user']) && $_SESSION['user']['role_id'] == '1') {
+        if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             $req = new Request();
             if(isset($_POST['btn']) && $_POST['btn']) {
                 unset($_POST['btn']);

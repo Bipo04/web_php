@@ -104,10 +104,10 @@ if($page[0] == 'dashboard') {
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Báo cáo:</h6>
-                        <a class="collapse-item" href="#">Doanh thu</a>
-                        <a class="collapse-item" href="#">Borders</a>
-                        <a class="collapse-item" href="#">Animations</a>
-                        <a class="collapse-item" href="#">Other</a>
+                        <a class="collapse-item <?php if($page[0] == 'revenue') echo 'active'; ?>"
+                            href="http://localhost:8088/web/admin/revenue">Doanh thu</a>
+                        <a class="collapse-item <?php if($page[0] == 'topsale') echo 'active'; ?>"
+                            href="http://localhost:8088/web/admin/topsale">Top sale</a>
                     </div>
                 </div>
             </li>
@@ -140,15 +140,8 @@ if($page[0] == 'dashboard') {
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
+                            <a class="dropdown-item" href="http://localhost:8088/web/home">Trang chủ</a>
+                            <a class="dropdown-item" href="http://localhost:8088/web/auth/logout">Đăng xuất</a>
                         </div>
                     </li>
 

@@ -16,8 +16,8 @@ class Account extends Controller {
     }
 
     public function purchase() {
-        $kq = $this->OrdersModels->findAll(['*'], ['user_id' => $_SESSION['user']['id']]);
-        $data = $this->OrdersModels->queryExecute('SELECT * FROM dbo.getPurchase('.$_SESSION['user']['id'].')');
+        $kq = $this->OrdersModels->findAll(['*'], ['user_id' => $_SESSION[$_COOKIE['userId']]['id']]);
+        $data = $this->OrdersModels->queryExecute('SELECT * FROM dbo.getPurchase('.$_SESSION[$_COOKIE['userId']]['id'].')');
         for($i = 0; $i < count($kq); $i++) {
             foreach($data as $a) {
                 if($a['order_id'] == $kq[$i]['id']) {
