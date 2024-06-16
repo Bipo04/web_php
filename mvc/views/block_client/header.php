@@ -20,7 +20,13 @@ foreach($data['css'] as $style) {
     <div class="navbar">
         <div class="navbar-container">
             <div class="brand-container">
-                <h1 class="name-shop"><a href="http://localhost:8088/web/home">Angel&BB</a></h1>
+                <a href="http://localhost:8088/web/home">
+                    <h1 class="name-shop"> <img src="<?=_WEB_ROOT?>/public/clients/images/logo.jpg" alt=""
+                            style="height:50px;">
+                        <div class="name-1">Angel</div>
+                        <div class="name-2">Babie</div>
+                    </h1>
+                </a>
             </div>
             <div class="menu-container">
                 <ul class="menu-list">

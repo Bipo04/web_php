@@ -68,7 +68,7 @@ class Category extends Controller {
             $a = $this->CategoryModel->findAll(['*'], ['id' => $data['id']]);
             $this->view("layouts/admin_layout", [
                 "page" => "category/update",
-                "title" => "Sửa danh mục",
+                "title" => "Cập nhật danh mục",
                 "category" => $a,
                 "type" => "qli",
             ]);

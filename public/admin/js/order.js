@@ -9,8 +9,10 @@ function editOrder(button) {
         statusCell.innerHTML = `
             <select class="form-control">
                 <option ${currentStatus === 'Đang xử lí' ? 'selected' : ''}>Đang xử lí</option>
+                <option ${currentStatus === 'Đang chuẩn bị' ? 'selected' : ''}>Đang chuẩn bị</option>
                 <option ${currentStatus === 'Đang giao hàng' ? 'selected' : ''}>Đang giao hàng</option>
                 <option ${currentStatus === 'Đã giao hàng' ? 'selected' : ''}>Đã giao hàng</option>
+                <option ${currentStatus === 'Đã hủy' ? 'selected' : ''}>Đã hủy</option>
             </select>
         `;
         // Đổi nút thành "Lưu"

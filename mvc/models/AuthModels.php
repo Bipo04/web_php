@@ -49,13 +49,13 @@ class AuthModels extends Database {
         }
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $keys = array_keys($data);
+        $params = array_fill(0, count($keys), '?');
         $keys = implode(", ", $keys);
-        $newValues = array_map(function($value) { return "'".$value."'"; }, array_values($data));
-        $newValues = implode(", ", $newValues);
-        $sql = "INSERT INTO $this->table ($keys) VALUES ($newValues)";
-        echo $sql;
+        $params = implode(", ", $params);
+        $sql = "INSERT INTO $this->table ($keys) VALUES ($params)";
+        $values = array_values($data);
         $query = $this->conn->prepare($sql);
-        if ($query->execute()) {
+        if ($query->execute($values)) {
             return json_encode(
                 array(
                     'type'      => 'success',

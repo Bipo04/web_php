@@ -27,6 +27,8 @@ class Product extends Controller {
     public function add() {
         if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             if (isset($_POST['btn'])) {
+                print_r($_FILES);
+                die;
                 $req = new Request();
                 unset($_POST['btn']);
                 $data = $req->postFields();
@@ -90,16 +92,20 @@ class Product extends Controller {
 
     public function update() {
         if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
-            $req = new Request();
-            $data = $req->getFields();
-            $query = 'SELECT * FROM getProduct('.$data['id'].')';
-            $product = $this->ProductModel->queryExecute($query);
-            $this->view('layouts/admin_layout', [
-                'page' => 'product/update',
-                'title' => 'Thêm sản phẩm',
-                'type' => 'qli',
-                'product' => $product[0],
-            ]);
+            if(isset($_GET['id'])) {
+                $query = 'SELECT * FROM getProduct('.$_GET['id'].')';
+                $product = $this->ProductModel->queryExecute($query);
+                $this->view('layouts/admin_layout', [
+                    'page' => 'product/update',
+                    'title' => 'Cập nhật sản phẩm',
+                    'type' => 'qli',
+                    'product' => $product[0],
+                    'id' => $_GET['id']
+                ]);
+            }
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                print_r($_POST);
+            }
         } else {
             require_once './mvc/errors/forbidden.php';
         }

@@ -1,5 +1,9 @@
 <div class="container">
     <h1 class="h3 mb-2 text-gray-800 text-center"><?php echo $data['title'] ?></h1>
+    <div class="card shadow mb-4">
+        <input type="text" id="search" placeholder="Tìm kiếm người dùng" oninput="searchOrder()"
+            style="border:none;padding:10px">
+    </div>
     <!-- <a href="http://localhost:8088/web/admin/user/add"><button class="btn btn-primary" style="margin-bottom: 15px">Thêm
             tài khoản</button></a> -->
     <div class="card shadow mb-4">
@@ -25,7 +29,7 @@
                         foreach ($data['users'] as $item) {
                             $kq = '<tr id="'.$item['id'].'">
                                         <td>' . $index . '</td>
-                                        <td>' . $item['fullname'] . '</td>
+                                        <td class="name">' . $item['fullname'] . '</td>
                                         <td>' . $item['username'] . '</td>
                                         <td>' . $item['phone_number'] . '</td>
                                         <td>' . $item['email'] . '</td>
@@ -58,19 +62,29 @@
 
 <script>
 function editUser(btn) {
-    var row = btn.parentNode.parentNode;
-    var roleCell = row.cells[5]; // Cột vai trò của người dùng
-    var currentRole = roleCell.innerText.trim(); // Lấy vai trò hiện tại của người dùng
+    const row = btn.parentNode.parentNode;
+    const roleCell = row.cells[5]; // Cột vai trò của người dùng
+    const currentRole = roleCell.innerText.trim(); // Lấy vai trò hiện tại của người dùng
 
+    const UserId = row.id;
+
+    var id = document.cookie.split(';');
+    id = id[1].split('_');
+    console.log(id[1]);
+
+    if (id[1] === UserId) {
+        alert('Bạn không thể sửa role của chính mình');
+        return;
+    }
     // Tạo một dropdown để chọn vai trò mới
-    var selectRole = document.createElement('select');
+    const selectRole = document.createElement('select');
     selectRole.classList.add('form-select'); // Thêm lớp để xác định kích thước chữ
 
     // Tạo các tùy chọn cho dropdown (user và admin)
-    var optionUser = document.createElement('option');
+    const optionUser = document.createElement('option');
     optionUser.value = 'User';
     optionUser.text = 'User';
-    var optionAdmin = document.createElement('option');
+    const optionAdmin = document.createElement('option');
     optionAdmin.value = 'Admin';
     optionAdmin.text = 'Admin';
 
@@ -92,7 +106,7 @@ function editUser(btn) {
     roleCell.appendChild(selectRole);
 
     // Thay đổi nút chỉnh sửa thành "Xác nhận"
-    var editButton = row.querySelector('.btn-outline-primary');
+    const editButton = row.querySelector('.btn-outline-primary');
     editButton.innerText = 'OK';
     editButton.classList.remove('btn-outline-primary');
     editButton.classList.add('btn-outline-success');
@@ -100,13 +114,13 @@ function editUser(btn) {
 }
 
 function confirmEdit(btn) {
-    var row = btn.parentNode.parentNode;
-    var roleCell = row.cells[5]; // Cột vai trò của người dùng
-    var selectRole = roleCell.querySelector('select');
+    const row = btn.parentNode.parentNode;
+    const roleCell = row.cells[5]; // Cột vai trò của người dùng
+    const selectRole = roleCell.querySelector('select');
 
     // Lấy vai trò mới từ dropdown
-    var newRole = selectRole.value;
-    var UserId = row.id;
+    const newRole = selectRole.value;
+    const UserId = row.id;
 
     const xhr = new XMLHttpRequest();
 
@@ -129,13 +143,13 @@ function confirmEdit(btn) {
 
 
 function deleteUser(btn) {
-    var xoa = confirm("Bạn có chắc muốn xóa không?");
+    const xoa = confirm("Bạn có chắc muốn xóa không?");
     if (xoa) {
-        var row = btn.parentNode.parentNode;
-        var table = row.parentNode;
+        const row = btn.parentNode.parentNode;
+        const table = row.parentNode;
 
         // Lấy ID của sản phẩm sẽ bị xóa
-        var deletedUserId = row.id;
+        const deletedUserId = row.id;
 
         const xhr = new XMLHttpRequest();
 
@@ -145,9 +159,9 @@ function deleteUser(btn) {
                 table.removeChild(row);
 
                 // Cập nhật ID của các sản phẩm dưới
-                var rows = table.rows;
-                for (var i = 0; i < rows.length; i++) {
-                    var currentProductId = parseInt(rows[i].cells[0].innerText);
+                const rows = table.rows;
+                for (const i = 0; i < rows.length; i++) {
+                    const currentProductId = parseInt(rows[i].cells[0].innerText);
                     if (currentProductId > deletedUserId) {
                         rows[i].cells[0].innerText = currentProductId - 1;
                     }
@@ -155,9 +169,22 @@ function deleteUser(btn) {
             }
         };
 
-        xhr.open('POST', 'http://localhost:8088/web/admin/user', true);
+        xhr.open('POST', 'http://localhost:8088/web/admin/user/delete', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(`id=${deletedUserId}`); // Corrected the variable name
     }
+}
+
+function searchOrder() {
+    let searchValue = document.getElementById("search").value.trim().toLowerCase();
+    let rows = document.querySelectorAll("#productTable tbody tr");
+    rows.forEach(row => {
+        let orderId = row.querySelector(".name").textContent.trim().toLowerCase();
+        if (orderId.includes(searchValue)) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
 }
 </script>

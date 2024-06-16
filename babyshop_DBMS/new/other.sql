@@ -38,3 +38,24 @@ BEGIN
 END
 
 EXEC updateUser 2, 'Admin'
+
+
+ALTER FUNCTION getSumOrderByDate(
+	@date DATE
+)
+RETURNS INT
+AS
+BEGIN
+	DECLARE @sum INT
+	SELECT @sum = COUNT(*)
+	FROM Orders o
+	WHERE CAST(o.order_date AS DATE) = @date
+	RETURN @sum
+END
+GO
+
+DECLARE @result INT
+SET @result = dbo.getSumOrderByDate('2024-06-14')
+SELECT @result
+
+

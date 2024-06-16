@@ -48,14 +48,32 @@ textarea {
         </div>
         <div class="form-group mb-3">
             <label for="">Ảnh</label>
-            <input type="file" name="img[]" class="form-control" multiple>
+            <input type="file" name="img[]" class="form-control" multiple onchange="previewImages(event)">
         </div>
+        <div class="mb-3" id="previewImages"></div>
         <div class="form-group mb-3">
             <input type="submit" name="btn" class="btn btn-primary" value="Thêm">
         </div>
     </form>
 </div>
 </div>
-<div class="a" style="width=100%; height:100px;"></div>
+<div class="a" style="width:100%; height:100px;"></div>
 </div>
 </div>
+<script>
+function previewImages(event) {
+    const imageFiles = event.target.files;
+    const previewImagesContainer = document.getElementById('previewImages');
+    previewImagesContainer.innerHTML = ''; // Xóa các hình ảnh hiện tại
+
+    for (const file of imageFiles) {
+        const imageElement = document.createElement('img');
+        imageElement.src = URL.createObjectURL(file);
+        imageElement.style.maxWidth = '200px';
+        imageElement.style.maxHeight = '200px';
+        imageElement.style.marginRight = '10px';
+        imageElement.style.marginBottom = '10px';
+        previewImagesContainer.appendChild(imageElement);
+    }
+}
+</script>

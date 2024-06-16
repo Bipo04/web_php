@@ -45,7 +45,6 @@ class MyModels extends Database {
             $data_sql = $this->buildUpdateString($data);
             $where_sql = $this->buildWhereString($where);
             $sql = "UPDATE $this->table SET $data_sql WHERE $where_sql";
-            echo $sql;
             $query = $this->conn->prepare($sql);
             if ($query->execute(array_merge(array_values($data), array_values($where)))) {
                 return json_encode(
@@ -121,7 +120,7 @@ class MyModels extends Database {
         $where_sql = $this->buildWhereString($where);
         $sql = "SELECT $data FROM $this->table WHERE $where_sql";
         if($orderBy) {
-            $sql .= "ORDER BY $orderBy $order";
+            $sql .= " ORDER BY $orderBy $order";
         }
         $query = $this->conn->prepare($sql);
         $query->execute(array_values($where));

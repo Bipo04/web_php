@@ -1,3 +1,19 @@
+<style>
+.old-price {
+    font-size: 16px;
+    color: gray;
+    text-decoration: line-through;
+    opacity: 0.6;
+    margin-right: 10px;
+    font-weight: 400;
+}
+
+.product_price {
+    width: 150px;
+    font-weight: 600;
+}
+</style>
+
 <div class="container">
     <div class="image-container">
         <img class="img-cover" src="<?php echo _WEB_ROOT ?>/public/clients/images/banner.png" alt="ảnh baby">
@@ -16,8 +32,16 @@ foreach($data['data'] as $val) {
                                 <img class="product-list-item-img"
                                     src="'._WEB_ROOT.'/public/clients/images/'.$images[0].'.jpg" alt="">
                             <h6 class="product_name">'.$item['title'].'</h6>
-                            <h6 class="product_price">'.$item['outbound_price'].'$</h6>
+                            <div class="price" style="display:flex;">';
+    if($item['discount'] != null)
+        echo                    '<h6 class="old-price">'.$item['outbound_price'].'$</h6>
+                                <h6 class="product_price">'.$item['discount'].'$</h6>
+                            </div>
                         </div></a>';
+    else 
+        echo            '<h6 class="product_price">'.$item['outbound_price'].'$</h6>
+                    </div>
+                </div></a>';
     }
     echo '</div>
     <i class="fas fa-chevron-right arrow"></i>

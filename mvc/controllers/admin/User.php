@@ -59,7 +59,8 @@ class User extends Controller {
                 $req = new Request();
                 $data = $req->postFields();
                 $id = $data['id'];
-                $this->CategoryModel->deleteById($id);
+                $this->UserModel->deleteById($id);
+                echo 'da xoa';
             }
         } else {
             require_once './mvc/errors/forbidden.php';

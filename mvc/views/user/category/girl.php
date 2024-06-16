@@ -1,3 +1,19 @@
+<style>
+.old-price {
+    font-size: 16px;
+    color: gray;
+    text-decoration: line-through;
+    opacity: 0.6;
+    margin-right: 10px;
+    font-weight: 400;
+}
+
+.product_price {
+    width: 150px;
+    font-weight: 600;
+}
+</style>
+
 <div class="container">
     <div class="sidebar">
         <?php
@@ -38,7 +54,16 @@ foreach($data['products'] as $item) {
                                     <img class="product-list-item-img"
                                         src="'._WEB_ROOT.'/public/clients/images/'.$images[0].'.jpg" alt="">
                                     <h6 class="product_name">'.$item['title'].'</h6>
-                                    <h6 class="product_price">'.$item['outbound_price'].'$</h6>
+                                    <div class="price" style="display:flex;">';
+    if($item['discount'] != null)
+        echo                        '   <h6 class="old-price">'.$item['outbound_price'].'$</h6>
+                                        <h6 class="product_price">'.$item['discount'].'$</h6>
+                                    </div>
+                                </div>
+                            </a>';
+    else 
+        echo            '               <h6 class="product_price">'.$item['outbound_price'].'$</h6>
+                                    </div>
                                 </div>
                             </a>';
 }
@@ -69,17 +94,16 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// document.querySelectorAll('.sidebar-item').forEach(item => {
-//     item.addEventListener('click', function() {
-//         document.querySelector('.sidebar-item.active').classList.remove('active');
-//         this.classList.add('active');
-//     });
-// });
+document.querySelectorAll('.sidebar-item').forEach(item => {
+    item.addEventListener('click', function() {
+        document.querySelector('.sidebar-item.active').classList.remove('active');
+        this.classList.add('active');
+    });
+});
 
 document.getElementById('sortSelect').addEventListener('change', function() {
     const currentUrl = window.location.href;
     const url = currentUrl.split('?')[0];
-    console.log(url);
     const sortValue = this.value;
     window.location.href = `${url}?order=${sortValue}&sortBy=price`;
 });

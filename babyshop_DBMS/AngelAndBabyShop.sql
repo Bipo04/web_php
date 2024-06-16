@@ -18,7 +18,7 @@ CREATE TABLE [User] (
   [email] varchar(150),
   [phone_number] varchar(20),
   [address] nvarchar(200),
-  [role_id] int NOT NULL,
+  [role_id] int NOT NULL DEFAULT '2',
   [created_at] datetime,
 
   FOREIGN KEY ([role_id]) REFERENCES [Role] ([id]) ON DELETE CASCADE ON UPDATE CASCADE

@@ -118,3 +118,11 @@ a{
     width: 180px;
     font-weight: 400;
 }
+
+.old-price span {
+    font-size: 16px;
+    color: gray;
+    text-decoration: line-through;
+    opacity: 0.6;
+    margin-right: 10px;
+}

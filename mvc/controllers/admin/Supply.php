@@ -55,7 +55,7 @@ class Supply extends Controller {
             $supply = $this->SupplyModel->findAll(['*'], ['id' => $id]);
             $this->view('layouts/admin_layout', [
                 'page' => 'supply/update',
-                'title' => 'Chỉnh sửa thông tin nhà cung cấp',
+                'title' => 'Cập nhật thông tin nhà cung cấp',
                 'type' => 'qli',
                 'supply' => $supply[0]
             ]);

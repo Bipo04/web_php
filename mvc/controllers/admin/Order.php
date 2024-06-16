@@ -12,12 +12,36 @@ class Order extends Controller {
 
     public function index() {
         if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
-            $orders = $this->OrdersModel->getdata();
+            if(isset($_GET['type'])) {
+                if($_GET['type'] == '1') {
+                    $orders = $this->OrdersModel->findAll(['*'], ['1' => '1'], 'order_date', 'desc');
+                }
+                if($_GET['type'] == '2') {
+                    $orders = $this->OrdersModel->findAll(['*'], ['status' => 'Chờ xử lí'], 'order_date', 'desc');
+                }
+                if($_GET['type'] == '3') {
+                    $orders = $this->OrdersModel->findAll(['*'], ['status' => 'Đang chuẩn bị'], 'order_date', 'desc');
+                }
+                if($_GET['type'] == '4') {
+                    $orders = $this->OrdersModel->findAll(['*'], ['status' => 'Đang giao hàng'], 'order_date', 'desc');
+                }
+                if($_GET['type'] == '5') {
+                    $orders = $this->OrdersModel->findAll(['*'], ['status' => 'Đã giao hàng'], 'order_date', 'desc');
+                }
+                if($_GET['type'] == '6') {
+                    $orders = $this->OrdersModel->findAll(['*'], ['status' => 'Đã hủy'], 'order_date', 'desc');
+                }
+            }
+            else {
+                $orders = $this->OrdersModel->findAll(['*'], ['1' => '1'], 'order_date', 'desc');
+            }
+            $type = isset($_GET['type']) ? $_GET['type'] : 1;
             $this->view('layouts/admin_layout', [
                 'page' => 'order/index',
                 'title' => 'Danh sách đơn hàng',
                 'type' => 'qli',
-                'orders' => $orders
+                'orders' => $orders,
+                'typ' => $type,
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';

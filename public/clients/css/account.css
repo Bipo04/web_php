@@ -76,5 +76,34 @@ input[type="email"]:read-only {
 .hidden{
         display: none;
 }
+a{
+    text-decoration: none;
+}
+.card_state{
+    display: flex;
+    width: 100%;
+    position: sticky;
+    top: 0;
+}
+.state{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    color: black;
+}
+.state.active{
+    color: red;
+}
+.state:hover{
+    color: red;
+}
+.img_card_none{
+    width: 200px;
+}
 
 

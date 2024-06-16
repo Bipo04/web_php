@@ -52,6 +52,7 @@
     <div class="content-container" style="margin-left:30px;">
         <div style="text-align:center;font-size: 25px;">Thông tin đơn hàng</div>
         <div style="padding:0 20px; margin-top: 20px; margin-bottom:20px">
+            <p style="margin-bottom:5px;"><strong>Mã đơn hàng: </strong><?= $data['order']['order_code'] ?></p>
             <p style="margin-bottom:5px;"><strong>Người nhận: </strong><?= $data['order']['consignee_name'] ?></p>
             <p style="margin-bottom:5px;"><strong>Số điện thoại: </strong><?= $data['order']['phone_number'] ?></p>
             <p style="margin-bottom:5px;"><strong>Địa chỉ: </strong><?= $data['order']['address'] ?></p>

@@ -1,11 +1,15 @@
 <div class="container">
     <h1 class="h3 mb-2 text-gray-800 text-center"><?php echo $data['title'] ?></h1>
+    <div class="card shadow mb-4">
+        <input type="text" id="search" placeholder="Tìm kiếm nhà cung cấp" oninput="searchOrder()"
+            style="border:none;padding:10px">
+    </div>
     <a href="http://localhost:8088/web/admin/supply/add"><button class="btn btn-primary"
             style="margin-bottom: 15px">Thêm Nhà Cung Cấp</button></a>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th width=40px>STT</th>
@@ -25,7 +29,7 @@ if($data['supplies'])
     {
         $kq =              '<tr id="'.$item['id'].'">
                                 <td>'.$index.'</td>
-                                <td>'.$item['name'].'</td>
+                                <td class="name">'.$item['name'].'</td>
                                 <td>'.$item['address'].'</td>
                                 <td>'.$item['phone'].'</td>
                                 <td>'.$item['email'].'</td>
@@ -91,5 +95,18 @@ function deleteBtn(btn) {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(`id=${deletedId}`);
     }
+}
+
+function searchOrder() {
+    let searchValue = document.getElementById("search").value.trim().toLowerCase();
+    let rows = document.querySelectorAll("#productTable tbody tr");
+    rows.forEach(row => {
+        let orderId = row.querySelector(".name").textContent.trim().toLowerCase();
+        if (orderId.includes(searchValue)) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
 }
 </script>

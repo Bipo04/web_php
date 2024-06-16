@@ -45,10 +45,10 @@ if($page[0] == 'dashboard') {
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center"
                 href="http://localhost:8088/web/admin/dashboard">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon">
+                    <img src="<?=_WEB_ROOT?>/public/clients/images/logo.jpg" alt="" style="height:50px;">
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">AngelBaby</div>
             </a>
 
             <!-- Divider -->
@@ -57,7 +57,6 @@ if($page[0] == 'dashboard') {
             <!-- Nav Item - Dashboard -->
             <li class="nav-item <?php if($page[0] == 'dashboard') echo 'active'; ?>">
                 <a class="nav-link" href="http://localhost:8088/web/admin/dashboard">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
@@ -69,7 +68,6 @@ if($page[0] == 'dashboard') {
                 || $page[0] == 'supply' ) echo 'active'; ?>">
                 <a class="nav-link <?php if($data['type'] != 'qli') echo 'collapsed'; ?>" href="#"
                     data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
                     <span>Quản lí</span>
                 </a>
                 <div id="collapseTwo" class="collapse <?php if($data['type'] == 'qli') echo 'show'; ?>"
@@ -94,14 +92,14 @@ if($page[0] == 'dashboard') {
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+            <li class="nav-item <?php if($page[0] == 'revenue' || $page[0] == 'topsale') echo 'active'; ?>">
+                <a class="nav-link <?php if($data['type'] != 'bcao') echo 'collapsed'; ?>" href="#"
+                    data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+                    aria-controls="collapseUtilities">
                     <span>Báo cáo</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse <?php if($data['type'] == 'bcao') echo 'show'; ?>"
+                    aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Báo cáo:</h6>
                         <a class="collapse-item <?php if($page[0] == 'revenue') echo 'active'; ?>"

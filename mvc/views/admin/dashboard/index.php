@@ -5,7 +5,8 @@
                 <h4>Dashboard</h4>
 
                 <div class="date1">
-                    <input type="date">
+                    <input type="date" id="dateInput" max="<?php echo date('Y-m-d'); ?>"
+                        value="<?php echo $data['date']; ?>">
                 </div>
             </div>
 
@@ -17,7 +18,7 @@
                     <div class="middle">
                         <div class="left">
                             <h6 style="margin-top:8px">Số đơn hàng</h6>
-                            <h4>5</h4>
+                            <h4><?=$data['orderSold']['sold']?></h4>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -29,7 +30,7 @@
                     <div class="middle">
                         <div class="left">
                             <h6 style="margin-top:8px">Doanh thu</h6>
-                            <h4>25.000VND</h4>
+                            <h4><?=$data['kq']['TotalRevenue']?></h4>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -43,7 +44,7 @@
                     <div class="middle">
                         <div class="left">
                             <h6 style="margin-top:8px">Lợi nhuận</h6>
-                            <h4>25.000VND</h4>
+                            <h4><?=$data['kq']['Profit']?></h4>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -74,76 +75,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Trần Thùy Hà</td>
-                            <td>456000VND</td>
-                            <td>2024-03-18 16:12:50</td>
-                            <td class="text-danger">Đang xử lí</td>
-                            <td class="text-primary"><a href="">Chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <td>Trần Thùy Hà</td>
-                            <td>456000VND</td>
-                            <td>2024-03-18 16:12:50</td>
-                            <td class="text-danger">Đang xử lí</td>
-                            <td class="text-primary"><a href="">Chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <td>Trần Thùy Hà</td>
-                            <td>456000VND</td>
-                            <td>2024-03-18 16:12:50</td>
-                            <td class="text-danger">Đang xử lí</td>
-                            <td class="text-primary"><a href="">Chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <td>Trần Thùy Hà</td>
-                            <td>456000VND</td>
-                            <td>2024-03-18 16:12:50</td>
-                            <td class="text-danger">Đang xử lí</td>
-                            <td class="text-primary"><a href="">Chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <td>Trần Thùy Hà 123</td>
-                            <td>456000VND</td>
-                            <td>2024-03-18 16:12:50</td>
-                            <td class="text-danger">Đang xử lí</td>
-                            <td class="text-primary"><a href="">Chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <td>Trần Thùy Hà</td>
-                            <td>456000VND</td>
-                            <td>2024-03-18 16:12:50</td>
-                            <td class="text-danger">Đang xử lí</td>
-                            <td class="text-primary"><a href="">Chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <td>Trần Thùy Hà</td>
-                            <td>456000VND</td>
-                            <td>2024-03-18 16:12:50</td>
-                            <td class="text-danger">Đang xử lí</td>
-                            <td class="text-primary"><a href="">Chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <td>Trần Thùy Hà</td>
-                            <td>456000VND</td>
-                            <td>2024-03-18 16:12:50</td>
-                            <td class="text-danger">Đang xử lí</td>
-                            <td class="text-primary"><a href="">Chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <td>Trần Thùy Hà</td>
-                            <td>456000VND</td>
-                            <td>2024-03-18 16:12:50</td>
-                            <td class="text-danger">Đang xử lí</td>
-                            <td class="text-primary"><a href="">Chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <td>Trần Thùy Hà</td>
-                            <td>456000VND</td>
-                            <td>2024-03-18 16:12:50</td>
-                            <td class="text-danger">Đang xử lí</td>
-                            <td class="text-primary"><a href="">Chi tiết</a></td>
-                        </tr>
+                        <?php
+foreach($data['order'] as $item) {
+    echo '  <tr>
+                <td>'.$item['consignee_name'].'</td>
+                <td>'.$item['total_money'].'</td>
+                <td>'.$item['order_date'].'</td>
+                <td>'.$item['status'].'</td>
+                <td class="text-primary"><a href="http://localhost:8088/web/admin/order/detail?id='.$item['id'].'">Chi tiết</a></td>
+            </tr>';
+}
+?>
                     </tbody>
                 </table>
             </class>
@@ -153,21 +95,36 @@
             <h3>Đơn hàng theo ngày</h3>
             <div class="card1">
                 <div class="card1-body">
-                    <canvas id="pieChart" data-status="[50, 30, 201]"
-                        data-labels='["Đang xử lý", "Đang giao hàng", "Đã giao hàng"]' width="auto" height="310">
+                    <canvas id="pieChart" data-status="[<?php $value = array_values($data['statusShow']);
+                    $kq = implode(',', $value); echo $kq ?>]"
+                        data-labels='["Đang xử lý", "Đang chuẩn bị", "Đang giao hàng", "Đã giao hàng"]' width="auto"
+                        height="310">
                     </canvas>
                 </div>
             </div>
-            <h3>Doanh thu theo tuần</h3>
-            <div class="card1" style="margin-bottom:70px">
-                <canvas id="combinedChart"
-                    data-daily-labels='["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"]'
-                    data-daily-sale="[20, 30, 25, 35, 30,45,23,12]" width="auto" height="170">
-                </canvas>
-            </div>
         </div>
     </div>
+    <div class="a" style="width=100%; height:100px;"></div>
+</div>
+</div>
+</div>
 </div>
 
 <script src="<?=_WEB_ROOT?>/public/admin/js/dashboard.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script>
+document.getElementById('dateInput').addEventListener('change', function() {
+    const newDate = this.value;
+    console.log('Ngày đã chọn: ' + newDate);
+
+    const xhr = new XMLHttpRequest();
+
+    const currentUrl = window.location.href;
+    const url = currentUrl.split('?')[0];
+    window.location.href = `${url}?date=${newDate}`;
+
+    xhr.open('POST', 'http://localhost:8088/web/admin/dashboard', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(`date=${encodeURIComponent(newDate)}`);
+})
+</script>

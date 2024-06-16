@@ -17,8 +17,8 @@
                     readonly>
 
                 <label for="phone">Số điện thoại:</label>
-                <input type="text" id="phone" name="phone" value="<?=$_SESSION[$_COOKIE['userId']]['phone_number']?>"
-                    readonly>
+                <input type="text" id="phone_number" name="phone_number"
+                    value="<?=$_SESSION[$_COOKIE['userId']]['phone_number']?>" readonly>
 
                 <label for="username">Địa chỉ:</label>
                 <input type="text" id="address" name="address" value="<?=$_SESSION[$_COOKIE['userId']]['address']?>"
@@ -46,6 +46,7 @@ document.addEventListener("click", (event) => {
         item.classList.add("dropdown-active");
     }
 });
+
 document.querySelectorAll('.sidebar-item').forEach(item => {
     item.addEventListener('click', function() {
         document.querySelector('.sidebar-item.active').classList.remove('active');
@@ -56,18 +57,35 @@ document.querySelectorAll('.sidebar-item').forEach(item => {
 document.querySelector('.Update').onclick = () => {
     document.querySelector('#fullname').removeAttribute('readonly');
     document.querySelector('#email').removeAttribute('readonly');
-    document.querySelector('#phone').removeAttribute('readonly');
+    document.querySelector('#phone_number').removeAttribute('readonly');
     document.querySelector('#address').removeAttribute('readonly');
     document.querySelector('.Update').classList.add('hidden');
     document.querySelector('.Save').classList.remove('hidden');
 }
 document.querySelector('.Save').onclick = () => {
-    document.querySelector('#fullname').setAttribute('readonly', true);
-    document.querySelector('#email').setAttribute('readonly', true);
-    document.querySelector('#phone').setAttribute('readonly', true);
-    document.querySelector('#address').setAttribute('readonly', true);
-    document.querySelector('.Save').classList.add('hidden');
-    document.querySelector('.Update').classList.remove('hidden');
+    const fullname = document.querySelector('#fullname').value;
+    const email = document.querySelector('#email').value;
+    const phone_number = document.querySelector('#phone_number').value;
+    const address = document.querySelector('#address').value;
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector('#fullname').setAttribute('readonly', true);
+            document.querySelector('#email').setAttribute('readonly', true);
+            document.querySelector('#phone_number').setAttribute('readonly', true);
+            document.querySelector('#address').setAttribute('readonly', true);
+            document.querySelector('.Save').classList.add('hidden');
+            document.querySelector('.Update').classList.remove('hidden');
+        }
+    };
+
+    xhr.open('POST', 'http://localhost:8088/web/account/profile', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(
+        `fullname=${fullname}&phone_number=${phone_number}&address=${address}&email=${email}`
+    );
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
