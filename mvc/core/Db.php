@@ -5,7 +5,7 @@ class Database {
     public static function getConnection() {
         if (!isset(self::$conn)) {
             $serverName = 'DESKTOP-5HQDO2R\SQLEXPRESS';
-            $database = 'AngelAndBabyShop';
+            $database = 'AngelBabie';
             $uid = '';
             $pass = '';
             try {

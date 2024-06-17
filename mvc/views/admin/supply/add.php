@@ -18,7 +18,7 @@
             <input type="text" name="phone" class="form-control">
         </div>
         <div class="form-group mb-3">
-            <input type="submit" name="btn" class="btn btn-primary" value="Thêm">
+            <input type="submit" name="btn" class="btn" style="background-color:#fecedc; color:black" value="Thêm">
         </div>
     </form>
 </div>

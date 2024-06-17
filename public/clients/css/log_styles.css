@@ -6,7 +6,10 @@
 body{
   min-height: 100vh;
   width: 100%;
-  background: #e1d9d9bd;
+  background-image: url('http://localhost:8088/web/public/clients/images/BACK-01.jpg');
+  background-size: cover; /* hoặc 'contain' để điều chỉnh kích thước hình ảnh */
+  background-repeat: no-repeat; /* để không lặp lại hình ảnh */
+  background-position: center center; /* canh giữa hình ảnh */
 }
 
 .navbar {
@@ -26,7 +29,7 @@ body{
 }
 
 .brand-container {
-  width: 15%;
+  width: 20%;
 }
 
 .name-shop {
@@ -34,6 +37,7 @@ body{
   font-size: 30px;
   font-weight: 500;
   height: 50px;
+  display: flex;
 }
 
 .name-shop a {
@@ -41,9 +45,24 @@ body{
   color: black;
 }
 
+a {
+  text-decoration: none;
+}
+
+.name-1 {
+  margin-left: 5px;
+  color: #b0692b;
+}
+.name-2 {
+  color: #58291a;
+}
+
 .tittle {
   width: 85%;
-  font-size: 26px;
+  font-size: 28px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 8px;
+  
 }
 
 .container{
@@ -53,9 +72,10 @@ body{
   transform: translate(-50%,-50%);
   max-width: 430px;
   width: 100%;
-  background: #fff;
+  background-color: rgba(234, 172, 188, 0.5);
   border-radius: 7px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .container .registration{
   display: block;
@@ -93,16 +113,17 @@ body{
 }
 .form input.button{
   color: black;
-  background: #e1d9d9bd;
+  background: white;
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 1px;
   margin-top: 1.7rem;
   cursor: pointer;
   transition: 0.4s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 .form input.button:hover{
-  background: #e1d9d9bd;
+  background: white;
 }
 .signup{
   font-size: 17px;

@@ -6,7 +6,7 @@ class Order extends Controller {
     
     public function __construct() {
         $this->ProductModel         = $this->model("ProductModels");
-        $this->OrderDetailModel    = $this->model('OrderDetailModels');
+        $this->OrderDetailModel     = $this->model('OrderDetailModels');
         $this->OrdersModel          = $this->model('OrdersModels');
     }
 
@@ -37,11 +37,11 @@ class Order extends Controller {
             }
             $type = isset($_GET['type']) ? $_GET['type'] : 1;
             $this->view('layouts/admin_layout', [
-                'page' => 'order/index',
-                'title' => 'Danh sách đơn hàng',
-                'type' => 'qli',
-                'orders' => $orders,
-                'typ' => $type,
+                'page'      => 'order/index',
+                'title'     => 'Danh sách đơn hàng',
+                'type'      => 'qli',
+                'orders'    => $orders,
+                'typ'       => $type,
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';
@@ -70,11 +70,11 @@ class Order extends Controller {
             $orderDetails = $this->OrderDetailModel->selectJoin($select, null, ['order_id' => $id], 
             'Product', ['product_id', 'id'],  'LEFT');
             $this->view('layouts/admin_layout', [
-                'page' => 'order/details',
-                'title' => 'Chi tiết đơn hàng',
-                'type' => 'qli',
-                'order' => $order[0],
-                'orderDetails' => $orderDetails
+                'page'          => 'order/details',
+                'title'         => 'Chi tiết đơn hàng',
+                'type'          => 'qli',
+                'order'         => $order[0],
+                'orderDetails'  => $orderDetails
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';

@@ -4,8 +4,9 @@
         <input type="text" id="search" placeholder="Tìm kiếm sản phẩm" oninput="searchOrder()"
             style="border:none;padding:10px">
     </div>
-    <a href="http://localhost:8088/web/admin/product/add"><button class="btn btn-primary"
-            style="margin-bottom: 15px">Thêm Sản Phẩm</button></a>
+    <a href="http://localhost:8088/web/admin/product/add"><button class="btn"
+            style="margin-bottom: 15px; background-color:#fecedc; color:black;">Thêm Sản
+            Phẩm</button></a>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
@@ -31,9 +32,9 @@ if($data['product'])
         $kq =              '<tr id="'.$item['id'].'">
                                 <td>'.$index.'</td>
                                 <td class="name">'.$item['title'].'</td>
-                                <td>'.$item['inbound_price'].'</td>
-                                <td>'.$item['outbound_price'].'</td>
-                                <td>'.$item['discount'].'</td>
+                                <td class="amount-to-format">'.$item['inbound_price'].'</td>
+                                <td class="amount-to-format">'.$item['outbound_price'].'</td>
+                                <td class="amount-to-format">'.$item['discount'].'</td>
                                 <td>'.$item['quantity'].'</td>
                                 <td>
                                 <button class="btn btn-outline-primary"
@@ -115,4 +116,17 @@ function searchOrder() {
         }
     });
 }
+
+function formatToVND(amount) {
+    return amount.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+}
+document.querySelectorAll('.amount-to-format').forEach(element => {
+    const amountValue = parseFloat(element.textContent); // Lấy giá trị số tiền từ nội dung của thẻ
+    if (amountValue !== 0)
+        element.textContent = formatToVND(
+            amountValue); // Định dạng lại số tiền thành VND và cập nhật nội dung của thẻ
+});
 </script>

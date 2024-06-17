@@ -13,9 +13,9 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th width=250px>Họ và tên</th>
-                            <th width=110px>Username</th>
-                            <th width=140px>Phone</th>
+                            <th>Họ và tên</th>
+                            <th>Username</th>
+                            <th>Phone</th>
                             <th>Email</th>
                             <th>Role</th>
                             <th>Ngày tạo</th>
@@ -34,7 +34,7 @@
                                         <td>' . $item['phone_number'] . '</td>
                                         <td>' . $item['email'] . '</td>
                                         <td>' . ucfirst($item['name']) . '</td>
-                                        <td>' . $item['created_at'] . '</td>
+                                        <td class="dd_time">' . $item['created_at'] . '</td>
                                         <td>
                                         <button class="btn btn-outline-primary"
                                             onclick="editUser(this)">Sửa</button>
@@ -187,4 +187,26 @@ function searchOrder() {
         }
     });
 }
+
+function removeMilliseconds(dateTimeStr) {
+    // Tách chuỗi thành ngày và thời gian
+    let parts = dateTimeStr.split(' ');
+
+    // Lấy phần ngày và phần thời gian
+    let datePart = parts[0];
+    let timePart = parts[1];
+
+    // Tách phần thời gian để loại bỏ ".000"
+    let timeParts = timePart.split('.');
+    let timeWithoutMs = timeParts[0];
+
+    // Kết hợp lại thành định dạng mới
+    let formattedDateTime = datePart + ' ' + timeWithoutMs;
+
+    return formattedDateTime;
+}
+
+document.querySelectorAll(".dd_time").forEach((value, index) => {
+    value.textContent = removeMilliseconds(value.textContent);
+})
 </script>

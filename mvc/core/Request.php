@@ -64,6 +64,29 @@ class Request {
         $str = preg_replace('/([\s]+)/', '-', $str);
         return $str;
     }
+
+    public function deleteDirectory($dir) {
+        if (!file_exists($dir)) {
+            return true; // Directory does not exist, nothing to do
+        }
+    
+        if (!is_dir($dir)) {
+            return unlink($dir); // Not a directory, try to delete it as a file
+        }
+    
+        foreach (scandir($dir) as $item) {
+            if ($item == '.' || $item == '..') {
+                continue; // Skip current and parent directory links
+            }
+    
+            $itemPath = $dir . DIRECTORY_SEPARATOR . $item;
+            if (!$this->deleteDirectory($itemPath)) {
+                return false; // Failed to delete a directory/file, return false
+            }
+        }
+    
+        return rmdir($dir); // Finally remove the directory
+    }
 }
 
 ?>

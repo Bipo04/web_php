@@ -8,7 +8,7 @@ function editOrder(button) {
         // Tạo dropdown
         statusCell.innerHTML = `
             <select class="form-control">
-                <option ${currentStatus === 'Đang xử lí' ? 'selected' : ''}>Đang xử lí</option>
+                <option ${currentStatus === 'Chờ xử lí' ? 'selected' : ''}>Chờ xử lí</option>
                 <option ${currentStatus === 'Đang chuẩn bị' ? 'selected' : ''}>Đang chuẩn bị</option>
                 <option ${currentStatus === 'Đang giao hàng' ? 'selected' : ''}>Đang giao hàng</option>
                 <option ${currentStatus === 'Đã giao hàng' ? 'selected' : ''}>Đã giao hàng</option>

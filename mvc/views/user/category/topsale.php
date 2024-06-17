@@ -13,25 +13,17 @@
     font-weight: 600;
 }
 </style>
-
 <div class="container">
     <div class="sidebar">
-        <?php
-foreach($data['categories'] as $item) {
-    $a = '<a class="sidebar-item';
-    if(isset($data['cate']) && $item['name-slug'] == $data['cate']) {
-        $a .= ' active';
-    }
-    $a .= '"href="http://localhost:8088/web/category/girl/'.$item['name-slug'].'">'.$item['name'].'</a>';
-    echo $a;
-}
-        ?>
+        <a class="sidebar-item <?php if($data['cate'] == 'girl') echo 'active';?>"
+            href="http://localhost:8088/web/category/topsale/girl">Nữ</a>
+        <a class="sidebar-item <?php if($data['cate'] == 'boy') echo 'active';?>"
+            href="http://localhost:8088/web/category/topsale/boy">Nam</a>
     </div>
-
-    <div class="content-container">
+    <div class=" content-container">
         <div class="product-list-container">
             <div class="product-select">
-                <h5 class="product-list-title">Nữ</h5>
+                <h5 class="product-list-title">Bán chạy</h5>
                 <select id="sortSelect" class="sort-select">
                     <option value="default" <?php if($data['order'] == 'default') echo 'selected'; ?>>
                         Giá
@@ -93,13 +85,13 @@ document.addEventListener("click", (event) => {
         item.classList.add("dropdown-active");
     }
 });
-
 document.querySelectorAll('.sidebar-item').forEach(item => {
     item.addEventListener('click', function() {
         document.querySelector('.sidebar-item.active').classList.remove('active');
         this.classList.add('active');
     });
 });
+
 
 document.getElementById('sortSelect').addEventListener('change', function() {
     const currentUrl = window.location.href;

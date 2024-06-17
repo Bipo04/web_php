@@ -84,8 +84,8 @@ if($data['kind'] == 'year') {
                     <tbody>
                         <tr>
                             <td><?=$data['tongquat']['Sold']?></td>
-                            <td><?=$data['tongquat']['TotalRevenue']?></td>
-                            <td><?=$data['tongquat']['Profit']?></td>
+                            <td class="amount-to-format"><?=$data['tongquat']['TotalRevenue']?></td>
+                            <td class="amount-to-format"><?=$data['tongquat']['Profit']?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -114,10 +114,10 @@ foreach($data['revenue'] as $item) {
     echo '              <tr>
                             <td>'.$item['Id'].'</td>
                             <td>'.$item['Name'].'</td>
-                            <td class="costPrice">'.$item['Inbound_price'].'</td>
+                            <td class="costPrice amount-to-format">'.$item['Inbound_price'].'</td>
                             <td class="quantitySold">'.$item['sold'].'</td>
-                            <td class="revenue">'.$item['Revenue'].'</td>
-                            <td class="profit">'.$item['Profit'].'</td>
+                            <td class="revenue amount-to-format">'.$item['Revenue'].'</td>
+                            <td class="profit amount-to-format">'.$item['Profit'].'</td>
                         </tr>';
 }
 ?>
@@ -208,6 +208,20 @@ document.addEventListener("DOMContentLoaded", function() {
         yearSelect.addEventListener('change', function() {
             updateURLParams();
         });
+    }
+});
+
+function formatToVND(amount) {
+    return amount.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+}
+document.querySelectorAll('.amount-to-format').forEach(element => {
+    if (element.innerHTML !== '') {
+        const amountValue = parseFloat(element.textContent);
+        element.textContent = formatToVND(
+            amountValue);
     }
 });
 </script>

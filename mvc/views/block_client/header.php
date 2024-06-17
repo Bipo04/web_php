@@ -21,8 +21,8 @@ foreach($data['css'] as $style) {
         <div class="navbar-container">
             <div class="brand-container">
                 <a href="http://localhost:8088/web/home">
-                    <h1 class="name-shop"> <img src="<?=_WEB_ROOT?>/public/clients/images/logo.jpg" alt=""
-                            style="height:50px;">
+                    <h1 class="name-shop"> <img src="<?=_WEB_ROOT?>/public/clients/images/final-01.png" alt=""
+                            style="height:50px;width:50px">
                         <div class="name-1">Angel</div>
                         <div class="name-2">Babie</div>
                     </h1>
@@ -33,8 +33,8 @@ foreach($data['css'] as $style) {
                     <li class="menu-list-item active"><a href="http://localhost:8088/web/category/girl">Nữ</a>
                     </li>
                     <li class="menu-list-item"><a href="http://localhost:8088/web/category/boy">Nam</a></li>
-                    <li class="menu-list-item"><a href="">Bán chạy</a></li>
-                    <li class="menu-list-item"><a href="">Giảm giá</a></li>
+                    <li class="menu-list-item"><a href="http://localhost:8088/web/category/topsale">Bán chạy</a></li>
+                    <li class="menu-list-item"><a href="http://localhost:8088/web/category/discount">Giảm giá</a></li>
                 </ul>
             </div>
             <div class="account-container">

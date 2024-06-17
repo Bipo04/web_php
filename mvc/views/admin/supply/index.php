@@ -4,8 +4,8 @@
         <input type="text" id="search" placeholder="Tìm kiếm nhà cung cấp" oninput="searchOrder()"
             style="border:none;padding:10px">
     </div>
-    <a href="http://localhost:8088/web/admin/supply/add"><button class="btn btn-primary"
-            style="margin-bottom: 15px">Thêm Nhà Cung Cấp</button></a>
+    <a href="http://localhost:8088/web/admin/supply/add"><button class="btn"
+            style="margin-bottom: 15px;background-color:#fecedc; color:black">Thêm Nhà Cung Cấp</button></a>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">

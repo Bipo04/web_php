@@ -4,8 +4,8 @@
         <input type="text" id="search" placeholder="Tìm kiếm danh mục" oninput="searchOrder()"
             style="border:none;padding:10px">
     </div>
-    <a href="http://localhost:8088/web/admin/category/add"><button class="btn btn-primary"
-            style="margin-bottom: 15px">Thêm Danh Mục</button></a>
+    <a href="http://localhost:8088/web/admin/category/add"><button class="btn"
+            style="margin-bottom: 15px; background-color:#fecedc; color:black">Thêm Danh Mục</button></a>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">

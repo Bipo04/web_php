@@ -71,42 +71,28 @@ a {
                     </a>
                 </section>
             </div>
-            <div class="card" style="margin-bottom: 10px; height: 60px; padding: auto;">
-                <div class="card-body p-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <p class="name_col" style="display: none;"></p>
-                        </div>
-                        <div class="col-md-4 d-flex justify-content-center">
-                            <p class="name_col">Tên sản phẩm</p>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <p class="name_col">Số lượng</p>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <p class="name_col">Giá bán</p>
-                        </div>
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <p class="name_col">Thành tiền</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <?php
+if($data['purchase'] == null) {
+    echo '  <div class="card" style="margin-top: 10px;width: 100%; height: 450px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <img class="img_card_none" src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/orderlist/5fafbb923393b712b964.png" alt="">
+                <p>Chưa có đơn hàng</p>
+            </div>';
+}
 foreach($data['purchase'] as $item) {
     $total = 0;
     echo 
 '<div class="card" style="margin-bottom: 10px;">';
-    echo '      <div style="padding: 10px 24px; border-bottom: 1px groove; align-items:center; display:flex">
-                    <div style="flex-grow:1;">
-                        <span>Ngày đặt hàng: </span>
-                        <span>'.$item['order_date'].'</span>
-                    </div>
-                    <div style="display: flex; align-items:center;">
-                        <p style="margin:0px">
-                            <span style="padding-right: 5px;">Trạng thái:</span>
-                            <span id="status-'.$item['id'].'">'.$item['status'].'</span>
-                        </p>';
+    echo '      <div class="card-body" style="border-bottom: 1px solid rgba(0, 0, 0, .09);border-radius: 0 0 5px 5px;">
+                    <div style="padding: 10px 24px;align-items:center; display:flex">
+                        <div style="flex-grow:1;">
+                            <span>Ngày đặt hàng: </span>
+                            <span>'.$item['order_date'].'</span>
+                        </div>
+                        <div style="display: flex; align-items:center;">
+                            <p style="margin:0px">
+                                <span style="padding-right: 5px;">Trạng thái:</span>
+                                <span id="status-'.$item['id'].'">'.$item['status'].'</span>
+                            </p>';                        
     if($item['status'] == 'Chờ xử lí') {
         echo '<button class="button" id="'.$item['id'].'" onclick="deleteProduct(this)" style="border: 1px solid;margin-left:10px;background-color: #008CBA;color:white; border-radius:5px">Hủy đơn</button>';
     }
@@ -116,41 +102,29 @@ foreach($data['purchase'] as $item) {
         $total += $d['price']*$d['num'];
         $thumbnails = explode(',', $d['thumbnail']);
         echo 
-        '<div class="card-body p-4">
-            <div class="row align-items-center">
-                <div class="col-md-2">
-                    <img src="'._WEB_ROOT.'/public/clients/images/'.$thumbnails[0].'.jpg" alt=""
-                        class="img-fluid">
-                </div>
-                <div class="col-md-4 d-flex justify-content-center">
+        '<div class="new_card" style="padding: 10px 24px;align-items:center; display:flex; border-top: 1px solid rgba(0, 0, 0, .09);">
+            <div style="flex-grow:1; display:flex;">
+                <img src="'._WEB_ROOT.'/public/clients/images/'.$thumbnails[0].'.jpg"
+                alt="" class="img-fluid" style="width:100px">
+                <div style="padding: 0 0 0 12px;display:flex; align-items:center">
                     <div>
                         <p class="content_col">'.$d['title'].'</p>
-                    </div>
-                </div>
-                <div class="col-md-2 d-flex justify-content-center">
-                    <div>
-                        <p class="content_col">'.$d['num'].'</p>
-                    </div>
-                </div>
-                <div class="col-md-2 d-flex justify-content-center">
-                    <div>
-                        <p class="content_col">'.$d['price'].'</p>
-                    </div>
-                </div>
-                <div class="col-md-2 d-flex justify-content-center">
-                    <div>
-                        <p class="content_col">'.$d['price']*$d['num'].'</p>
+                        <p class="content_col">x'.$d['num'].'</p>
+                        <p>
+                            <span>Đơn giá: </span>
+                            <span class="amount-to-format">'.$d['price'].'</span>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>';
     }
-    echo '<div class="row-cols-md-4">
-        <div class="float-end">
-            <p class="">
-                <span style="font-size: 17px;padding-right: 5px;">Tổng: </span>
-                <span style="font-size: 17px;">'.$total.'</span>
-            </p>
+    echo 
+        '<div class="card-body" style="border-top: 1px solid rgba(0, 0, 0, .09);border-radius: 5px 5px 0 0;">
+            <div class="float-end" style="padding-right: 24px;">
+                <span style="font-size: 17px;padding-right: 5px;">Thành tiền: </span>
+                <span class="amount-to-format" style="font-size: 20px;color:red">'.$total.'</span>
+            </div>
         </div>
     </div>';
 
@@ -201,4 +175,20 @@ function deleteProduct() {
         xhr.send(`id=${id}`);
     }
 }
+
+
+// Hàm để định dạng số tiền sang VND
+function formatToVND(amount) {
+    return amount.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+}
+
+// Lặp qua tất cả các thẻ có class="amount-to-format" và định dạng lại số tiền thành VND
+document.querySelectorAll('.amount-to-format').forEach(element => {
+    const amountValue = parseFloat(element.textContent); // Lấy giá trị số tiền từ nội dung của thẻ
+    element.textContent = formatToVND(
+        amountValue); // Định dạng lại số tiền thành VND và cập nhật nội dung của thẻ
+});
 </script>

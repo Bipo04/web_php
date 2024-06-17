@@ -58,8 +58,8 @@ foreach($data['orders'] as $item) {
                             <td>'.$item['order_code'].'</td>
                             <td>'.$item['consignee_name'].'</td>
                             <td>'.$item['phone_number'].'</td>
-                            <td>'.$item['total_money'].'</td>
-                            <td>'.$item['order_date'].'</td>
+                            <td class="amount-to-format">'.$item['total_money'].'</td>
+                            <td class="dd_time">'.$item['order_date'].'</td>
                             <td class="order-status">'.$item['status'].'</td>
                             <td>
                                 <button class="btn btn-outline-primary" onclick="editOrder(this)"
@@ -154,4 +154,38 @@ function searchOrder() {
         }
     });
 }
+
+function formatToVND(amount) {
+    return amount.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+}
+document.querySelectorAll('.amount-to-format').forEach(element => {
+    const amountValue = parseFloat(element.textContent); // Lấy giá trị số tiền từ nội dung của thẻ
+    element.textContent = formatToVND(
+        amountValue); // Định dạng lại số tiền thành VND và cập nhật nội dung của thẻ
+});
+
+function removeMilliseconds(dateTimeStr) {
+    // Tách chuỗi thành ngày và thời gian
+    let parts = dateTimeStr.split(' ');
+
+    // Lấy phần ngày và phần thời gian
+    let datePart = parts[0];
+    let timePart = parts[1];
+
+    // Tách phần thời gian để loại bỏ ".000"
+    let timeParts = timePart.split('.');
+    let timeWithoutMs = timeParts[0];
+
+    // Kết hợp lại thành định dạng mới
+    let formattedDateTime = datePart + ' ' + timeWithoutMs;
+
+    return formattedDateTime;
+}
+
+document.querySelectorAll(".dd_time").forEach((value, index) => {
+    value.textContent = removeMilliseconds(value.textContent);
+})
 </script>

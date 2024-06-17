@@ -20,8 +20,8 @@ class Account extends Controller {
                 $_SESSION[$_COOKIE['userId']]['address'] = $data['address'];
             }
             $this->view('layouts/client_layout', [
-                'page' => 'account/profile',
-                'css' => ['account']
+                'page'  => 'account/profile',
+                'css'   => ['account']
             ]);
         }
         else {
@@ -116,10 +116,10 @@ class Account extends Controller {
                 }     
             }
             $this->view('layouts/client_layout', [
-                'page' => 'account/purchase',
-                'css' => ['account'],
-                'purchase' => $kq,
-                'type' => $type,
+                'page'      => 'account/purchase',
+                'css'       => ['account'],
+                'purchase'  => $kq,
+                'type'      => $type,
             ]);
         }
         else {

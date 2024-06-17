@@ -25,9 +25,9 @@
 
 .container1 {
     display: grid;
-    width: 96%;
+    width: 98%;
     gap: 1.8rem;
-    grid-template-columns: auto 40rem;
+    grid-template-columns: auto;
     margin: 0 auto;
 }
 
@@ -44,12 +44,11 @@
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .content-table thead tr {
-    background-color: #0759f190;
-    color: #fff;
+    background-color: #fecedc;
     text-align: left;
     font-weight: bold;
 }
@@ -71,47 +70,23 @@
     background-color: #f3f3f3;
 }
 
-.content-table tbody tr:hover {
-    font-weight: bold;
-    color: #0759f190;
-}
-
 .TopSellingProduct {
     margin-left: 5px;
     transition: all .3s ease;
+    color: #5a5c69;
 }
 
-.TopSellingProduct>h2 {
+.TopSellingProduct {
     padding: auto;
 }
 
-.tableTSP thead tr {
-    background-color: #0759f190;
-    color: #fff;
-    text-align: left;
-    font-weight: bold;
-}
 
-.tableTSP th,
-.tableTSP td {
-    padding: 12px 15px;
-    text-align: center;
-}
-
-.tableTSP tbody tr {
-    border-bottom: 1px solid #ddd;
-}
-
-/* .tableTSP tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-} */
-
-.tableTSP .imgTSP {
-    width: 50px;
+.imgTSP {
+    width: 80px;
 }
 
 .page1 {
-    font-size: 13px;
+    font-size: 16px;
     display: flex;
 }
 
@@ -127,26 +102,24 @@
     height: 24.7px;
     border: 0.2px;
 }
-</style>
 
+.hidden {
+    display: none;
+}
+
+.table1 {
+    color: #5a5c69;
+}
+</style>
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <div class="container">
-    <h1 class="h3 mb-2 text-gray-800 text-center"><?php echo $data['title'] ?></h1>
     <div class="container1">
         <div class="main1">
             <div class="table1">
                 <!-- Thống kê sản phẩm  -->
-                <h2>Thống kê sản phẩm</h2>
-                <div style="display: flex;justify-content: space-between;padding-right: 30px;">
-                    <div style="display: flex;">
-                        <div style="min-width: 90px;font-size: 14px;padding: auto;">Sap xep theo:</div>
-                        <select id="selectOption" class=" form-select" aria-label="Default select example"
-                            style="font-size: 13px;">
-                            <option value="1">Tất cả</option>
-                            <option value="2">Ngày</option>
-                            <option value="3">Tháng</option>
-                            <option value="4">Năm</option>
-                        </select>
-                    </div>
+                <h1 class="h3 mb-2 text-gray-800 text-center">Thống kê sản phẩm</h1>
+                <div style="display:flex;justify-content:space-between">
                     <div class="page1">
                         <button id="previousButton"><span class="material-symbols-outlined" style="font-size: 13px;">
                                 arrow_back_ios
@@ -161,409 +134,27 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Name</th>
-                            <th>In_bound</th>
-                            <th>Out_bound</th>
-                            <th>Sold</th>
-                            <th>Interest</th>
-                        </tr>
-                    </thead>
-                    <!-- Thong ke theo tat ca -->
-                    <tbody id="data1">
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                    </tbody>
-                    <!-- Thong ke theo Ngay -->
-                    <tbody id="data2" class="hidden">
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                    </tbody>
-                    <!-- Thong ke theo Thang -->
-                    <tbody id="data3" class="hidden">
-                        <tr>
-                            <td>3</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                    </tbody>
-                    <!-- Thong ke theo Nam -->
-                    <tbody id="data4" class="hidden">
-                        <tr>
-                            <td>4</td>
-                            <td class="img-tb1-name">Bộ thô ngắn tay bé gái Rabity</td>
-                            <td>129000</td>
-                            <td>229000</td>
-                            <td>4</td>
-                            <td>400000</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- Top Sale -->
-        <div class="TopSellingProduct">
-            <h2>Top 20 sản phẩm bán chạy</h2>
-            <div>
-                <table class="tableTSP">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Tên sản phẩm</th>
                             <th>Ảnh</th>
-                            <th>Số lượng</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Sold</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Ao ba lo</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_ba_lo_trai/ba_lo_1.jpg" alt=""></td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_gio_elsa/ao_khoac_elsa_1.jpg" alt="">
+                        <?php
+$index = 1;
+foreach($data['kq'] as  $item) {
+    $image = explode(',', $item['thumbnail']);
+    echo '              <tr>
+                            <td>'.$index++.'</td>
+                            <td><img class="imgTSP" src="'._WEB_ROOT.'/public/clients/images/'.$image[0].'.jpg" alt="">
                             </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_ni_bong_be_trai/ao_ni_bong_3.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_thun_polo/polo_trai_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_thun_co_be/ao_thun_co_be_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_gio_marvel_be_trai/ao_khoac_marvel_2.jpg"
-                                    alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_thun_co_be/ao_thun_co_be_3.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Ao elsa</td>
-                            <td><img class="imgTSP" src="/Product_img/ao_khoac_kaki_be_gai/ao_khoac_kaki_2.jpg" alt="">
-                            </td>
-                            <td>13</td>
-                        </tr>
+                            <td class="img-tb1-name">'.$item['Name'].'</td>
+                            <td>'.$item['sold'].'</td>
+                        </tr>';
+}
+?>
                     </tbody>
                 </table>
-                <div class="page1" style="font-size: 13px;padding-left: 250px;padding-top: 5px;">
-                    <button id="previousButton1"><span class="material-symbols-outlined" style="font-size: 13px;">
-                            arrow_back_ios
-                        </span></button>
-                    <span id="pageInfo1"></span>
-                    <button id="nextButton1"><span class="material-symbols-outlined" style="font-size: 13px;">
-                            arrow_forward_ios
-                        </span></button>
-                </div>
             </div>
         </div>
     </div>
@@ -572,3 +163,109 @@
 <div class="a" style="width=100%; height:100px;"></div>
 </div>
 </div>
+<script>
+// Table 1
+document.addEventListener("DOMContentLoaded", function() {
+    var tableRows = document.querySelectorAll(".content-table tbody tr");
+    var maxRows = 10; //So hang
+    var currentPage = 1;
+
+    function showRows(page) {
+        var start = (page - 1) * maxRows;
+        var end = start + maxRows;
+
+        tableRows.forEach(function(row, index) {
+            if (index >= start && index < end) {
+                row.style.display = "table-row";
+            } else {
+                row.style.display = "none";
+            }
+        });
+
+        var totalRows = tableRows.length;
+        var totalPages = Math.ceil(totalRows / maxRows);
+
+        var pageInfo = document.getElementById("pageInfo");
+        if (totalPages >= 1) {
+            pageInfo.textContent = "Trang " + page + "/" + totalPages;
+            pageInfo.style.display = "inline"; // Hiển thị thông tin trang
+        } else {
+            pageInfo.style.display = "none"; // Ẩn thông tin trang nếu chỉ có một trang
+        }
+
+        var previousButton = document.getElementById("previousButton");
+        var nextButton = document.getElementById("nextButton");
+    }
+
+    showRows(currentPage);
+
+    document.getElementById("previousButton").addEventListener("click", function() {
+        if (currentPage > 1) {
+            currentPage--;
+            showRows(currentPage);
+        }
+    });
+
+    document.getElementById("nextButton").addEventListener("click", function() {
+        var totalRows = tableRows.length;
+        var totalPages = Math.ceil(totalRows / maxRows);
+
+        if (currentPage < totalPages) {
+            currentPage++;
+            showRows(currentPage);
+        }
+    });
+});
+// Danh so va chuyen trang cho table2
+document.addEventListener("DOMContentLoaded", function() {
+    var tableRows = document.querySelectorAll(".TopSellingProduct tbody tr");
+    var maxRows = 5;
+    var currentPage = 1;
+
+    function showRows(page) {
+        var start = (page - 1) * maxRows;
+        var end = start + maxRows;
+
+        tableRows.forEach(function(row, index) {
+            if (index >= start && index < end) {
+                row.style.display = "table-row";
+            } else {
+                row.style.display = "none";
+            }
+        });
+
+        var totalRows = tableRows.length;
+        var totalPages = Math.ceil(totalRows / maxRows);
+
+        var pageInfo = document.getElementById("pageInfo1");
+        if (totalPages >= 1) {
+            pageInfo.textContent = "Trang " + page + "/" + totalPages;
+            pageInfo.style.display = "inline"; // Hiển thị thông tin trang
+        } else {
+            pageInfo.style.display = "none"; // Ẩn thông tin trang nếu chỉ có một trang
+        }
+
+        var previousButton = document.getElementById("previousButton1");
+        var nextButton = document.getElementById("nextButton1");
+    }
+
+    showRows(currentPage);
+
+    document.getElementById("previousButton1").addEventListener("click", function() {
+        if (currentPage > 1) {
+            currentPage--;
+            showRows(currentPage);
+        }
+    });
+
+    document.getElementById("nextButton1").addEventListener("click", function() {
+        var totalRows = tableRows.length;
+        var totalPages = Math.ceil(totalRows / maxRows);
+
+        if (currentPage < totalPages) {
+            currentPage++;
+            showRows(currentPage);
+        }
+    });
+});
+</script>

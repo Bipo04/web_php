@@ -11,10 +11,10 @@ class Product extends Controller {
         $data = $req->getFields();
         $product = $this->ProductModel->findAll(['*'], $data);
         $this->view("layouts/client_layout", [
-            "page" => "product/index",
-            "title" => "Danh sách danh mục",
-            "css" => ["product"],
-            "product" => $product,
+            "page"      => "product/index",
+            "title"     => "Danh sách danh mục",
+            "css"       => ["product"],
+            "product"   => $product[0],
         ]);
     }
 }

@@ -1,5 +1,5 @@
 <?php
-$thumbnails = explode(',', $data['product'][0]['thumbnail']);
+$thumbnails = explode(',', $data['product']['thumbnail']);
 ?>
 
 <div class="container">
@@ -37,18 +37,26 @@ foreach($thumbnails as $item) {
                 <div class="product-content">
                     <h2 class="product-title" style="font-size: 30px;">
                         <?php
-echo $data['product'][0]['title'];
+echo $data['product']['title'];
 ?>
                     </h2>
-
+                    <div class="sold">Đã bán: <?= $data['product']['sold'] ?></div>
                     <div class="product-price">
                         <div class="price-container">
-                            <p class="old-price">Giá:
-                                <span><?php echo $data['product'][0]['outbound_price']; ?></span>
-                            </p>
-                            <p class="new-price">
-                                <span><?php echo $data['product'][0]['outbound_price']; ?></span>
-                            </p>
+                            <?php
+if($data['product']['discount'] != 0) {
+    echo '  <p class="old-price">Giá:
+                <span class="amount-to-format">'.$data['product']['outbound_price'].'</span>
+            </p>
+            <p class="new-price">
+                <span class="amount-to-format">'.$data['product']['discount'].'</span>
+            </p>';
+} else {
+    echo '  <p class="new-price">
+                <span class="amount-to-format">'.$data['product']['outbound_price'].'</span>
+            </p>';
+}
+?>
                         </div>
                         </span>
 
@@ -56,7 +64,7 @@ echo $data['product'][0]['title'];
                         <h2>Mô tả sản phẩm: </h2>
                         <p>
                             <?php
-echo $data['product'][0]['description'];
+echo $data['product']['description'];
 ?>
                         </p>
                     </div>
@@ -69,18 +77,20 @@ echo $data['product'][0]['description'];
                         </div>
                         <div class="button-container">
                             <form action="http://localhost:8088/web/cart/add" method="post">
-                                <input type="hidden" name="id" value="<?= $data['product'][0]['id'] ?>">
-                                <input type="hidden" name="price" value="<?= $data['product'][0]['outbound_price'] ?>">
-                                <input type="hidden" name="title" value="<?= $data['product'][0]['title'] ?>">
+                                <input type="hidden" name="id" value="<?= $data['product']['id'] ?>">
+                                <input type="hidden" name="price" value="<?php if($data['product']['discount'] != 0) echo $data['product']['discount'];
+                                    else echo $data['product']['outbound_price'] ?>">
+                                <input type="hidden" name="title" value="<?= $data['product']['title'] ?>">
                                 <input type="hidden" name="image" value="<?= $thumbnails[0]?>">
                                 <input type="hidden" name="quantity" id="form2-qty">
                                 <input type="submit" name="add-card-btn" class="round-black-btn" value="Thêm vào giỏ">
                             </form>
 
                             <form action=" http://localhost:8088/web/cart/checkout" method="post">
-                                <input type="hidden" name="id" value="<?= $data['product'][0]['id'] ?>">
-                                <input type="hidden" name="price" value="<?= $data['product'][0]['outbound_price'] ?>">
-                                <input type="hidden" name="title" value="<?= $data['product'][0]['title'] ?>">
+                                <input type="hidden" name="id" value="<?= $data['product']['id'] ?>">
+                                <input type="hidden" name="price" value="<?php if($data['product']['discount'] != 0) echo $data['product']['discount'];
+                                    else echo $data['product']['outbound_price'] ?>">
+                                <input type="hidden" name="title" value="<?= $data['product']['title'] ?>">
                                 <input type="hidden" name="image" value="<?= $thumbnails[0]?>">
                                 <input type="hidden" name="quantity" id="form1-qty">
                                 <input type="submit" name="buy-btn" class="round-black-btn" value="Mua ngay">
@@ -95,6 +105,21 @@ echo $data['product'][0]['description'];
 </div>
 
 <script>
+const profileText = document.querySelector(".profile-text");
+const item = document.querySelector(".profile-dropdown");
+
+profileText.addEventListener("click", (event) => {
+    item.classList.toggle("dropdown-active");
+    event.stopPropagation(); // Ngăn chặn sự kiện click từ việc lan ra ngoài
+});
+
+document.addEventListener("click", (event) => {
+    const isClickInsideItem = item.contains(event.target);
+    const isClickOnProfileText = event.target === profileText;
+    if (!isClickInsideItem && !isClickOnProfileText) {
+        item.classList.add("dropdown-active");
+    }
+});
 document.addEventListener('DOMContentLoaded', function() {
     // Các đoạn mã JavaScript của bạn ở đây
     const imgs = document.querySelectorAll('.img-select a');
@@ -142,5 +167,19 @@ document.querySelectorAll("form").forEach(function(form) {
         var qtyValue = document.getElementById("shared-qty").value;
         form.querySelector("input[name='quantity']").value = qtyValue;
     });
+});
+
+function formatToVND(amount) {
+    return amount.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+}
+
+// Lặp qua tất cả các thẻ có class="amount-to-format" và định dạng lại số tiền thành VND
+document.querySelectorAll('.amount-to-format').forEach(element => {
+    const amountValue = parseFloat(element.textContent); // Lấy giá trị số tiền từ nội dung của thẻ
+    element.textContent = formatToVND(
+        amountValue); // Định dạng lại số tiền thành VND và cập nhật nội dung của thẻ
 });
 </script>

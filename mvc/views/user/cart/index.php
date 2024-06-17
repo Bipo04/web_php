@@ -53,12 +53,12 @@ if(isset($_SESSION[$_COOKIE['userId']]['cart']) && count($_SESSION[$_COOKIE['use
             </div>
             <div class="col-md-2 d-flex justify-content-center">
                 <div>
-                    <div class="content_col">'.$item['price'].'</div>
+                    <div class="content_col amount-to-format">'.$item['price'].'</div>
                 </div>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
                 <div>
-                    <div class="content_col">'.$item['price']*$item['quantity'].'</div>
+                    <div class="content_col amount-to-format">'.$item['price']*$item['quantity'].'</div>
                 </div>
             </div>
             <div class="col-md-1 d-flex justify-content-center">
@@ -73,7 +73,7 @@ echo '  <div class="fixed-box">
             <div class="bottom-box float-end">
                 <p class="sum">
                     <span style="font-size: 16px;padding-right: 5px;">Tổng thanh toán: </span>
-                    <span style="font-size: 16px;padding-right: 5px;">'.$totalPrice.'</span>
+                    <span style="font-size: 16px;padding-right: 5px;" class="amount-to-format">'.$totalPrice.'</span>
                 </p>
                 <form action="http://localhost:8088/web/cart/checkout" method="post">
                     <div class="buy-btn">
@@ -171,5 +171,19 @@ quantityInputs.forEach(input => {
             updateCart(index, 1);
         }
     });
+});
+
+function formatToVND(amount) {
+    return amount.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+}
+
+// Lặp qua tất cả các thẻ có class="amount-to-format" và định dạng lại số tiền thành VND
+document.querySelectorAll('.amount-to-format').forEach(element => {
+    const amountValue = parseFloat(element.textContent); // Lấy giá trị số tiền từ nội dung của thẻ
+    element.textContent = formatToVND(
+        amountValue); // Định dạng lại số tiền thành VND và cập nhật nội dung của thẻ
 });
 </script>

@@ -96,9 +96,9 @@ class Cart extends Controller {
                     unset($_SESSION[$_COOKIE['userId']]['buy1']);
                 }
                 $this->view("layouts/client_layout", [
-                    "page" => "cart/checkout",
-                    "css" => ['formbuy'],
-                    "cart" => $cart
+                    "page"  => "cart/checkout",
+                    "css"   => ['formbuy'],
+                    "cart"  => $cart
                 ]);
             }
             else {
@@ -113,8 +113,8 @@ class Cart extends Controller {
     public function buy() {
         if(isset($_COOKIE['userId'])) {
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['type']) && $_POST['type'] == 'buy') {
-                date_default_timezone_set('Asia/Ho_Chi_Minh');
-                $time = date("Y-m-d H:m:s");
+                $now = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh'));
+                $time = $now->format('Y-m-d H:i:s');
                 $data = [   'user_id'           => $_SESSION[$_COOKIE['userId']]['id'],
                             'order_date'        => $time,
                             'total_money'       => $_POST['totalprice'],

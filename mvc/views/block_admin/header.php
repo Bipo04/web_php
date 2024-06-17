@@ -46,7 +46,7 @@ if($page[0] == 'dashboard') {
             <a class="sidebar-brand d-flex align-items-center justify-content-center"
                 href="http://localhost:8088/web/admin/dashboard">
                 <div class="sidebar-brand-icon">
-                    <img src="<?=_WEB_ROOT?>/public/clients/images/logo.jpg" alt="" style="height:50px;">
+                    <img src="<?=_WEB_ROOT?>/public/clients/images/final-01.png" alt="" style="height:50px;">
                 </div>
                 <div class="sidebar-brand-text mx-3">AngelBaby</div>
             </a>

@@ -33,13 +33,13 @@ foreach($data['data'] as $val) {
                                     src="'._WEB_ROOT.'/public/clients/images/'.$images[0].'.jpg" alt="">
                             <h6 class="product_name">'.$item['title'].'</h6>
                             <div class="price" style="display:flex;">';
-    if($item['discount'] != null)
-        echo                    '<h6 class="old-price">'.$item['outbound_price'].'$</h6>
-                                <h6 class="product_price">'.$item['discount'].'$</h6>
+    if($item['discount'] != '0')
+        echo                    '<h6 class="old-price amount-to-format">'.$item['outbound_price'].'$</h6>
+                                <h6 class="product_price amount-to-format">'.$item['discount'].'$</h6>
                             </div>
                         </div></a>';
     else 
-        echo            '<h6 class="product_price">'.$item['outbound_price'].'$</h6>
+        echo            '<h6 class="product_price amount-to-format">'.$item['outbound_price'].'$</h6>
                     </div>
                 </div></a>';
     }
@@ -89,6 +89,20 @@ arrows.forEach((arrow, i) => {
             clickCounter = 0;
         }
     });;
+});
+
+function formatToVND(amount) {
+    return amount.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+}
+
+// Lặp qua tất cả các thẻ có class="amount-to-format" và định dạng lại số tiền thành VND
+document.querySelectorAll('.amount-to-format').forEach(element => {
+    const amountValue = parseFloat(element.textContent); // Lấy giá trị số tiền từ nội dung của thẻ
+    element.textContent = formatToVND(
+        amountValue); // Định dạng lại số tiền thành VND và cập nhật nội dung của thẻ
 });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

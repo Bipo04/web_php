@@ -17,7 +17,7 @@
         </div>
         <div class="form-group mb-3">
             <input type="hidden" name="id" class="form-control" value="<?php echo $data['category'][0]['id']; ?>">
-            <input type="submit" name="btn" class="btn btn-primary" value="Sửa">
+            <input type="submit" name="btn" class="btn" style="background-color:#fecedc; color:black" value="Cập nhật">
         </div>
     </form>
 </div>

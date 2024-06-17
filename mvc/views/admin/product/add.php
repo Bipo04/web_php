@@ -52,7 +52,7 @@ textarea {
         </div>
         <div class="mb-3" id="previewImages"></div>
         <div class="form-group mb-3">
-            <input type="submit" name="btn" class="btn btn-primary" value="Thêm">
+            <input type="submit" name="btn" class="btn" style="background-color:#fecedc; color:black" value="Thêm">
         </div>
     </form>
 </div>

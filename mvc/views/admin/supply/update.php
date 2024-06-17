@@ -19,7 +19,7 @@
             <input type="text" name="phone" value="<?= $data['supply']['phone'] ?>" class="form-control">
         </div>
         <div class="form-group mb-3">
-            <input type="submit" name="btn" class="btn btn-primary" value="Xác nhận">
+            <input type="submit" name="btn" class="btn" style="background-color:#fecedc; color:black" value="Cập nhật">
         </div>
     </form>
 </div>

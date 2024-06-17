@@ -13,31 +13,15 @@ class User extends Controller {
             $users = $this->UserModel->selectJoin($select ,null, null, 'Roles', ['role_id', 'id'], 'INNER');
             
             $this->view('layouts/admin_layout', [
-                'page' => 'user/index',
+                'page'  => 'user/index',
                 'title' => 'Danh sách người dùng',
                 'users' => $users,
-                "type" => "qli",
+                "type"  => "qli",
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';
         }
     }
-
-    // public function add() {
-    //     if(isset($_POST['btn'])) {
-    //         $req = new Request();
-    //         unset($_POST['btn']);
-    //         $data = $req->postFields();
-    //         $this->UserModel->add($data);
-    //         header('location: http://localhost:8088/web/admin/supply');
-    //     }
-
-    //     $this->view('layouts/admin_layout', [
-    //         'page' => 'user/add',
-    //         'title' => 'Thêm tài khoản',
-    //         'type' => 'qli',
-    //     ]);
-    // }
 
     public function update() {
         if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {

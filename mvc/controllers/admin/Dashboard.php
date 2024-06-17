@@ -2,7 +2,7 @@
 class Dashboard extends Controller {
     public $OrdersModel;
     public function __construct() {
-        $this->OrdersModel = $this->model("OrdersModels");
+        $this->OrdersModel = $this->model('OrdersModels');
     }
     
     public function index() {
@@ -11,7 +11,8 @@ class Dashboard extends Controller {
                 $date = $_GET['date'];
             }
             else {
-                $date = date('Y-m-d');
+                $now = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh'));
+                $date = $now->format('Y-m-d');
             }
             $orderSold = $this->OrdersModel->queryExecute(
                 "SELECT COUNT(*) as sold FROM getOrderByDate('".$date."')"
@@ -30,22 +31,22 @@ class Dashboard extends Controller {
                 FROM getOrderByDate('".$date."')
                 GROUP BY status"
             );
-            $statusShow['Đang xử lí'] = 0;
+            $statusShow['Chờ xử lí'] = 0;
             $statusShow['Đang chuẩn bị'] = 0;
             $statusShow['Đang giao hàng'] = 0;
             $statusShow['Đã giao hàng'] = 0;
             foreach($status as $item) {
                 $statusShow[$item['status']] = $item['StatusCount'];
             }
-            $this->view("layouts/admin_layout", [
-                "page"      => "dashboard/index",
-                "title"     => "Dashboard",
-                "type"      => "none",
-                "orderSold" => $orderSold[0],
-                "kq"        => $kq[0],
-                "order"     => $order,
-                "statusShow"=> $statusShow,
-                "date"      => $date
+            $this->view('layouts/admin_layout', [
+                'page'      => 'dashboard/index',
+                'title'     => 'Dashboard',
+                'type'      => 'none',
+                'orderSold' => $orderSold[0],
+                'kq'        => $kq[0],
+                'order'     => $order,
+                'statusShow'=> $statusShow,
+                'date'      => $date
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';

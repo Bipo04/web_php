@@ -79,8 +79,8 @@ foreach($data['orderDetails'] as $item) {
                     <div class="card1child-info">
                         <div class="box1child">'.$item['title'].'</div>
                         <div class="box1child">'.$item['num'].'</div>
-                        <div class="box1child">'.$item['price'].' VND</div>
-                        <div class="box1child">'.$item['num']*$item['price'].' VND</div>
+                        <div class="box1child amount-to-format">'.$item['price'].'</div>
+                        <div class="box1child amount-to-format">'.$item['num']*$item['price'].'</div>
                     </div>
                 </div>
             </div>';
@@ -92,7 +92,7 @@ foreach($data['orderDetails'] as $item) {
             <div><strong>Tổng:</strong></div>
             <div style="width:2%"></div>
             <div class="sum1">
-                <span><?= $totalprice?> VND</span>
+                <span class="amount-to-format"><?= $totalprice?></span>
             </div>
         </div>
     </div>
@@ -101,3 +101,17 @@ foreach($data['orderDetails'] as $item) {
 <div class="a" style="width=100%; height:100px;"></div>
 </div>
 </div>
+
+<script>
+function formatToVND(amount) {
+    return amount.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+}
+document.querySelectorAll('.amount-to-format').forEach(element => {
+    const amountValue = parseFloat(element.textContent); // Lấy giá trị số tiền từ nội dung của thẻ
+    element.textContent = formatToVND(
+        amountValue); // Định dạng lại số tiền thành VND và cập nhật nội dung của thẻ
+});
+</script>

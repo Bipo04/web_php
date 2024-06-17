@@ -2,17 +2,17 @@
 class Category extends Controller {
     public $CategoryModel;
     public function __construct() {
-        $this->CategoryModel = $this->model("CategoryModels");
+        $this->CategoryModel = $this->model('CategoryModels');
     }
     
     public function index() {
         if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             $categories = $this->CategoryModel->getdata();
-            $this->view("layouts/admin_layout", [
-                "page" => "category/index",
-                "title" => "Danh sách danh mục",
-                "category" => $categories,
-                "type" => "qli",
+            $this->view('layouts/admin_layout', [
+                'page'      => 'category/index',
+                'title'     => 'Danh sách danh mục',
+                'category'  => $categories,
+                'type'      => 'qli',
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';
@@ -30,9 +30,9 @@ class Category extends Controller {
             }
     
             $this->view('layouts/admin_layout', [
-                'page' => 'category/add',
-                'title' => 'Thêm danh mục',
-                "type" => "qli",
+                'page'      => 'category/add',
+                'title'     => 'Thêm danh mục',
+                'type'      => 'qli',
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';
@@ -66,11 +66,11 @@ class Category extends Controller {
             }
             $data = $req->getFields();
             $a = $this->CategoryModel->findAll(['*'], ['id' => $data['id']]);
-            $this->view("layouts/admin_layout", [
-                "page" => "category/update",
-                "title" => "Cập nhật danh mục",
-                "category" => $a,
-                "type" => "qli",
+            $this->view('layouts/admin_layout', [
+                'page'      => 'category/update',
+                'title'     => 'Cập nhật danh mục',
+                'category'  => $a,
+                'type'      => 'qli',
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';

@@ -72,10 +72,10 @@ foreach($result as $item) {
                 <div class="content_col">'.$item['quantity'].'</div>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
-                <div class="content_col">'.$item['price'].'</div>
+                <div class="content_col amount-to-format">'.$item['price'].'</div>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
-                <div class="content_col">'.$item['price']*$item['quantity'].'</div>
+                <div class="content_col amount-to-format">'.$item['price']*$item['quantity'].'</div>
             </div>
         </div>
     </div>
@@ -84,7 +84,7 @@ foreach($result as $item) {
 echo '    <div class="flex-end">
 <div class="sum">
     <div style="font-size: 16px;padding-right: 5px;">Tổng thanh toán: </div>
-    <div id="tongtien" style="font-size: 16px;">'.$totalPrice.'</div>
+    <div id="tongtien" style="font-size: 16px;" class="amount-to-format">'.$totalPrice.'</div>
 </div>
 </div>';
     ?>
@@ -194,6 +194,8 @@ document.querySelector('.xacnhan').addEventListener('click', function() {
     var address = document.getElementById('address').value;
     var totalprice = document.querySelector('#tongtien').innerHTML;
 
+    totalprice = convertNumber(totalprice);
+
     const xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function() {
@@ -213,4 +215,23 @@ span.onclick = function() {
     modal.style.display = "none";
     window.location.href = "http://localhost:8088/web/home";
 }
+
+function convertNumber(numberStr) {
+    // Sử dụng replace() để loại bỏ dấu chấm
+    return numberStr.replace(/\./g, '');
+}
+
+function formatToVND(amount) {
+    return amount.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+}
+
+// Lặp qua tất cả các thẻ có class="amount-to-format" và định dạng lại số tiền thành VND
+document.querySelectorAll('.amount-to-format').forEach(element => {
+    const amountValue = parseFloat(element.textContent); // Lấy giá trị số tiền từ nội dung của thẻ
+    element.textContent = formatToVND(
+        amountValue); // Định dạng lại số tiền thành VND và cập nhật nội dung của thẻ
+});
 </script>

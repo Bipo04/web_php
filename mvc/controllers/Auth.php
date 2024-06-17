@@ -11,12 +11,15 @@ class Auth extends Controller {
     }
 
     public function login() {
-        if(isset($_COOKIE['userID'])) {
+        if(isset($_COOKIE['userId'])) {
+            echo 1;
             if($_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
                 header('location: http://localhost:8088/web/admin/dashboard');
+                die;
             }
             else {
                 header('location: http://localhost:8088/web/home');
+                die;
             }
         }
         else {
@@ -52,7 +55,7 @@ class Auth extends Controller {
     }
 
     public function register() {
-        if(isset($_COOKIE['userID'])) {
+        if(isset($_COOKIE['userId'])) {
             if($_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
                 header('location: http://localhost:8088/web/admin/dashboard');
             }

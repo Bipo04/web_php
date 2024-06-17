@@ -9,17 +9,18 @@ class Revenue extends Controller {
     public function index() {
         if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             $kind = 'day';
-            $currentMonth = date('m') /10*10;
-            $currentYear = date('Y');
+            $now = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh'));
+            $currentMonth = $now->format('m') /10*10;
+            $currentYear = $now->format('Y');
             if(isset($_GET['type'])) {
                 $kind = $_GET['type'];
                 if($_GET['type'] == 'day') {
                     $start = $_GET['date-start'];
                     $end = $_GET['date-end'];
-                    $a = ['start' => $start,
-                        'end' => $end,
-                        'currentMonth' => $currentMonth,
-                        'currentYear' => $currentYear];
+                    $a = ['start'       => $start,
+                        'end'           => $end,
+                        'currentMonth'  => $currentMonth,
+                        'currentYear'   => $currentYear];
                     $data = $this->OrdersModel->queryExecute("SELECT Id, Name, Inbound_price, sold, Revenue,  
                                                             (Revenue - Inbound_price * sold) as Profit
                                                             FROM DayRevenue('".$start."','".$end."')
@@ -35,10 +36,10 @@ class Revenue extends Controller {
                 if($_GET['type'] == 'month') {
                     $month = $_GET['month'];
                     $year = $_GET['year'];
-                    $a = ['month' => $month,
-                        'year' => $year,
-                        'currentMonth' => $currentMonth,
-                        'currentYear' => $currentYear];
+                    $a = ['month'       => $month,
+                        'year'          => $year,
+                        'currentMonth'  => $currentMonth,
+                        'currentYear'   => $currentYear];
                     $data = $this->OrdersModel->queryExecute("SELECT Id, Name, Inbound_price, sold, Revenue,  
                                                             (Revenue - Inbound_price * sold) as Profit
                                                             FROM MonthRevenue(".$year.",".$month.")
@@ -53,9 +54,9 @@ class Revenue extends Controller {
                 }
                 if($_GET['type'] == 'year') {
                     $year = $_GET['year'];
-                    $a = ['year' => $year,
-                        'currentMonth' => $currentMonth,
-                        'currentYear' => $currentYear];
+                    $a = ['year'        => $year,
+                        'currentMonth'  => $currentMonth,
+                        'currentYear'   => $currentYear];
                     $data = $this->OrdersModel->queryExecute("SELECT Id, Name, Inbound_price, sold, Revenue,  
                                                             (Revenue - Inbound_price * sold) as Profit
                                                             FROM YearRevenue(".$year.")
@@ -70,7 +71,8 @@ class Revenue extends Controller {
                 }
             }
             else {
-                $date = date('Y-m-d');
+                $now = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh'));
+                $date = $now->format('Y-m-d');
                 $a = ['start' => $date,
                         'end' => $date];
                 $data = $this->OrdersModel->queryExecute("SELECT Id, Name, Inbound_price, sold, SUM(Revenue) as Revenue,  
@@ -86,12 +88,12 @@ class Revenue extends Controller {
                                                         );
             }
             $this->view('layouts/admin_layout', [
-                'page' => 'revenue/index',
-                'type' => 'bcao',
-                'revenue' => $data,
-                'tongquat'=> $data1[0],
-                'kind' => $kind,
-                'a' => $a,
+                'page'      => 'revenue/index',
+                'type'      => 'bcao',
+                'revenue'   => $data,
+                'tongquat'  => $data1[0],
+                'kind'      => $kind,
+                'a'         => $a,
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';

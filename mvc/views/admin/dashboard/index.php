@@ -30,7 +30,7 @@
                     <div class="middle">
                         <div class="left">
                             <h6 style="margin-top:8px">Doanh thu</h6>
-                            <h4><?=$data['kq']['TotalRevenue']?></h4>
+                            <h4 class="amount-to-format"><?=$data['kq']['TotalRevenue']?></h4>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -44,7 +44,7 @@
                     <div class="middle">
                         <div class="left">
                             <h6 style="margin-top:8px">Lợi nhuận</h6>
-                            <h4><?=$data['kq']['Profit']?></h4>
+                            <h4 class="amount-to-format"><?=$data['kq']['Profit']?></h4>
                         </div>
                     </div>
                     <p>Trong 24 giờ</p>
@@ -79,8 +79,8 @@
 foreach($data['order'] as $item) {
     echo '  <tr>
                 <td>'.$item['consignee_name'].'</td>
-                <td>'.$item['total_money'].'</td>
-                <td>'.$item['order_date'].'</td>
+                <td class="amount-to-format">'.$item['total_money'].'</td>
+                <td class="dd_time">'.$item['order_date'].'</td>
                 <td>'.$item['status'].'</td>
                 <td class="text-primary"><a href="http://localhost:8088/web/admin/order/detail?id='.$item['id'].'">Chi tiết</a></td>
             </tr>';
@@ -97,7 +97,7 @@ foreach($data['order'] as $item) {
                 <div class="card1-body">
                     <canvas id="pieChart" data-status="[<?php $value = array_values($data['statusShow']);
                     $kq = implode(',', $value); echo $kq ?>]"
-                        data-labels='["Đang xử lý", "Đang chuẩn bị", "Đang giao hàng", "Đã giao hàng"]' width="auto"
+                        data-labels='["Chờ xử lí", "Đang chuẩn bị", "Đang giao hàng", "Đã giao hàng"]' width="auto"
                         height="310">
                     </canvas>
                 </div>
@@ -126,5 +126,47 @@ document.getElementById('dateInput').addEventListener('change', function() {
     xhr.open('POST', 'http://localhost:8088/web/admin/dashboard', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(`date=${encodeURIComponent(newDate)}`);
+})
+
+function convertNumber(numberStr) {
+    // Sử dụng replace() để loại bỏ dấu chấm
+    return numberStr.replace(/\./g, '');
+}
+
+function formatToVND(amount) {
+    return amount.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+}
+document.querySelectorAll('.amount-to-format').forEach(element => {
+    if (element.innerHTML !== '') {
+        const amountValue = parseFloat(element.textContent);
+        element.textContent = formatToVND(
+            amountValue);
+    }
+});
+
+function removeMilliseconds(dateTimeStr) {
+    // Tách chuỗi thành ngày và thời gian
+    let parts = dateTimeStr.split(' ');
+
+    // Lấy phần ngày và phần thời gian
+    let datePart = parts[0];
+    let timePart = parts[1];
+
+    // Tách phần thời gian để loại bỏ ".000"
+    let timeParts = timePart.split('.');
+    let timeWithoutMs = timeParts[0];
+
+    // Kết hợp lại thành định dạng mới
+    let formattedDateTime = datePart + ' ' + timeWithoutMs;
+
+    return formattedDateTime;
+}
+
+document.querySelectorAll(".dd_time").forEach((value, index) => {
+    value.textContent = removeMilliseconds(value.textContent);
+    console.log(value);
 })
 </script>

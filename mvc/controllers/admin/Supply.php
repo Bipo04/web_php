@@ -10,10 +10,10 @@ class Supply extends Controller {
         if(isset($_COOKIE['userId']) && $_SESSION[$_COOKIE['userId']]['role_id'] == '1') {
             $supplies = $this->SupplyModel->getdata();
             $this->view('layouts/admin_layout', [
-                'page' => 'supply/index',
-                'title' => 'Danh sách nhà cung cấp',
-                'supplies' => $supplies,
-                'type' => 'qli',
+                'page'      => 'supply/index',
+                'title'     => 'Danh sách nhà cung cấp',
+                'supplies'  => $supplies,
+                'type'      => 'qli',
             ]);
         } else {
             require_once './mvc/errors/forbidden.php';
